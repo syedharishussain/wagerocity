@@ -54,12 +54,12 @@ NSString *const kUserEmail = @"email";
 @synthesize email = _email;
 
 
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
++ (instancetype)modelObjectWithDictionary:(id)dict
 {
     return [[self alloc] initWithDictionary:dict];
 }
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict
+- (instancetype)initWithDictionary:(id)dict
 {
     self = [super init];
     

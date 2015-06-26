@@ -7,19 +7,114 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import Alamofire
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
+        
+        loginButton.readPermissions = ["public_profile", "email"]
+        loginButton.delegate = self
+        
+        if (FBSDKAccessToken.currentAccessToken() != nil)
+        {
+            // User is already logged in, do work such as go to next view controller.
+            returnUserData()
+        }
+        else {
+        }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.hidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        println("User Logged In")
+        
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+                returnUserData()
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        println("User Logged Out")
+    }
+    
+    func returnUserData() {
+        SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                println("Error: \(error)")
+            }
+            else
+            {
+//                println("fetched user: \(result)")
+                let userName : NSString = result.valueForKey("name") as! NSString
+//                println("User Name is: \(userName)")
+                let userEmail : NSString = result.valueForKey("email") as! NSString
+//                println("User Email is: \(userEmail)")
+                
+                let id : AnyObject? = result.valueForKey("id")
+                
+                Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : id!])
+                    .responseJSON{ (request, response, body, error) in
+                        SVProgressHUD.dismiss()
+                        if (error != nil) {
+                            if let newError:NSError = error {
+                                SVProgressHUD.showErrorWithStatus(newError.localizedDescription)
+                            }
+                            
+                        } else {
+                            let request1:NSMutableURLRequest = request as! NSMutableURLRequest
+//                            println("Request URL: \(request1.URL)")
+                            var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
+//                            println(user.email)
+                            self.saveUserObject(user)
+                            
+                            self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
+                        }
+                }
+                
+                
+            }
+        })
+    }
+    
+    func saveUserObject(user: User) {
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(user), forKey: Constants.UserDefaults.User)
+    }
 
 }
 

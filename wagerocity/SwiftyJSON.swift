@@ -139,9 +139,9 @@ extension JSON: SequenceType{
         get {
             switch self.type {
             case .Array:
-                return (self.object as [AnyObject]).isEmpty
+                return (self.object as! [AnyObject]).isEmpty
             case .Dictionary:
-                return (self.object as [String : AnyObject]).isEmpty
+                return (self.object as! [String : AnyObject]).isEmpty
             default:
                 return false
             }
@@ -170,7 +170,7 @@ extension JSON: SequenceType{
     public func generate() -> GeneratorOf <(String, JSON)> {
         switch self.type {
         case .Array:
-            let array_ = object as [AnyObject]
+            let array_ = object as! [AnyObject]
             var generate_ = array_.generate()
             var index_: Int = 0
             return GeneratorOf<(String, JSON)> {
@@ -181,7 +181,7 @@ extension JSON: SequenceType{
                 }
             }
         case .Dictionary:
-            let dictionary_ = object as [String : AnyObject]
+            let dictionary_ = object as! [String : AnyObject]
             var generate_ = dictionary_.generate()
             return GeneratorOf<(String, JSON)> {
                 if let (key_: String, value_: AnyObject) = generate_.next() {
@@ -221,7 +221,7 @@ extension JSON {
                 return errorResult_
             }
             
-            let array_ = self.object as [AnyObject]
+            let array_ = self.object as! [AnyObject]
 
             if index >= 0 && index < array_.count {
                 return JSON(array_[index])
@@ -233,7 +233,7 @@ extension JSON {
         }
         set {
             if self.type == .Array {
-                var array_ = self.object as [AnyObject]
+                var array_ = self.object as! [AnyObject]
                 if array_.count > index {
                     array_[index] = newValue.object
                     self.object = array_
@@ -259,7 +259,7 @@ extension JSON {
         }
         set {
             if self.type == .Dictionary {
-                var dictionary_ = self.object as [String : AnyObject]
+                var dictionary_ = self.object as! [String : AnyObject]
                 dictionary_[key] = newValue.object
                 self.object = dictionary_
             }
@@ -270,7 +270,7 @@ extension JSON {
     private subscript(#sub: SubscriptType) -> JSON {
         get {
             if sub is String {
-                return self[key:sub as String]
+                return self[key:sub as! String]
             } else {
                 return self[index:sub as Int]
             }

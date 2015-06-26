@@ -29,8 +29,8 @@
 @property (nonatomic, strong) NSString *currentrecord;
 @property (nonatomic, strong) NSString *email;
 
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
++ (instancetype)modelObjectWithDictionary:(id)dict;
+- (instancetype)initWithDictionary:(id)dict;
 - (NSDictionary *)dictionaryRepresentation;
 
 @end

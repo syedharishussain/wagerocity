@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Consumables</key>
+	<dict>
+		<key>com.wagerocity.rookie</key>
+		<dict>
+			<key>Count</key>
+			<integer>2000</integer>
+			<key>Name</key>
+			<string>Rookie</string>
+		</dict>
+		<key>com.wagerocity.chaser</key>
+		<dict>
+			<key>Count</key>
+			<integer>6250</integer>
+			<key>Name</key>
+			<string>Chaser</string>
+		</dict>
+		<key>com.wagerocity.player</key>
+		<dict>
+			<key>Count</key>
+			<integer>30000</integer>
+			<key>Name</key>
+			<string>Player</string>
+		</dict>
+		<key>com.wagerocity.guru</key>
+		<dict>
+			<key>Count</key>
+			<integer>87500</integer>
+			<key>Name</key>
+			<string>Guru</string>
+		</dict>
+		<key>com.wagerocity.bawse</key>
+		<dict>
+			<key>Count</key>
+			<integer>200000</integer>
+			<key>Name</key>
+			<string>Bawse</string>
+		</dict>
+		<key>com.wagerocity.clear_record</key>
+		<dict>
+			<key>Count</key>
+			<integer>0</integer>
+			<key>Name</key>
+			<string>Clear Recors</string>
+		</dict>
+		<key>com.wagerocity.purchase_pick</key>
+		<dict>
+			<key>Count</key>
+			<integer>0</integer>
+			<key>Name</key>
+			<string>Purchase Picks</string>
+		</dict>
+	</dict>
+	<key>Non-Consumables</key>
+	<array/>
+	<key>Subscriptions</key>
+	<dict/>
+</dict>
+</plist>
