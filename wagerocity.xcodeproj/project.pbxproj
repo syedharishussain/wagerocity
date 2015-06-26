@@ -18,6 +18,8 @@
 		666CF7121B28C4A600AD4DF5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 666CF7111B28C4A600AD4DF5 /* User.m */; };
 		666CF7161B28CCDD00AD4DF5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CF7151B28CCDD00AD4DF5 /* DashboardViewController.swift */; };
 		666CF71E1B28DCB100AD4DF5 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CF71D1B28DCB100AD4DF5 /* NavigationBar.swift */; };
+		6674ED1B1B3DE7F800206FC5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED191B3DE7F800206FC5 /* Fabric.framework */; };
+		6674ED1C1B3DE7F800206FC5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */; };
 		667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B6B2F1B357DDE00609C4B /* StatsBarView.swift */; };
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
 		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
@@ -137,6 +139,8 @@
 		666CF7111B28C4A600AD4DF5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		666CF7151B28CCDD00AD4DF5 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		666CF71D1B28DCB100AD4DF5 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		6674ED191B3DE7F800206FC5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		667B6B2F1B357DDE00609C4B /* StatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarView.swift; sourceTree = "<group>"; };
 		667B6B311B357DEF00609C4B /* StatsBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsBarView.xib; sourceTree = "<group>"; };
 		66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
@@ -206,8 +210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				66FDB7051B2782DA00D0B2F4 /* Bolts.framework in Frameworks */,
+				6674ED1B1B3DE7F800206FC5 /* Fabric.framework in Frameworks */,
 				66FDB6F91B277FAD00D0B2F4 /* FBSDKCoreKit.framework in Frameworks */,
 				66FDB6FA1B277FAD00D0B2F4 /* FBSDKLoginKit.framework in Frameworks */,
+				6674ED1C1B3DE7F800206FC5 /* Crashlytics.framework in Frameworks */,
 				666CF6971B2788B600AD4DF5 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +236,8 @@
 				6603B5D61B277E0D0014489A /* wagerocityTests */,
 				6603B5BF1B277E0D0014489A /* Products */,
 				666CF6881B27884D00AD4DF5 /* Alamofire.xcodeproj */,
+				6674ED191B3DE7F800206FC5 /* Fabric.framework */,
+				6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -439,6 +447,7 @@
 				6603B5BB1B277E0D0014489A /* Frameworks */,
 				6603B5BC1B277E0D0014489A /* Resources */,
 				666CF69B1B2788B600AD4DF5 /* Embed Frameworks */,
+				6674ED181B3DE7AF00206FC5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -566,6 +575,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6674ED181B3DE7AF00206FC5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run df016c3ad1ee1793d79feddd950c3b34795c9d9f ac8080d4ebbc66396c2e44d01ee0657b0826c30df3d56945a278deeb35f9eef8\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6603B5BA1B277E0D0014489A /* Sources */ = {
@@ -746,6 +771,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/haris/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = wagerocity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -765,6 +791,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/haris/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = wagerocity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
