@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bkr-ut-Ld1">
-                                <rect key="frame" x="166" y="274" width="137.99999988942909" height="63"/>
+                                <rect key="frame" x="165.99999988942909" y="274" width="138" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="leader_board_icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -154,11 +154,122 @@
                         <outlet property="myPicksButton" destination="lcK-Tc-mqq" id="LZo-yU-BzQ"/>
                         <outlet property="poolsButton" destination="ZJW-Md-DVZ" id="bEv-5U-JNa"/>
                         <outlet property="settingsButton" destination="SeV-S5-42i" id="a6x-oK-y6p"/>
+                        <segue destination="Mb6-4w-A08" kind="push" identifier="sportsList" id="yfN-Jv-txZ"/>
+                        <segue destination="4gd-We-pNU" kind="push" identifier="MyPicks_Controller" id="1qW-sM-Jps"/>
+                        <segue destination="CV1-xQ-if6" kind="push" identifier="Pools_Controller" id="ngU-C5-6L2"/>
+                        <segue destination="P6N-8Y-fxh" kind="push" identifier="experts_controller" id="dYB-mU-Mm7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NsM-cO-oIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1100" y="364"/>
+        </scene>
+        <!--Games View Controller-->
+        <scene sceneID="eCv-fi-40D">
+            <objects>
+                <viewController id="8Z8-hq-Yhy" customClass="GamesViewController" customModule="wagerocity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pFx-yx-Pwl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ukl-de-Nxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2303" y="-1100"/>
+        </scene>
+        <!--My Picks View Controller-->
+        <scene sceneID="na8-X7-LTN">
+            <objects>
+                <viewController id="4gd-We-pNU" customClass="MyPicksViewController" customModule="wagerocity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MfT-18-JWU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="g65-fw-V93"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Upb-Nl-CnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1567" y="-114"/>
+        </scene>
+        <!--Pool View Controller-->
+        <scene sceneID="rJa-LH-PF1">
+            <objects>
+                <viewController id="CV1-xQ-if6" customClass="PoolViewController" customModule="wagerocity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kMt-2s-fpW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZEF-fD-QGq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLw-bW-ITU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1567" y="542"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UJE-24-daW">
+            <objects>
+                <viewController id="P6N-8Y-fxh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dnC-ec-FeD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4sH-f8-IWO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pUs-zl-jTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1579" y="1246"/>
+        </scene>
+        <!--Sports View Controller-->
+        <scene sceneID="gyc-6g-km0">
+            <objects>
+                <viewController id="Mb6-4w-A08" customClass="SportsViewController" customModule="wagerocity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mga-hB-ria">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="cT2-gO-tCu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" restorationIdentifier="statsBar" id="nev-C6-h6O" customClass="StatsBarView" customModule="wagerocity">
+                                <rect key="frame" x="0.0" y="66" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.4941176471" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="935-d8-XDI">
+                                <rect key="frame" x="0.0" y="126" width="320" height="442"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="ZiA-vr-6au">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZiA-vr-6au" id="wbJ-29-6Mk">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Mb6-4w-A08" id="J6R-Sd-IjJ"/>
+                                    <outlet property="delegate" destination="Mb6-4w-A08" id="faC-dh-Ych"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ybh-Uk-HkR"/>
+                    <connections>
+                        <outlet property="tableView" destination="935-d8-XDI" id="4gi-aH-vcw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yJg-3q-egz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1554" y="-784"/>
         </scene>
         <!--Get Dollars View Controller-->
         <scene sceneID="O0S-S4-7fa">
@@ -168,10 +279,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="kBo-hc-3Ri">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" restorationIdentifier="statsBar" id="eSx-d0-rSP" customClass="StatsBarView" customModule="wagerocity">
                                 <rect key="frame" x="0.0" y="65" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -247,6 +354,10 @@
                                 <color key="textColor" red="0.97898065479999996" green="0.97898065479999996" blue="0.97898065479999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="kBo-hc-3Ri">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -255,6 +366,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1Z-GV-YiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1100" y="-276"/>
+        </scene>
+        <!--Leaderboard View Controller-->
+        <scene sceneID="79N-ZT-nR8">
+            <objects>
+                <viewController id="vqU-sm-y3F" customClass="LeaderboardViewController" customModule="wagerocity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GQM-vt-cGo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LA4-Sl-NXp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x0N-rv-ock" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2303" y="-94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XVB-ud-Yq7">

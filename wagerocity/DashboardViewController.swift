@@ -36,6 +36,7 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func bettingPortal(sender: AnyObject) {
+        self.performSegueWithIdentifier(Constants.Segue.SportsList, sender: nil)
     }
     
     @IBAction func pools(sender: AnyObject) {
@@ -45,6 +46,7 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func leaderboards(sender: AnyObject) {
+        self.performSegueWithIdentifier(Constants.Segue.SportsList, sender: nil)
     }
     
     @IBAction func experts(sender: AnyObject) {
