@@ -22,8 +22,10 @@
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
 		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
 		66D6C9B31B3D9D1900A271B0 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9B21B3D9D1900A271B0 /* MKStoreKitConfigs.plist */; };
-		66D6C9B91B3D9F1600A271B0 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9B61B3D9F1600A271B0 /* SVProgressHUD.bundle */; };
 		66D6C9BA1B3D9F1600A271B0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */; };
+		66D6C9BF1B3DAAB800A271B0 /* angle-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BC1B3DAAB800A271B0 /* angle-mask@2x.png */; };
+		66D6C9C01B3DAAB800A271B0 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BD1B3DAAB800A271B0 /* error@2x.png */; };
+		66D6C9C11B3DAAB800A271B0 /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BE1B3DAAB800A271B0 /* success@2x.png */; };
 		66DA44701B3D82C400CF24F7 /* GetDollarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA446F1B3D82C400CF24F7 /* GetDollarsViewController.swift */; };
 		66FDB6F91B277FAD00D0B2F4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDB6F71B277FAD00D0B2F4 /* FBSDKCoreKit.framework */; };
 		66FDB6FA1B277FAD00D0B2F4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDB6F81B277FAD00D0B2F4 /* FBSDKLoginKit.framework */; };
@@ -114,9 +116,11 @@
 		66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
 		66D6C9B21B3D9D1900A271B0 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
 		66D6C9B51B3D9F1600A271B0 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		66D6C9B61B3D9F1600A271B0 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		66D6C9B71B3D9F1600A271B0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		66D6C9BC1B3DAAB800A271B0 /* angle-mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "angle-mask@2x.png"; path = "SVProgressHUD.bundle/angle-mask@2x.png"; sourceTree = "<group>"; };
+		66D6C9BD1B3DAAB800A271B0 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "error@2x.png"; path = "SVProgressHUD.bundle/error@2x.png"; sourceTree = "<group>"; };
+		66D6C9BE1B3DAAB800A271B0 /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "success@2x.png"; path = "SVProgressHUD.bundle/success@2x.png"; sourceTree = "<group>"; };
 		66DA446F1B3D82C400CF24F7 /* GetDollarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDollarsViewController.swift; sourceTree = "<group>"; };
 		66FDB6F71B277FAD00D0B2F4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		66FDB6F81B277FAD00D0B2F4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -272,7 +276,9 @@
 			isa = PBXGroup;
 			children = (
 				66D6C9B51B3D9F1600A271B0 /* SVProgressHUD-Prefix.pch */,
-				66D6C9B61B3D9F1600A271B0 /* SVProgressHUD.bundle */,
+				66D6C9BC1B3DAAB800A271B0 /* angle-mask@2x.png */,
+				66D6C9BD1B3DAAB800A271B0 /* error@2x.png */,
+				66D6C9BE1B3DAAB800A271B0 /* success@2x.png */,
 				66D6C9B71B3D9F1600A271B0 /* SVProgressHUD.h */,
 				66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */,
 			);
@@ -419,11 +425,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				66D6C9B31B3D9D1900A271B0 /* MKStoreKitConfigs.plist in Resources */,
-				66D6C9B91B3D9F1600A271B0 /* SVProgressHUD.bundle in Resources */,
 				667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */,
+				66D6C9BF1B3DAAB800A271B0 /* angle-mask@2x.png in Resources */,
 				6603B5C91B277E0D0014489A /* Main.storyboard in Resources */,
+				66D6C9C11B3DAAB800A271B0 /* success@2x.png in Resources */,
 				6603B5CE1B277E0D0014489A /* LaunchScreen.xib in Resources */,
 				6603B5CB1B277E0D0014489A /* Images.xcassets in Resources */,
+				66D6C9C01B3DAAB800A271B0 /* error@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
