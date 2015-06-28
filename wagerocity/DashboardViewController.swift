@@ -31,8 +31,6 @@ class DashboardViewController: BaseViewController {
         self.navigationController?.navigationBar.hidden = false
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
-
-        
     }
     
     @IBAction func bettingPortal(sender: AnyObject) {

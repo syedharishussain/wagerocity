@@ -21,7 +21,25 @@ class GetDollarsViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func rookie(sender: AnyObject) {
+        MKStoreKit.sharedKit().initiatePaymentRequestForProductWithIdentifier(Constants.IAP.Rookie)
+    }
 
+    @IBAction func chaser(sender: AnyObject) {
+    }
+    
+    @IBAction func player(sender: AnyObject) {
+    }
+    
+    @IBAction func guru(sender: AnyObject) {
+    }
+
+    @IBAction func bawse(sender: AnyObject) {
+    }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

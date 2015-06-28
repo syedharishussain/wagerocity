@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bkr-ut-Ld1">
-                                <rect key="frame" x="165.99999988942909" y="274" width="138" height="63"/>
+                                <rect key="frame" x="166" y="274" width="137.99999988942909" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="leader_board_icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -279,6 +279,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="kBo-hc-3Ri">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" restorationIdentifier="statsBar" id="eSx-d0-rSP" customClass="StatsBarView" customModule="wagerocity">
                                 <rect key="frame" x="0.0" y="65" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -290,6 +294,9 @@
                                 <state key="normal" title="$1.99" backgroundImage="get_dollar_field">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="rookie:" destination="QHE-5p-sKT" eventType="touchUpInside" id="7iR-rM-omG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KfE-Fc-d4C">
                                 <rect key="frame" x="177" y="234" width="127" height="33"/>
@@ -297,6 +304,9 @@
                                 <state key="normal" title="$1.99" backgroundImage="get_dollar_field">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="chaser:" destination="QHE-5p-sKT" eventType="touchUpInside" id="KcG-hI-1R8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7Hu-HB-y2p">
                                 <rect key="frame" x="177" y="297" width="127" height="33"/>
@@ -304,6 +314,9 @@
                                 <state key="normal" title="$1.99" backgroundImage="get_dollar_field">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="player:" destination="QHE-5p-sKT" eventType="touchUpInside" id="Qe1-Ny-4Km"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tFA-04-u40">
                                 <rect key="frame" x="177" y="360" width="127" height="33"/>
@@ -311,6 +324,9 @@
                                 <state key="normal" title="$1.99" backgroundImage="get_dollar_field">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="guru:" destination="QHE-5p-sKT" eventType="touchUpInside" id="nhV-Ly-M6W"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pT6-3v-2vR">
                                 <rect key="frame" x="177" y="423" width="127" height="33"/>
@@ -318,6 +334,9 @@
                                 <state key="normal" title="$1.99" backgroundImage="get_dollar_field">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="bawse:" destination="QHE-5p-sKT" eventType="touchUpInside" id="gfR-1b-aKi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rookie\n$2,000" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LgU-4S-WaD">
                                 <rect key="frame" x="26" y="163" width="69" height="50"/>
@@ -354,10 +373,6 @@
                                 <color key="textColor" red="0.97898065479999996" green="0.97898065479999996" blue="0.97898065479999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="kBo-hc-3Ri">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

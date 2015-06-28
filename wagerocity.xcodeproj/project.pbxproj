@@ -20,6 +20,7 @@
 		666CF71E1B28DCB100AD4DF5 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CF71D1B28DCB100AD4DF5 /* NavigationBar.swift */; };
 		6674ED1B1B3DE7F800206FC5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED191B3DE7F800206FC5 /* Fabric.framework */; };
 		6674ED1C1B3DE7F800206FC5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */; };
+		6674ED1E1B3DF3DC00206FC5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */; };
 		667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B6B2F1B357DDE00609C4B /* StatsBarView.swift */; };
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
 		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
@@ -141,6 +142,7 @@
 		666CF71D1B28DCB100AD4DF5 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		6674ED191B3DE7F800206FC5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		667B6B2F1B357DDE00609C4B /* StatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarView.swift; sourceTree = "<group>"; };
 		667B6B311B357DEF00609C4B /* StatsBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsBarView.xib; sourceTree = "<group>"; };
 		66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66FDB7051B2782DA00D0B2F4 /* Bolts.framework in Frameworks */,
+				6674ED1E1B3DF3DC00206FC5 /* StoreKit.framework in Frameworks */,
 				6674ED1B1B3DE7F800206FC5 /* Fabric.framework in Frameworks */,
 				66FDB6F91B277FAD00D0B2F4 /* FBSDKCoreKit.framework in Frameworks */,
 				66FDB6FA1B277FAD00D0B2F4 /* FBSDKLoginKit.framework in Frameworks */,
@@ -326,6 +329,7 @@
 		667B6B341B35851B00609C4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */,
 				66FDB7041B2782DA00D0B2F4 /* Bolts.framework */,
 				66FDB6F71B277FAD00D0B2F4 /* FBSDKCoreKit.framework */,
 				66FDB6F81B277FAD00D0B2F4 /* FBSDKLoginKit.framework */,
@@ -488,6 +492,12 @@
 				TargetAttributes = {
 					6603B5BD1B277E0D0014489A = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 789EBQQ24H;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					6603B5D21B277E0D0014489A = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -768,6 +778,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/haris/Documents/FacebookSDK,
@@ -777,6 +789,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "wagerocity/wagerocity-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -788,6 +801,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/haris/Documents/FacebookSDK,
@@ -797,6 +812,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "wagerocity/wagerocity-Bridging-Header.h";
 			};
 			name = Release;

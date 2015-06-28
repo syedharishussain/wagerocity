@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         MKStoreKit.sharedKit().startProductRequest()
         
+        setupNotifications()
+        
         Fabric.with([Crashlytics()])
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -63,6 +65,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ) -> Bool {
             
             return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func setupNotifications() {
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserverForName(
+                kMKStoreKitProductsAvailableNotification,
+                object: nil,
+                queue: NSOperationQueue.mainQueue())
+                { note in
+            println("\(MKStoreKit.sharedKit().availableProducts)")
+        }
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserverForName(
+                kMKStoreKitProductPurchasedNotification,
+                object: nil,
+                queue: NSOperationQueue.mainQueue())
+                { note in
+                    println("\(note.object)")
+        }
     }
     
 }
