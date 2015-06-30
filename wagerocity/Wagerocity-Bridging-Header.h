@@ -5,3 +5,4 @@
 #import "User.h"
 #import "MKStoreKit.h"
 #import "SVProgressHUD.h"
+#import "UIImageView+WebCache.h"

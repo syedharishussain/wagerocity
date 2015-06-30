@@ -60,4 +60,11 @@ class DashboardViewController: BaseViewController {
     @IBAction func settings(sender: AnyObject) {
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Constants.Segue.SportsList {
+            var sportListViewControoler = segue.destinationViewController as! SportsViewController
+            sportListViewControoler.isLeaderboards = true
+        }
+    }
+    
 }

@@ -57,6 +57,8 @@
 		66D6CA071B3DACB200A271B0 /* PicksOfPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D6CA061B3DACB200A271B0 /* PicksOfPlayerViewController.swift */; };
 		66D6CA091B3DB13A00A271B0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D6CA081B3DB13A00A271B0 /* Utils.swift */; };
 		66DA44701B3D82C400CF24F7 /* GetDollarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA446F1B3D82C400CF24F7 /* GetDollarsViewController.swift */; };
+		66DEAF401B42B8DB0079BBC9 /* SportListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DEAF3E1B42B8DB0079BBC9 /* SportListTableViewCell.swift */; };
+		66DEAF481B42C5770079BBC9 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DEAF471B42C5770079BBC9 /* LeaderboardTableViewCell.swift */; };
 		66FDB6F91B277FAD00D0B2F4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDB6F71B277FAD00D0B2F4 /* FBSDKCoreKit.framework */; };
 		66FDB6FA1B277FAD00D0B2F4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDB6F81B277FAD00D0B2F4 /* FBSDKLoginKit.framework */; };
 		66FDB6FE1B27807900D0B2F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FDB6FD1B27807900D0B2F4 /* ViewController.swift */; };
@@ -199,6 +201,8 @@
 		66D6CA061B3DACB200A271B0 /* PicksOfPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicksOfPlayerViewController.swift; sourceTree = "<group>"; };
 		66D6CA081B3DB13A00A271B0 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		66DA446F1B3D82C400CF24F7 /* GetDollarsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDollarsViewController.swift; sourceTree = "<group>"; };
+		66DEAF3E1B42B8DB0079BBC9 /* SportListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportListTableViewCell.swift; sourceTree = "<group>"; };
+		66DEAF471B42C5770079BBC9 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		66FDB6F71B277FAD00D0B2F4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		66FDB6F81B277FAD00D0B2F4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		66FDB6FD1B27807900D0B2F4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				667B6B331B357EB400609C4B /* StatsBarVIew */,
 				664373401B3C8B5A00953458 /* Constants.swift */,
 				66D6CA081B3DB13A00A271B0 /* Utils.swift */,
+				66DEAF461B42C55F0079BBC9 /* Cell */,
 			);
 			path = wagerocity;
 			sourceTree = "<group>";
@@ -419,12 +424,21 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		66DEAF461B42C55F0079BBC9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				66DEAF3E1B42B8DB0079BBC9 /* SportListTableViewCell.swift */,
+				66DEAF471B42C5770079BBC9 /* LeaderboardTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		66FDB7011B27809100D0B2F4 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				66FDB6FD1B27807900D0B2F4 /* ViewController.swift */,
 				66FDB7021B2780CB00D0B2F4 /* BaseViewController.swift */,
 				66DA446F1B3D82C400CF24F7 /* GetDollarsViewController.swift */,
-				66FDB6FD1B27807900D0B2F4 /* ViewController.swift */,
 				666CF7151B28CCDD00AD4DF5 /* DashboardViewController.swift */,
 				66D6C9FA1B3DAC6E00A271B0 /* SportsViewController.swift */,
 				66D6C9F41B3DAC4700A271B0 /* LeaderboardViewController.swift */,
@@ -608,6 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66D6C9FD1B3DAC7C00A271B0 /* GamesViewController.swift in Sources */,
+				66DEAF481B42C5770079BBC9 /* LeaderboardTableViewCell.swift in Sources */,
 				66D6C9EE1B3DABF800A271B0 /* UIImage+GIF.m in Sources */,
 				666CF7121B28C4A600AD4DF5 /* User.m in Sources */,
 				66D6C9EC1B3DABF800A271B0 /* SDWebImagePrefetcher.m in Sources */,
@@ -632,6 +647,7 @@
 				66D6C9F51B3DAC4700A271B0 /* LeaderboardViewController.swift in Sources */,
 				66D6CA031B3DAC9D00A271B0 /* BetSlipViewController.swift in Sources */,
 				66D6C9F21B3DABF800A271B0 /* UIImageView+WebCache.m in Sources */,
+				66DEAF401B42B8DB0079BBC9 /* SportListTableViewCell.swift in Sources */,
 				66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */,
 				66D6C9F31B3DABF800A271B0 /* UIView+WebCacheOperation.m in Sources */,
 				666CF71E1B28DCB100AD4DF5 /* NavigationBar.swift in Sources */,

@@ -7,46 +7,83 @@
 //
 
 import UIKit
+import Alamofire
 
 class SportsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    var isLeaderboards : Bool = false
+    var leagueName : String = ""
     
     var sportsList = Utils.sportsList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sportsList.count;
     }
     
-
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! SportListTableViewCell
         
-        cell.textLabel?.text = sportsList[indexPath.row]
+        cell.label?.text = sportsList[indexPath.row]
+        cell.sportImage?.image = Utils.sportsImage(sportsList[indexPath.row])
         
         return cell
     }
-    /*
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        leagueName = Utils.sportsNameForParam(sportsList[indexPath.row])
+        APICall()
+    }
+    
+    func APICall () {
+        if isLeaderboards {
+            SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
+            Alamofire.request(.GET, "http://api.wagerocity.com/getLeaderboards", parameters: ["leagueName" : leagueName ,
+                "year" : "2015"])
+                .responseJSON{ (request, response, body, error) in
+                    SVProgressHUD.dismiss()
+                    if let newError:NSError = error {
+                        SVProgressHUD.showErrorWithStatus(newError.localizedDescription)
+                    } else {
+                        var array = body as! NSArray
+                        array = array.sortedArrayUsingDescriptors([NSSortDescriptor(key: "points", ascending: false)])
+                        self.performSegueWithIdentifier(Constants.Segue.Leaderboard, sender: array)
+                    }
+                    
+                }
+        }
+    }
+    
+    
+ 
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.Segue.Leaderboard {
+            var leaderboardViewController = segue.destinationViewController as! LeaderboardViewController
+            leaderboardViewController.data = sender as! NSArray
+        }
     }
-    */
-
+    
+    
 }
