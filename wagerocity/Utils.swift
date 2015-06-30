@@ -10,6 +10,25 @@ import UIKit
 
 
 class Utils: NSObject {
+    
+    static func getUser () -> User {
+        let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.User) as! NSData
+        var user: User = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! User
+        return user
+    }
+    
+    static func showLoader () {
+        SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
+    }
+    
+    static func hideLoader () {
+        SVProgressHUD.dismiss()
+    }
+    
+    static func showError (error: NSError) {
+        SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+    }
+    
     static func sportsList () -> Array<String> {
         return ["NFL", "NCAA Football", "MLB", "NBA", "NCAA Basketball", "NHL", "Soccer" ,"Tennis"]
     }

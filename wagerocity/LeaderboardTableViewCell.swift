@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol LeaderboardsPicksOfPlayerProtocol {
+//    var selectedUserId : String { get }
+    func selectedUserId(playerId: String)
+}
+
 class LeaderboardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rank: UILabel!
@@ -16,8 +21,10 @@ class LeaderboardTableViewCell: UITableViewCell {
     @IBOutlet weak var stats: UILabel!
     @IBOutlet weak var buyPicksButton: UIButton!
     
+    var delegate : LeaderboardsPicksOfPlayerProtocol! = nil
+    
     var userRank = 0
-    var userId = ""
+    var playerId = ""
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +32,7 @@ class LeaderboardTableViewCell: UITableViewCell {
     }
     
     func setViews (rank: Int, data : NSDictionary) {
-        userId = (data["usr_id"] as? String)!
+        playerId = (data["usr_id"] as? String)!
         self.rank.text = String(rank) + "."
         self.name.text = data["username"] as? String
         self.stats.text = (data["win_percentage"] as? String)! + " | " + "$" + String(format:"%.2f",(data["points"] as? NSNumber)!.doubleValue)
@@ -43,6 +50,6 @@ class LeaderboardTableViewCell: UITableViewCell {
     }
 
     @IBAction func buyPicks(sender: AnyObject) {
-        
+        delegate!.selectedUserId(playerId)
     }
 }

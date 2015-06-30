@@ -21,6 +21,8 @@
 		6674ED1B1B3DE7F800206FC5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED191B3DE7F800206FC5 /* Fabric.framework */; };
 		6674ED1C1B3DE7F800206FC5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */; };
 		6674ED1E1B3DF3DC00206FC5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */; };
+		6674ED251B431FE300206FC5 /* PickOfPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */; };
+		6674ED271B4325FE00206FC5 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED261B4325FE00206FC5 /* ServiceModel.swift */; };
 		667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B6B2F1B357DDE00609C4B /* StatsBarView.swift */; };
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
 		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
@@ -145,6 +147,8 @@
 		6674ED191B3DE7F800206FC5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickOfPlayerTableViewCell.swift; sourceTree = "<group>"; };
+		6674ED261B4325FE00206FC5 /* ServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		667B6B2F1B357DDE00609C4B /* StatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarView.swift; sourceTree = "<group>"; };
 		667B6B311B357DEF00609C4B /* StatsBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsBarView.xib; sourceTree = "<group>"; };
 		66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
@@ -267,13 +271,13 @@
 				6603B5C71B277E0D0014489A /* Main.storyboard */,
 				6603B5CA1B277E0D0014489A /* Images.xcassets */,
 				6603B5CC1B277E0D0014489A /* LaunchScreen.xib */,
-				6603B5C11B277E0D0014489A /* Supporting Files */,
 				666CF70F1B28C4A500AD4DF5 /* wagerocity-Bridging-Header.h */,
-				667B6B2E1B357DAB00609C4B /* NavigationView */,
-				667B6B331B357EB400609C4B /* StatsBarVIew */,
+				66DEAF461B42C55F0079BBC9 /* Cell */,
+				6674ED231B431FC400206FC5 /* Views */,
 				664373401B3C8B5A00953458 /* Constants.swift */,
 				66D6CA081B3DB13A00A271B0 /* Utils.swift */,
-				66DEAF461B42C55F0079BBC9 /* Cell */,
+				6674ED261B4325FE00206FC5 /* ServiceModel.swift */,
+				6603B5C11B277E0D0014489A /* Supporting Files */,
 			);
 			path = wagerocity;
 			sourceTree = "<group>";
@@ -312,6 +316,15 @@
 				666CF6961B27884E00AD4DF5 /* Alamofire OSX Tests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6674ED231B431FC400206FC5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				667B6B2E1B357DAB00609C4B /* NavigationView */,
+				667B6B331B357EB400609C4B /* StatsBarVIew */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		667B6B2E1B357DAB00609C4B /* NavigationView */ = {
@@ -429,6 +442,7 @@
 			children = (
 				66DEAF3E1B42B8DB0079BBC9 /* SportListTableViewCell.swift */,
 				66DEAF471B42C5770079BBC9 /* LeaderboardTableViewCell.swift */,
+				6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -628,6 +642,7 @@
 				66D6C9EC1B3DABF800A271B0 /* SDWebImagePrefetcher.m in Sources */,
 				66FDB6FE1B27807900D0B2F4 /* ViewController.swift in Sources */,
 				667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */,
+				6674ED251B431FE300206FC5 /* PickOfPlayerTableViewCell.swift in Sources */,
 				66D6C9E51B3DABF800A271B0 /* NSData+ImageContentType.m in Sources */,
 				66D6CA011B3DAC8F00A271B0 /* PoolDetailViewController.swift in Sources */,
 				666CF7161B28CCDD00AD4DF5 /* DashboardViewController.swift in Sources */,
@@ -645,6 +660,7 @@
 				66FDB7031B2780CB00D0B2F4 /* BaseViewController.swift in Sources */,
 				66D6C9EF1B3DABF800A271B0 /* UIImage+MultiFormat.m in Sources */,
 				66D6C9F51B3DAC4700A271B0 /* LeaderboardViewController.swift in Sources */,
+				6674ED271B4325FE00206FC5 /* ServiceModel.swift in Sources */,
 				66D6CA031B3DAC9D00A271B0 /* BetSlipViewController.swift in Sources */,
 				66D6C9F21B3DABF800A271B0 /* UIImageView+WebCache.m in Sources */,
 				66DEAF401B42B8DB0079BBC9 /* SportListTableViewCell.swift in Sources */,

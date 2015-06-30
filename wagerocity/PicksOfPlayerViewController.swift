@@ -8,8 +8,12 @@
 
 import UIKit
 
-class PicksOfPlayerViewController: UIViewController {
+class PicksOfPlayerViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var data: NSArray = NSArray.new()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +23,18 @@ class PicksOfPlayerViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count;
+    }
+    
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! PickOfPlayerTableViewCell
+        cell.setViews(data[indexPath.row] as! NSDictionary)
+        return cell
     }
     
 

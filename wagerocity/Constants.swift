@@ -38,8 +38,9 @@ struct Constants {
         static let Pools        = "dashboard"
         static let MyPools        = "dashboard"
         static let PoolDetail        = "dashboard"
-        static let Games            = "dashboard"
+        static let Games            = "gamesList"
         static let BetSlip        = "dashboard"
-        static let PicksOfPlayer    = "dashboard"
-        static let Settings         = "dashboard"    }
+        static let PicksOfPlayer    = "buyPicks"
+        static let Settings         = "dashboard"
+    }
 }
