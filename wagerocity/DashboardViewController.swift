@@ -41,6 +41,21 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func myPicks(sender: AnyObject) {
+        ServiceModel.getMyPicks { (body, error, statusCode:Int) -> Void in
+            if let err = error as NSError? {
+                println(err)
+                Utils.showError(err)
+                return
+            }
+            
+            if statusCode == 200 {
+                var array = body as! NSArray
+                println(array)
+                self.performSegueWithIdentifier(Constants.Segue.MyPicks, sender: array)
+            } else {
+                Utils.showMessage(self, message: "There are currently no picks!")
+            }
+        }
     }
     
     @IBAction func leaderboards(sender: AnyObject) {
@@ -53,6 +68,7 @@ class DashboardViewController: BaseViewController {
             if let err = error as NSError? {
                 println(err)
                 Utils.showError(err)
+                return
             }
             
             if statusCode == 200 {

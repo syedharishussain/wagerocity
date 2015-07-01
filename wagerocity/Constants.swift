@@ -34,7 +34,7 @@ struct Constants {
         static let SportsList       = "sportsList"
         static let Experts          = "experts_controller"
         static let Leaderboard      = "leaderboards_controller"
-        static let MyPicks          = "dashboard"
+        static let MyPicks          = "MyPicks_Controller"
         static let Pools            = "dashboard"
         static let MyPools          = "dashboard"
         static let PoolDetail       = "dashboard"

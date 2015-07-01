@@ -31,4 +31,15 @@ class ServiceModel: NSObject {
                 completion(body, error, (responseObject?.statusCode as Int?)!)
         }
     }
+    
+    static func getMyPicks (completion:(AnyObject?, NSError?, Int) -> Void) {
+        Utils.showLoader()
+        Alamofire.request(.GET, "http://api.wagerocity.com/getMyPicks", parameters:
+        ["userId" : Utils.getUser().userId])
+        .responseJSON{ (request, response, body, error) in
+            Utils .hideLoader()
+            let responseObject = response as NSHTTPURLResponse?
+            completion(body, error, (responseObject?.statusCode as Int?)!)
+        }
+    }
 }

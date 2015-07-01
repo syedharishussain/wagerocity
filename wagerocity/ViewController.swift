@@ -90,6 +90,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : id!])
                     .responseJSON{ (request, response, body, error) in
                         Utils.hideLoader()
+                        var dic : NSDictionary = body as! NSDictionary
+                        
+                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
                         if (error != nil) {
                             if let newError:NSError = error {
                                 Utils.hideLoader()
