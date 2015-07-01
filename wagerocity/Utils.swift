@@ -112,4 +112,19 @@ class Utils: NSObject {
         }
         
     }
+    
+    static func pointSpreadString (data: NSDictionary) {
+//       var string = String(format: "%d", point)
+    }
+    
+//    {
+    //        id = 1388523;
+    //        over = "-115";
+    //        point = 105;
+    //        "point_id" = 1388523;
+    //        "point_mid" = "1.3";
+    //        "total_id" = 1388524;
+    //        "total_mid" = "2.8";
+    //        under = "-105";
+    //    }
 }

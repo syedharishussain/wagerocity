@@ -43,7 +43,7 @@ class PickOfPlayerTableViewCell: UITableViewCell {
         self.nameA.text = (data["team_A_name"] as? String)!
         self.nameB.text = (data["team_B_name"] as? String)!
         
-        
+        self.psA.text = (data["team_B_name"] as? String)!
     }
 
     @IBAction func buyPick(sender: AnyObject) {
