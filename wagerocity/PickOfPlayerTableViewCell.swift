@@ -37,16 +37,25 @@ class PickOfPlayerTableViewCell: UITableViewCell {
     }
     
     func setViews (data : NSDictionary) {
+        var value = Utils.oddValues(data["team_A_Odds"] as! NSDictionary, oddB: data["team_B_Odds"] as! NSDictionary)
+        
         self.flagA.sd_setImageWithURL(NSURL(string: (data["team_A_logo"] as? String)!), placeholderImage: UIImage(named: "sports"))
         self.flagB.sd_setImageWithURL(NSURL(string: (data["team_B_logo"] as? String)!), placeholderImage: UIImage(named: "sports"))
         
         self.nameA.text = (data["team_A_name"] as? String)!
         self.nameB.text = (data["team_B_name"] as? String)!
         
-        self.psA.text = (data["team_B_name"] as? String)!
+        self.psA.text = value.psA
+        self.psB.text = value.psB
+        self.mlA.text = value.mlA
+        self.mlB.text = value.mlB
+        self.over.text = value.over
+        self.under.text = value.under
+        self.overUnder.text = value.overUnder
     }
 
     @IBAction func buyPick(sender: AnyObject) {
+        
     }
 
 }

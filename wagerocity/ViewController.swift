@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import Alamofire
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+    
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else {
         }
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -69,40 +69,38 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func returnUserData() {
-        SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
+        Utils.showLoader()
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
-            if ((error) != nil)
-            {
-                // Process error
+            if ((error) != nil) {
+                
                 println("Error: \(error)")
-            }
-            else
-            {
-//                println("fetched user: \(result)")
+                
+            } else {
+                
+                //                println("fetched user: \(result)")
                 let userName : NSString = result.valueForKey("name") as! NSString
-//                println("User Name is: \(userName)")
+                //                println("User Name is: \(userName)")
                 let userEmail : NSString = result.valueForKey("email") as! NSString
-//                println("User Email is: \(userEmail)")
+                //                println("User Email is: \(userEmail)")
                 
                 let id : AnyObject? = result.valueForKey("id")
                 
                 Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : id!])
                     .responseJSON{ (request, response, body, error) in
-                        SVProgressHUD.dismiss()
+                        Utils.hideLoader()
                         if (error != nil) {
                             if let newError:NSError = error {
-                                SVProgressHUD.showErrorWithStatus(newError.localizedDescription)
+                                Utils.hideLoader()
+                                Utils.showError(newError)
                             }
                             
                         } else {
                             let request1:NSMutableURLRequest = request as! NSMutableURLRequest
-//                            println("Request URL: \(request1.URL)")
-                            var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
-//                            println(user.email)
-                            self.saveUserObject(user)
                             
+                            var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
+                            self.saveUserObject(user)
                             self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
                         }
                 }
@@ -115,6 +113,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     func saveUserObject(user: User) {
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(user), forKey: Constants.UserDefaults.User)
     }
-
+    
 }
 

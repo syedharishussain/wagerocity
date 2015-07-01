@@ -86,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 object: nil,
                 queue: NSOperationQueue.mainQueue())
                 { note in
+                    Utils.hideLoader()
                     println("\(note.object)")
         }
     }

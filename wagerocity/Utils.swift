@@ -108,23 +108,37 @@ class Utils: NSObject {
             var percentageBasedValue = value * percentage
             
             return ceil(value - percentageBasedValue)
-
+            
         }
         
     }
     
-    static func pointSpreadString (data: NSDictionary) {
-//       var string = String(format: "%d", point)
+    static func signedString (value: AnyObject) -> String {
+        
+        var number:Double = 0.0
+        number = value.doubleValue
+        
+        return number > 0.0 ? String(format: "+%.2f",number) : String(format: "%.2f",number)
+        
     }
     
-//    {
-    //        id = 1388523;
-    //        over = "-115";
-    //        point = 105;
-    //        "point_id" = 1388523;
-    //        "point_mid" = "1.3";
-    //        "total_id" = 1388524;
-    //        "total_mid" = "2.8";
-    //        under = "-105";
-    //    }
+    static func pointSpreadString (data: NSDictionary) -> String  {
+        var value = (data["point"] as! String)
+        var point = value
+        var pointSpread = Utils.signedString((data["point_mid"] as! String)) + "(" + point + ")"
+        return pointSpread
+        
+    }
+    
+    static func oddValues (oddA: NSDictionary, oddB: NSDictionary) -> (psA:String, psB:String, mlA:String, mlB:String, over:String, under:String, overUnder:String) {
+        return (
+            Utils.pointSpreadString(oddA),
+            Utils.pointSpreadString(oddB),
+            oddA["money"] != nil ? Utils.signedString((oddA["money"] as! String)) : "-",
+            oddB["money"] != nil ? Utils.signedString((oddB["money"] as! String)) : "-",
+            oddA["over"] != nil ? Utils.signedString((oddA["over"] as! String)) : "-",
+            oddA["under"] != nil ? Utils.signedString((oddA["under"] as! String)) : "-",
+            String(format: "Over\n| %@ |\nUnder", Utils.signedString((oddA["total_mid"] as! String)))
+        )
+    }
 }

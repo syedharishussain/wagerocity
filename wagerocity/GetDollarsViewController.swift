@@ -22,6 +22,7 @@ class GetDollarsViewController: BaseViewController {
     }
     
     @IBAction func rookie(sender: AnyObject) {
+        Utils.showLoader()
         MKStoreKit.sharedKit().initiatePaymentRequestForProductWithIdentifier(Constants.IAP.Rookie)
     }
 
