@@ -46,18 +46,21 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
             } else {
                 var array = body as! NSArray
                 println(array)
+                self.performSegueWithIdentifier(Constants.Segue.PicksOfPlayer, sender: array)
             }
         })
     }
     
-    /*
+   
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.Segue.PicksOfPlayer {
+            var controller = segue.destinationViewController as! PicksOfPlayerViewController
+            controller.data = sender as! NSArray
+        }
     }
-    */
+    
     
 }
