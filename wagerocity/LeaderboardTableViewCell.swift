@@ -9,7 +9,6 @@
 import UIKit
 
 protocol LeaderboardsPicksOfPlayerProtocol {
-//    var selectedUserId : String { get }
     func selectedUserId(playerId: String)
 }
 

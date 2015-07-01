@@ -21,6 +21,18 @@ class Utils: NSObject {
         SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
     }
     
+    static func showMessage (delegate: UIViewController, message:String) {
+//        var alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { action in
+//            
+//        }))
+//        delegate.presentViewController(alert, animated: true) { () -> Void in
+//            
+//        }
+        
+        UIAlertView(title: nil, message: message, delegate: delegate, cancelButtonTitle: "Ok").show()
+    }
+    
     static func hideLoader () {
         SVProgressHUD.dismiss()
     }

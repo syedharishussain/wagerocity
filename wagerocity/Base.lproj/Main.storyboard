@@ -209,20 +209,94 @@
             </objects>
             <point key="canvasLocation" x="1567" y="542"/>
         </scene>
-        <!--View Controller-->
+        <!--Expert View Controller-->
         <scene sceneID="UJE-24-daW">
             <objects>
-                <viewController id="P6N-8Y-fxh" sceneMemberID="viewController">
+                <viewController id="P6N-8Y-fxh" customClass="ExpertViewController" customModule="wagerocity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dnC-ec-FeD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="qSB-L9-sTp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" restorationIdentifier="statsBar" id="j4B-a3-8BP" customClass="StatsBarView" customModule="wagerocity">
+                                <rect key="frame" x="0.0" y="64" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.4941176471" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="sZT-wr-vlW">
+                                <rect key="frame" x="0.0" y="124" width="320" height="444"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="RQd-5s-Ymf" customClass="ExpertTableViewCell" customModule="wagerocity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQd-5s-Ymf" id="ufw-JJ-oyd">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="149.99999999249076"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="esR-JY-nHd">
+                                                    <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saad Yusuf" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" id="nIW-FY-bo1">
+                                                    <rect key="frame" x="78" y="10" width="131" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jmi-KW-oL1">
+                                                    <rect key="frame" x="238" y="25" width="74" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <state key="normal" title="Buy Picks" backgroundImage="blue_button">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="buyPicks:" destination="RQd-5s-Ymf" eventType="touchUpInside" id="fyB-Vy-SwZ"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="7" id="uhH-Yw-ig3">
+                                                    <rect key="frame" x="10" y="78.5" width="302" height="63.5"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                                    <string key="text">With over 20 years of experience and 20 of winning. I look forward to hearing from you. MY three Rules 1. Play MY plays and MY plays only ! 2. Play the SAME amount on every play I put out ! 3. TRUST ME !!!</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="buyPicksButton" destination="Jmi-KW-oL1" id="raK-fP-wne"/>
+                                            <outlet property="desc" destination="uhH-Yw-ig3" id="XcI-N2-hLK"/>
+                                            <outlet property="name" destination="nIW-FY-bo1" id="gCj-Bg-lO3"/>
+                                            <outlet property="userImage" destination="esR-JY-nHd" id="k5e-tL-fCz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="P6N-8Y-fxh" id="osR-w8-P86"/>
+                                    <outlet property="delegate" destination="P6N-8Y-fxh" id="d4c-PT-Z8z"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="4sH-f8-IWO"/>
+                    <connections>
+                        <outlet property="tableView" destination="sZT-wr-vlW" id="YBb-RY-Jrd"/>
+                        <segue destination="4Pe-lB-peM" kind="push" identifier="buyPicks" id="lgL-dH-yko"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUs-zl-jTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1579" y="1246"/>
+            <point key="canvasLocation" x="1952" y="522"/>
         </scene>
         <!--Sports View Controller-->
         <scene sceneID="gyc-6g-km0">
@@ -674,7 +748,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLi-cb-AQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2511" y="-316"/>
+            <point key="canvasLocation" x="2539" y="228"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XVB-ud-Yq7">
@@ -713,4 +787,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="lgL-dH-yko"/>
+    </inferredMetricsTieBreakers>
 </document>

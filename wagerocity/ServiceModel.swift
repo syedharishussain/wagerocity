@@ -10,20 +10,25 @@ import UIKit
 import Alamofire
 
 class ServiceModel: NSObject {
-    static func getPicksOfPlayer (playerId: String, completion: (AnyObject? , NSError?) -> Void) {
+    static func getPicksOfPlayer (playerId: String, completion: (AnyObject? , NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.GET, "http://api.wagerocity.com/getGamesOfPlayer", parameters:
             ["playerID" : playerId, "userID" : Utils.getUser().userId])
             .responseJSON{ (request, response, body, error) in
                 Utils .hideLoader()
-                completion(body, error)
+                let responseObject = response as NSHTTPURLResponse?
+                completion(body, error, (responseObject?.statusCode as Int?)!)
         }
-
+    }
+    
+    static func getExpert (completion:(AnyObject?, NSError?, Int) -> Void) {
+        Utils.showLoader()
+        Alamofire.request(.GET, "http://api.wagerocity.com/getExperts", parameters:
+            ["userId" : Utils.getUser().userId])
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                let responseObject = response as NSHTTPURLResponse?
+                completion(body, error, (responseObject?.statusCode as Int?)!)
+        }
     }
 }
-
-
-//responseJSON(options: NSJSONReadingOptions = .AllowFragments, completionHandler: (NSURLRequest, NSHTTPURLResponse?, AnyObject?, NSError?) -> Void) -> Self {
-//    return response(serializer: Request.JSONResponseSerializer(options: options), completionHandler: { request, response, JSON, error in
-//        completionHandler(request, response, JSON, error)
-//    })

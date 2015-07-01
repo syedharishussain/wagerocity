@@ -22,7 +22,7 @@ class DashboardViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,12 +48,27 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func experts(sender: AnyObject) {
+        ServiceModel.getExpert { (body, error, statusCode:Int) -> Void in
+            
+            if let err = error as NSError? {
+                println(err)
+                Utils.showError(err)
+            }
+            
+            if statusCode == 200 {
+                var array = body as! NSArray
+                println(array)
+                self.performSegueWithIdentifier(Constants.Segue.Experts, sender: array)
+            } else {
+                Utils.showMessage(self, message: "There are currently no picks!")
+            }
+        }
     }
     
     @IBAction func getDollars(sender: AnyObject) {
         [self.navigationController!.pushViewController(self.storyboard!.instantiateViewControllerWithIdentifier(Constants.ViewController.GetDollars) as! UIViewController, animated: true)]
     }
-
+    
     @IBAction func clearBalance(sender: AnyObject) {
     }
     
@@ -64,6 +79,11 @@ class DashboardViewController: BaseViewController {
         if segue.identifier == Constants.Segue.SportsList {
             var sportListViewControoler = segue.destinationViewController as! SportsViewController
             sportListViewControoler.isLeaderboards = true
+        }
+        
+        if segue.identifier == Constants.Segue.Experts {
+            var controller = segue.destinationViewController as! ExpertViewController
+            controller.data = sender as! NSArray
         }
     }
     

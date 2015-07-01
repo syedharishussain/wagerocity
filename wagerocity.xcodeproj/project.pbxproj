@@ -23,6 +23,7 @@
 		6674ED1E1B3DF3DC00206FC5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */; };
 		6674ED251B431FE300206FC5 /* PickOfPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */; };
 		6674ED271B4325FE00206FC5 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED261B4325FE00206FC5 /* ServiceModel.swift */; };
+		6674ED291B44768100206FC5 /* ExpertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED281B44768100206FC5 /* ExpertTableViewCell.swift */; };
 		667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B6B2F1B357DDE00609C4B /* StatsBarView.swift */; };
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
 		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
@@ -149,6 +150,7 @@
 		6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickOfPlayerTableViewCell.swift; sourceTree = "<group>"; };
 		6674ED261B4325FE00206FC5 /* ServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		6674ED281B44768100206FC5 /* ExpertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertTableViewCell.swift; sourceTree = "<group>"; };
 		667B6B2F1B357DDE00609C4B /* StatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarView.swift; sourceTree = "<group>"; };
 		667B6B311B357DEF00609C4B /* StatsBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsBarView.xib; sourceTree = "<group>"; };
 		66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				66DEAF3E1B42B8DB0079BBC9 /* SportListTableViewCell.swift */,
 				66DEAF471B42C5770079BBC9 /* LeaderboardTableViewCell.swift */,
 				6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */,
+				6674ED281B44768100206FC5 /* ExpertTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				66D6CA091B3DB13A00A271B0 /* Utils.swift in Sources */,
 				66D6CA051B3DACA700A271B0 /* MyPicksViewController.swift in Sources */,
 				66D6C9E71B3DABF800A271B0 /* SDWebImageCompat.m in Sources */,
+				6674ED291B44768100206FC5 /* ExpertTableViewCell.swift in Sources */,
 				66FDB7031B2780CB00D0B2F4 /* BaseViewController.swift in Sources */,
 				66D6C9EF1B3DABF800A271B0 /* UIImage+MultiFormat.m in Sources */,
 				66D6C9F51B3DAC4700A271B0 /* LeaderboardViewController.swift in Sources */,

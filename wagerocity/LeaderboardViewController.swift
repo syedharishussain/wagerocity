@@ -40,13 +40,23 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func selectedUserId(playerId: String) {
-        ServiceModel.getPicksOfPlayer(playerId, completion: { (body, error) -> Void in
+        ServiceModel.getPicksOfPlayer(playerId, completion: { (body, error, statusCode) -> Void in
+            
             if let err = error as NSError? {
                 println(err)
-            } else {
+            }
+            
+            if statusCode == 200 {
                 var array = body as! NSArray
                 println(array)
-                self.performSegueWithIdentifier(Constants.Segue.PicksOfPlayer, sender: array)
+                if array.count > 0 {
+                    self.performSegueWithIdentifier(Constants.Segue.PicksOfPlayer, sender: array)
+                } else {
+                    Utils.showMessage(self, message: "There are currently no picks!")
+                }
+            }
+            else {
+                Utils.showMessage(self, message: "There are currently no picks!")   
             }
         })
     }
