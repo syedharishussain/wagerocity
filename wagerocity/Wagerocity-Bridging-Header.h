@@ -8,4 +8,5 @@
 #import "MKStoreKit.h"
 #import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
+#import "DateTools.h"
 #import <Crashlytics/CLSLogging.h>

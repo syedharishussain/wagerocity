@@ -87,12 +87,12 @@ class Utils: NSObject {
         return ""
     }
     
-    static func getBetTypeOT(betOt: Int , position: String ) -> String {
+    static func getBetTypeOT(betOt: String , position: String ) -> String {
         switch (betOt) {
-        case 1: return "MoneyLine"
-        case 3: return "PointSpread"
-        case 4: return position.lowercaseString == "over" ? "Over" : "Under"
-        default: return ""
+        case "1": return "MoneyLine"
+        case "3": return "PointSpread"
+        case "4": return position.lowercaseString == "over" ? "Over" : "Under"
+        default: return "-"
         }
     }
     
@@ -122,6 +122,10 @@ class Utils: NSObject {
         
     }
     
+    static func getToWinAmountString (value: String, betOddValue: String) -> String {
+        return String(format: "%.2f", Utils.getToWinAmount((value as NSString).doubleValue, betOddValue: (betOddValue as NSString).doubleValue))
+    }
+    
     static func signedString (value: AnyObject) -> String {
         
         var number:Double = 0.0
@@ -149,5 +153,10 @@ class Utils: NSObject {
             oddA["under"] != nil ? Utils.signedString((oddA["under"] as! String)) : "-",
             String(format: "Over\n| %@ |\nUnder", Utils.signedString((oddA["total_mid"] as! String)))
         )
+    }
+    
+    static func formatDate (dateString:String) -> String {
+        var formattedDate = String(format: "%@", NSDate(string: dateString, formatString: "yyyy-MM-dd HH:mm:ss", timeZone: NSTimeZone(abbreviation: "CST")).formattedDateWithFormat("EEEE, MMM dd, yyyy hh:mm")) + "CST"
+        return formattedDate
     }
 }

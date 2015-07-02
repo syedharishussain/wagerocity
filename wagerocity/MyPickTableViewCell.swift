@@ -21,29 +21,51 @@ class MyPickTableViewCell: UITableViewCell {
     @IBOutlet weak var stakeValue: UILabel!
     @IBOutlet weak var winValue: UILabel!
     @IBOutlet weak var result: UILabel!
+    @IBOutlet weak var betType: UILabel!
+    @IBOutlet weak var poolName: UILabel!
     
     @IBOutlet weak var facebookShareButton: UIButton!
     
-    
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func setViews (data : NSDictionary) {
-        var pick : Pick! = Pick.modelObjectWithDictionary(data as [NSObject : AnyObject])
-    }
+    func setViews (pick : Pick) {
+        
+        self.flagA.sd_setImageWithURL(NSURL(string: pick.teamALogo), placeholderImage: UIImage(named: "sports"))
+        self.flagB.sd_setImageWithURL(NSURL(string: pick.teamBLogo), placeholderImage: UIImage(named: "sports"))
+        
+        let isTeamA : Bool = pick.matchId == pick.teamANumber ? true : false
 
+        self.date.text          = Utils.formatDate(pick.cstScheduledTime)
+        self.teamVsTeam.text    = pick.matchDet
+        self.betType.text       = Utils.getBetTypeOT(pick.betOt, position: pick.pos)
+        self.team.text          = pick.teamName
+        self.betValue.text      = getBetValue(pick.oddInfo.first as! OddInfo, isTeamA: isTeamA)
+        self.stakeValue.text    = pick.stake
+        self.winValue.text      = Utils.getToWinAmountString(self.stakeValue.text!, betOddValue: self.betValue.text!)
+        self.result.text        = pick.result
+        self.poolName.text      = pick.poolName == "" ? "-" : pick.poolName
+    }
+    
     @IBAction func facebookShare(sender: AnyObject) {
         
+    }
+    
+    func getBetValue(odd: OddInfo, isTeamA: Bool) -> String {
+        switch (odd.mL) {
+        case "true" : return odd.money
+        case "false": return odd.points
+        case "" : return isTeamA ? odd.overMoney : odd.underMoney
+        default : return "-"
+        }
     }
 }
 

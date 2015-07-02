@@ -50,7 +50,15 @@ class DashboardViewController: BaseViewController {
             
             if statusCode == 200 {
                 var array = body as! NSArray
-                println(array)
+                
+                array = array.filteredArrayUsingPredicate(NSPredicate(block: { (object , _) -> Bool in
+                    let dic : NSDictionary = object as! NSDictionary
+                    return (dic["odd_info"] as! NSArray).count > 0
+                }))
+                
+                if array.count > 0 {
+                    
+                }
                 self.performSegueWithIdentifier(Constants.Segue.MyPicks, sender: array)
             } else {
                 Utils.showMessage(self, message: "There are currently no picks!")
@@ -92,6 +100,7 @@ class DashboardViewController: BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == Constants.Segue.SportsList {
             var sportListViewControoler = segue.destinationViewController as! SportsViewController
             sportListViewControoler.isLeaderboards = true
@@ -101,6 +110,12 @@ class DashboardViewController: BaseViewController {
             var controller = segue.destinationViewController as! ExpertViewController
             controller.data = sender as! NSArray
         }
+        
+        if segue.identifier == Constants.Segue.MyPicks {
+            var controller = segue.destinationViewController as! MyPicksViewController
+            controller.data = sender as! NSArray
+        }
+        
     }
     
 }
