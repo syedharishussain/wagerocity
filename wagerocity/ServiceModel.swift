@@ -11,6 +11,31 @@ import Alamofire
 
 class ServiceModel: NSObject {
     
+    static func getUser (facebookID: String, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+        Utils.showLoader()
+        Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : facebookID])
+            .responseJSON{ (request, response, body, error) in
+                Utils.hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        Utils.hideLoader()
+                        Utils.showError(newError)
+                        return
+                    }
+                    
+                } else {
+                    var dic : NSDictionary = body as! NSDictionary
+                    
+                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
+                    
+                    Utils.saveUserObject(body!)
+                    let responseObject = response as NSHTTPURLResponse?
+                    completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
+                }
+        }
+    }
+    
     static func createUser (facebookID: String, firstName: String, lastName: String, email: String, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.POST, "http://api.wagerocity.com/createUser", parameters: [
@@ -20,9 +45,24 @@ class ServiceModel: NSObject {
             "email" : email
             ], encoding: ParameterEncoding.JSON)
         .responseJSON{ (request, response, body, error) -> Void in
-            println(body)
-            let responseObject = response as NSHTTPURLResponse?
-            completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
+            
+            
+            if (error != nil) {
+                if let newError:NSError = error {
+                    Utils.hideLoader()
+                    Utils.showError(newError)
+                    return
+                }
+                
+            } else {
+                var dic : NSDictionary = body as! NSDictionary
+                
+                CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@\n Email: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic, email]))
+                
+                Utils.saveUserObject(body!)
+                let responseObject = response as NSHTTPURLResponse?
+                completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
+            }
         }
     }
     

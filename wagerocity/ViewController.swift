@@ -79,11 +79,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
             } else {
                 
-                //                println("fetched user: \(result)")
                 let userName : NSString = result.valueForKey("name") as! NSString
-                //                println("User Name is: \(userName)")
                 let userEmail : NSString = result.valueForKey("email") as! NSString
-                //                println("User Email is: \(userEmail)")
                 
                 let id : AnyObject? = result.valueForKey("id")
                 
@@ -93,38 +90,21 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                     lastName: result.valueForKey("last_name") as! String,
                     email: result.valueForKey("email") as! String,
                     completion: { (request, response, body, error, statusCode) -> Void in
-                    
-                        if (error != nil) {
-                            if let newError:NSError = error {
-                                Utils.hideLoader()
-                                Utils.showError(newError)
-                            }
+                        
+                        if statusCode == 200 {
+                            
+                            Utils.saveUserObject(body!)
+                            self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
                             
                         } else {
-                            if statusCode == 200 {
-                                
-                                Utils.saveUserObject(body!)
-                                self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
-                                
-                            } else {
-                                Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : id!])
-                                    .responseJSON{ (request, response, body, error) in
-                                        Utils.hideLoader()
-                                        var dic : NSDictionary = body as! NSDictionary
-                                        
-                                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
-                                        if (error != nil) {
-                                            if let newError:NSError = error {
-                                                Utils.hideLoader()
-                                                Utils.showError(newError)
-                                            }
-                                            
-                                        } else {
-                                            Utils.saveUserObject(body!)
-                                            self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
-                                        }
+                            
+                            ServiceModel.getUser(id as! String, completion: { (request, response, body, error, statusCode) -> Void in
+                                if statusCode == 200 {
+                                    self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
+                                } else {
+                                    UIAlertView(title: "Error!", message: String(format:"%@", body as! NSDictionary), delegate: nil, cancelButtonTitle: "ok")
                                 }
-                            }
+                            })
                         }
                 })
             }
