@@ -9,6 +9,23 @@
 import UIKit
 
 class MyPickTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var flagA: UIImageView!
+    @IBOutlet weak var flagB: UIImageView!
+    
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var teamVsTeam: UILabel!
+    
+    @IBOutlet weak var team: UILabel!
+    @IBOutlet weak var betValue: UILabel!
+    @IBOutlet weak var stakeValue: UILabel!
+    @IBOutlet weak var winValue: UILabel!
+    @IBOutlet weak var result: UILabel!
+    
+    @IBOutlet weak var facebookShareButton: UIButton!
+    
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +42,9 @@ class MyPickTableViewCell: UITableViewCell {
         var pick : Pick! = Pick.modelObjectWithDictionary(data as [NSObject : AnyObject])
     }
 
+    @IBAction func facebookShare(sender: AnyObject) {
+        
+    }
 }
 
 //{

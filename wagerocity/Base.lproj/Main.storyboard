@@ -196,7 +196,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.4941176471" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="220" sectionHeaderHeight="22" sectionFooterHeight="22" id="sxL-sk-K0M">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="220" sectionHeaderHeight="22" sectionFooterHeight="22" id="sxL-sk-K0M">
                                 <rect key="frame" x="0.0" y="124" width="320" height="444"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -205,7 +205,7 @@
                                         <rect key="frame" x="0.0" y="22" width="320" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4uI-yL-Buo" id="QhI-VE-yuW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="219.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" id="l1V-jm-n0i">
@@ -308,9 +308,31 @@
                                                     <rect key="frame" x="0.0" y="-1" width="320" height="2"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hmc-g8-Imc">
+                                                    <rect key="frame" x="128" y="41" width="71" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="share_button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="facebookShare:" destination="4uI-yL-Buo" eventType="touchUpInside" id="MOn-d1-sc0"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="betValue" destination="8H0-fZ-PSj" id="Oi2-JT-kN8"/>
+                                            <outlet property="date" destination="l1V-jm-n0i" id="nJ9-kB-CmN"/>
+                                            <outlet property="facebookShareButton" destination="Hmc-g8-Imc" id="LNh-FF-oBf"/>
+                                            <outlet property="flagA" destination="tII-le-Nyc" id="SeE-yY-lA9"/>
+                                            <outlet property="flagB" destination="p9i-ty-A5t" id="P95-ba-71B"/>
+                                            <outlet property="result" destination="iUI-58-p2d" id="3x8-bI-hGq"/>
+                                            <outlet property="stakeValue" destination="fSR-8Z-gZ7" id="Wmy-qV-TC6"/>
+                                            <outlet property="team" destination="zz8-n2-heq" id="5o9-JB-9rK"/>
+                                            <outlet property="teamVsTeam" destination="UaU-fC-uMs" id="tdR-3d-CUA"/>
+                                            <outlet property="winValue" destination="8UK-Ya-vh4" id="MqK-s4-5xf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -371,7 +393,7 @@
                                         <rect key="frame" x="0.0" y="22" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQd-5s-Ymf" id="ufw-JJ-oyd">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="149.99999999249076"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="esR-JY-nHd">
@@ -398,7 +420,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="7" id="uhH-Yw-ig3">
-                                                    <rect key="frame" x="10" y="78.5" width="302" height="63.5"/>
+                                                    <rect key="frame" x="10" y="78.500000067583215" width="302" height="63.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                     <string key="text">With over 20 years of experience and 20 of winning. I look forward to hearing from you. MY three Rules 1. Play MY plays and MY plays only ! 2. Play the SAME amount on every play I put out ! 3. TRUST ME !!!</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -917,6 +939,7 @@
         <image name="mypicks_icon" width="328" height="151"/>
         <image name="pools_icon" width="328" height="151"/>
         <image name="seperator" width="695" height="3"/>
+        <image name="share_button" width="141" height="54"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
