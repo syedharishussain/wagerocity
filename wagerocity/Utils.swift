@@ -17,19 +17,16 @@ class Utils: NSObject {
         return user
     }
     
+    static func saveUserObject(body: AnyObject) {
+        var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(user), forKey: Constants.UserDefaults.User)
+    }
+    
     static func showLoader () {
         SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
     }
     
     static func showMessage (delegate: UIViewController, message:String) {
-//        var alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { action in
-//            
-//        }))
-//        delegate.presentViewController(alert, animated: true) { () -> Void in
-//            
-//        }
-        
         UIAlertView(title: nil, message: message, delegate: delegate, cancelButtonTitle: "Ok").show()
     }
     

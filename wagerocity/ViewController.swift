@@ -87,12 +87,13 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 let id : AnyObject? = result.valueForKey("id")
                 
-                Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : id!])
-                    .responseJSON{ (request, response, body, error) in
-                        Utils.hideLoader()
-                        var dic : NSDictionary = body as! NSDictionary
-                        
-                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
+                ServiceModel.createUser(
+                    id as! String,
+                    firstName: result.valueForKey("first_name") as! String,
+                    lastName: result.valueForKey("last_name") as! String,
+                    email: result.valueForKey("email") as! String,
+                    completion: { (request, response, body, error, statusCode) -> Void in
+                    
                         if (error != nil) {
                             if let newError:NSError = error {
                                 Utils.hideLoader()
@@ -100,21 +101,34 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                             }
                             
                         } else {
-                            let request1:NSMutableURLRequest = request as! NSMutableURLRequest
-                            
-                            var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
-                            self.saveUserObject(user)
-                            self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
+                            if statusCode == 200 {
+                                
+                                Utils.saveUserObject(body!)
+                                self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
+                                
+                            } else {
+                                Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : id!])
+                                    .responseJSON{ (request, response, body, error) in
+                                        Utils.hideLoader()
+                                        var dic : NSDictionary = body as! NSDictionary
+                                        
+                                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
+                                        if (error != nil) {
+                                            if let newError:NSError = error {
+                                                Utils.hideLoader()
+                                                Utils.showError(newError)
+                                            }
+                                            
+                                        } else {
+                                            Utils.saveUserObject(body!)
+                                            self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
+                                        }
+                                }
+                            }
                         }
-                }
-                
-                
+                })
             }
         })
-    }
-    
-    func saveUserObject(user: User) {
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(user), forKey: Constants.UserDefaults.User)
     }
     
 }
