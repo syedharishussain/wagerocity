@@ -10,6 +10,7 @@ import UIKit
 
 class GameTableViewCell: UITableViewCell {
     
+    var game: Game = Game()
     
     @IBOutlet weak var flagA: UIImageView!
     @IBOutlet weak var flagB: UIImageView!
@@ -43,7 +44,9 @@ class GameTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setViews (game: Game) {
+    func setViews (inout game: Game) {
+        self.game = game
+        
         var value = Utils.oddValues(game.oddA, oddB:game.oddB)
         
         self.flagA.sd_setImageWithURL(NSURL(string: game.logoA), placeholderImage: UIImage(named: "sports"))
@@ -62,31 +65,137 @@ class GameTableViewCell: UITableViewCell {
         self.under.text = value.under
         self.overUnder.text = value.overUnder
         
+        game.oddHolders = NSMutableArray.new()
         
-        
-        
+        buttonPSA.selected = false;
+        buttonPSB.selected = false;
+        buttonMLA.selected = false;
+        buttonMLB.selected = false;
+        buttonOver.selected = false;
+        buttonUnder.selected = false;
     }
     
     @IBAction func pointSpreadA(sender: AnyObject) {
         
+        buttonPSA.selected = !buttonPSA.selected
+        
+        if buttonPSA.selected {
+            
+            var oddHolder = createOddHolder(game, isTeamA: true, betTypeString: Constants.BetType.PointSpread)
+            game.oddHolders.addObject(oddHolder)
+            
+        } else {
+            removeOddholder(&game, betTypeString: Constants.BetType.PointSpread, isTeamA: true)
+        }
     }
     
     @IBAction func pointSpreadB(sender: AnyObject) {
+        buttonPSB.selected = !buttonPSB.selected
         
+        if buttonPSB.selected {
+            
+            var oddHolder = createOddHolder(game, isTeamA: false, betTypeString: Constants.BetType.PointSpread)
+            game.oddHolders.addObject(oddHolder)
+            
+        } else {
+            removeOddholder(&game, betTypeString: Constants.BetType.PointSpread, isTeamA: false)
+        }
     }
     
     @IBAction func moneyLineA(sender: AnyObject) {
+        buttonMLA.selected = !buttonMLA.selected
         
+        if buttonMLA.selected {
+            
+            var oddHolder = createOddHolder(game, isTeamA: true, betTypeString: Constants.BetType.MoneyLine)
+            game.oddHolders.addObject(oddHolder)
+            
+        } else {
+            removeOddholder(&game, betTypeString: Constants.BetType.MoneyLine, isTeamA: true)
+        }
     }
     
     @IBAction func moneyLineB(sender: AnyObject) {
+        buttonMLB.selected = !buttonMLB.selected
+        
+        if buttonMLB.selected {
+            
+            var oddHolder = createOddHolder(game, isTeamA: false, betTypeString: Constants.BetType.MoneyLine)
+            game.oddHolders.addObject(oddHolder)
+            
+        } else {
+            removeOddholder(&game, betTypeString: Constants.BetType.MoneyLine, isTeamA: false)
+        }
     }
     
     @IBAction func overA(sender: AnyObject) {
+        buttonOver.selected = !buttonOver.selected
         
+        if buttonOver.selected {
+            
+            var oddHolder = createOddHolder(game, isTeamA: true, betTypeString: Constants.BetType.Over)
+            game.oddHolders.addObject(oddHolder)
+            
+        } else {
+            removeOddholder(&game, betTypeString: Constants.BetType.Over, isTeamA: true)
+        }
     }
     
     @IBAction func underA(sender: AnyObject) {
-          
+        buttonUnder.selected = !buttonUnder.selected
+        
+        if buttonUnder.selected {
+            
+            var oddHolder = createOddHolder(game, isTeamA: false, betTypeString: Constants.BetType.Under)
+            game.oddHolders.addObject(oddHolder)
+            
+        } else {
+            removeOddholder(&game, betTypeString: Constants.BetType.Under, isTeamA: false)
+        }
+    }
+    
+    func createOddHolder(game: Game, isTeamA: Bool, betTypeString: String) -> OddHolder {
+        var oddHolder = OddHolder()
+        
+        oddHolder.teamId = (betTypeString == Constants.BetType.Under) ? game.teamANumber : isTeamA ? game.teamANumber : game.teamBNumber
+        oddHolder.name = isTeamA ? game.nameA : game.nameB
+        oddHolder.oddId = (betTypeString == Constants.BetType.Under) ?  game.oddA.oddId :  isTeamA ? game.oddA.oddId : game.oddB.oddId
+        oddHolder.teamVsTeam = game.nameA + " vs " + game.nameB
+        oddHolder.betTypeSPT = Constants.BetTypeSPT.Single
+        oddHolder.betTypeString = betTypeString
+        oddHolder.leagueName = game.leagueName
+        oddHolder.isChecked = true
+        oddHolder.isTeamA = isTeamA
+        
+        switch (betTypeString) {
+        case Constants.BetType.PointSpread :
+            oddHolder.oddValue = isTeamA ? game.oddA.point : game.oddB.point
+            oddHolder.betOT = "3"
+            oddHolder.pointSpreadString = isTeamA ? Utils.pointSpreadString(game.oddA) : Utils.pointSpreadString(game.oddB)
+        case Constants.BetType.MoneyLine :
+            oddHolder.oddValue = isTeamA ? game.oddA.money : game.oddB.money
+            oddHolder.betOT = "1"
+        case Constants.BetType.Over :
+            oddHolder.oddValue = game.oddA.over
+            oddHolder.betOT = "4"
+        case Constants.BetType.Under :
+            oddHolder.oddValue = game.oddA.under
+            oddHolder.betOT = "4"
+        default :
+            break
+        }
+        
+        return oddHolder
+    }
+    
+    func removeOddholder (inout game: Game, betTypeString: String, isTeamA: Bool) {
+        let teamId = (betTypeString == Constants.BetType.Under) ? game.teamANumber : isTeamA ? game.teamANumber : game.teamBNumber
+        let oddId = (betTypeString == Constants.BetType.Under) ? game.oddA.oddId : isTeamA ? game.oddA.oddId : game.oddB.oddId
+        
+        game.oddHolders.filterUsingPredicate(NSPredicate(block: { (object, binding) -> Bool in
+            let oddHolder: OddHolder = object as! OddHolder
+            return (oddHolder.teamId == teamId && oddHolder.oddId == oddId && oddHolder.betTypeString == betTypeString) ? false : true
+            
+        }))
     }
 }

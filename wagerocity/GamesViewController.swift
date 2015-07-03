@@ -25,8 +25,10 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! GameTableViewCell
-        cell.setViews(data[indexPath.row])
+
+//        tableView.registerClass(GameTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! GameTableViewCell
+        cell.setViews(&data[indexPath.row])
         return cell
     }
 

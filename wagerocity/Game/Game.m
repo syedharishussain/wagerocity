@@ -7,6 +7,7 @@
 
 #import "Game.h"
 #import "Odd.h"
+#import "wagerocity-Swift.h"
 
 
 NSString *const kGameTeamAOdds = @"team_A_Odds";
@@ -81,7 +82,8 @@ NSString *const kGameCstStartTime = @"cst_start_time";
             self.fullNameA = [self objectOrNilForKey:kGameTeamAFullname fromDictionary:dict];
             self.teamANumber = [self objectOrNilForKey:kGameTeamANumber fromDictionary:dict];
             self.cstStartTime = [self objectOrNilForKey:kGameCstStartTime fromDictionary:dict];
-
+            self.oddHolders = [NSMutableArray new];
+            self.leagueName = @"";
     }
     
     return self;

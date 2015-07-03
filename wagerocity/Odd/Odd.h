@@ -11,7 +11,7 @@
 
 @property (nonatomic, strong) NSString *over;
 @property (nonatomic, strong) NSString *under;
-@property (nonatomic, strong) NSString *teamAOddsIdentifier;
+@property (nonatomic, strong) NSString *oddId;
 @property (nonatomic, strong) NSString *point;
 @property (nonatomic, strong) NSString *totalId;
 @property (nonatomic, strong) NSString *pointId;

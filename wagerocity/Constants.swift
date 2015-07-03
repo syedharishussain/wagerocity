@@ -29,6 +29,20 @@ struct Constants {
         static let StatsBarView     = "statsBar"
     }
     
+    struct BetTypeSPT {
+        static let Single = "SINGLE"
+        static let Parley = "PARLEY"
+        static let Teaser = "TEASER"
+    }
+    
+    struct BetType {
+        static let PointSpread = "Point Spread"
+        static let MoneyLine = "Money Line"
+        static let Over = "Over"
+        static let Under = "Under"
+        
+    }
+    
     struct Segue {
         static let Dashboard        = "dashboard"
         static let SportsList       = "sportsList"

@@ -76,7 +76,9 @@ class SportsViewController: BaseViewController, UITableViewDelegate, UITableView
                     var games : Array <Game> = [Game]()
                     var gameArray : NSArray! = body as! NSArray
                     gameArray.enumerateObjectsUsingBlock({ (object, _, _) -> Void in
-                        games.append(Game.modelObjectWithDictionary(object as! NSDictionary as [NSObject : AnyObject]))
+                        var game: Game = Game.modelObjectWithDictionary(object as! NSDictionary as [NSObject : AnyObject])
+                        game.leagueName = self.leagueName
+                        games.append(game)
                     })
                     self.performSegueWithIdentifier(Constants.Segue.Games, sender: games)
                 } else {

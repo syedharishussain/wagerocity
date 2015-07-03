@@ -7,10 +7,12 @@
 
 #import <Foundation/Foundation.h>
 
+
 @class Odd;
 
 @interface Game : NSObject <NSCoding, NSCopying>
 
+@property (nonatomic, strong) NSMutableArray *oddHolders;
 @property (nonatomic, strong) Odd *oddA;
 @property (nonatomic, strong) Odd *oddB;
 @property (nonatomic, strong) NSString *teamBNickname;
@@ -27,6 +29,7 @@
 @property (nonatomic, strong) NSString *fullNameA;
 @property (nonatomic, strong) NSString *teamANumber;
 @property (nonatomic, strong) NSString *cstStartTime;
+@property (nonatomic, strong) NSString *leagueName;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -30,7 +30,7 @@ NSString *const kTeamAOddsMoney = @"money";
 
 @synthesize over = _over;
 @synthesize under = _under;
-@synthesize teamAOddsIdentifier = _teamAOddsIdentifier;
+@synthesize oddId = _oddId;
 @synthesize point = _point;
 @synthesize totalId = _totalId;
 @synthesize pointId = _pointId;
@@ -54,7 +54,7 @@ NSString *const kTeamAOddsMoney = @"money";
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.over = [self objectOrNilForKey:kTeamAOddsOver fromDictionary:dict];
             self.under = [self objectOrNilForKey:kTeamAOddsUnder fromDictionary:dict];
-            self.teamAOddsIdentifier = [self objectOrNilForKey:kTeamAOddsId fromDictionary:dict];
+            self.oddId = [self objectOrNilForKey:kTeamAOddsId fromDictionary:dict];
             self.point = [self objectOrNilForKey:kTeamAOddsPoint fromDictionary:dict];
             self.totalId = [self objectOrNilForKey:kTeamAOddsTotalId fromDictionary:dict];
             self.pointId = [self objectOrNilForKey:kTeamAOddsPointId fromDictionary:dict];
@@ -74,7 +74,7 @@ NSString *const kTeamAOddsMoney = @"money";
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:self.over forKey:kTeamAOddsOver];
     [mutableDict setValue:self.under forKey:kTeamAOddsUnder];
-    [mutableDict setValue:self.teamAOddsIdentifier forKey:kTeamAOddsId];
+    [mutableDict setValue:self.oddId forKey:kTeamAOddsId];
     [mutableDict setValue:self.point forKey:kTeamAOddsPoint];
     [mutableDict setValue:self.totalId forKey:kTeamAOddsTotalId];
     [mutableDict setValue:self.pointId forKey:kTeamAOddsPointId];
@@ -107,7 +107,7 @@ NSString *const kTeamAOddsMoney = @"money";
 
     self.over = [aDecoder decodeObjectForKey:kTeamAOddsOver];
     self.under = [aDecoder decodeObjectForKey:kTeamAOddsUnder];
-    self.teamAOddsIdentifier = [aDecoder decodeObjectForKey:kTeamAOddsId];
+    self.oddId = [aDecoder decodeObjectForKey:kTeamAOddsId];
     self.point = [aDecoder decodeObjectForKey:kTeamAOddsPoint];
     self.totalId = [aDecoder decodeObjectForKey:kTeamAOddsTotalId];
     self.pointId = [aDecoder decodeObjectForKey:kTeamAOddsPointId];
@@ -123,7 +123,7 @@ NSString *const kTeamAOddsMoney = @"money";
 
     [aCoder encodeObject:_over forKey:kTeamAOddsOver];
     [aCoder encodeObject:_under forKey:kTeamAOddsUnder];
-    [aCoder encodeObject:_teamAOddsIdentifier forKey:kTeamAOddsId];
+    [aCoder encodeObject:_oddId forKey:kTeamAOddsId];
     [aCoder encodeObject:_point forKey:kTeamAOddsPoint];
     [aCoder encodeObject:_totalId forKey:kTeamAOddsTotalId];
     [aCoder encodeObject:_pointId forKey:kTeamAOddsPointId];
@@ -141,7 +141,7 @@ NSString *const kTeamAOddsMoney = @"money";
 
         copy.over = [self.over copyWithZone:zone];
         copy.under = [self.under copyWithZone:zone];
-        copy.teamAOddsIdentifier = [self.teamAOddsIdentifier copyWithZone:zone];
+        copy.oddId = [self.oddId copyWithZone:zone];
         copy.point = [self.point copyWithZone:zone];
         copy.totalId = [self.totalId copyWithZone:zone];
         copy.pointId = [self.pointId copyWithZone:zone];
