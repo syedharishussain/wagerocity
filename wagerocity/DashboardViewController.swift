@@ -34,7 +34,7 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func bettingPortal(sender: AnyObject) {
-        self.performSegueWithIdentifier(Constants.Segue.SportsList, sender: nil)
+        self.performSegueWithIdentifier(Constants.Segue.SportsList, sender: Bool(false))
     }
     
     @IBAction func pools(sender: AnyObject) {
@@ -67,7 +67,7 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func leaderboards(sender: AnyObject) {
-        self.performSegueWithIdentifier(Constants.Segue.SportsList, sender: nil)
+        self.performSegueWithIdentifier(Constants.Segue.SportsList, sender:Bool(true))
     }
     
     @IBAction func experts(sender: AnyObject) {
@@ -103,7 +103,7 @@ class DashboardViewController: BaseViewController {
         
         if segue.identifier == Constants.Segue.SportsList {
             var sportListViewControoler = segue.destinationViewController as! SportsViewController
-            sportListViewControoler.isLeaderboards = true
+            sportListViewControoler.isLeaderboards = sender as! Bool
         }
         
         if segue.identifier == Constants.Segue.Experts {

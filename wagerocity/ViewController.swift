@@ -79,16 +79,17 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
             } else {
                 
-                let userName : NSString = result.valueForKey("name") as! NSString
-                let userEmail : NSString = result.valueForKey("email") as! NSString
+                let firstName : String = result.valueForKey("first_name") as! String
+                let lastName : String = result.valueForKey("last_name") as! String
+                let email : String = result.valueForKey("email") as! String
                 
-                let id : AnyObject? = result.valueForKey("id")
+                let id : String = result.valueForKey("id") as! String
                 
                 ServiceModel.createUser(
-                    id as! String,
-                    firstName: result.valueForKey("first_name") as! String,
-                    lastName: result.valueForKey("last_name") as! String,
-                    email: result.valueForKey("email") as! String,
+                    id,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
                     completion: { (request, response, body, error, statusCode) -> Void in
                         
                         if statusCode == 200 {
@@ -98,7 +99,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                             
                         } else {
                             
-                            ServiceModel.getUser(id as! String, completion: { (request, response, body, error, statusCode) -> Void in
+                            ServiceModel.getUser(id, completion: { (request, response, body, error, statusCode) -> Void in
                                 if statusCode == 200 {
                                     self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
                                 } else {

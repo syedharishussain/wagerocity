@@ -99,4 +99,26 @@ class ServiceModel: NSObject {
             completion(body, error, (responseObject?.statusCode as Int?)!)
         }
     }
+    
+    static func getGames (leagueName: String, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+        Utils.showLoader()
+        Alamofire.request(.GET, "http://api.wagerocity.com/getGames", parameters: ["leagueName" : leagueName])
+            .responseJSON{ (request, response, body, error) in
+                Utils.hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        Utils.hideLoader()
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    var arr : NSArray = body as! NSArray
+                    
+                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, arr]))
+                    let responseObject = response as NSHTTPURLResponse?
+                    completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
+                }
+        }
+    }
 }

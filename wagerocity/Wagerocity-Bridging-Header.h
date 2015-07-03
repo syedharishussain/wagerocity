@@ -5,6 +5,8 @@
 #import "User.h"
 #import "Pick.h"
 #import "OddInfo.h"
+#import "Odd.h"
+#import "Game.h"
 #import "MKStoreKit.h"
 #import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"

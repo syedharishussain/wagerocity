@@ -9,7 +9,7 @@
 import UIKit
 
 
-class Utils: NSObject {
+class Utils {
     
     static func getUser () -> User {
         let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.User) as! NSData
@@ -138,7 +138,15 @@ class Utils: NSObject {
     static func pointSpreadString (data: NSDictionary) -> String  {
         var value = (data["point"] as! String)
         var point = value
-        var pointSpread = Utils.signedString((data["point_mid"] as! String)) + "(" + point + ")"
+        var pointSpread = Utils.signedString((data["point_mid"] as! String)) + "(" + Utils.signedString(point) + ")"
+        return pointSpread
+        
+    }
+    
+    static func pointSpreadString (odd: Odd) -> String  {
+        var value = (odd.point as String)
+        var point = value
+        var pointSpread = Utils.signedString(odd.pointMid as String) + "(" + Utils.signedString(point) + ")"
         return pointSpread
         
     }
@@ -152,6 +160,18 @@ class Utils: NSObject {
             oddA["over"] != nil ? Utils.signedString((oddA["over"] as! String)) : "-",
             oddA["under"] != nil ? Utils.signedString((oddA["under"] as! String)) : "-",
             String(format: "Over\n| %@ |\nUnder", Utils.signedString((oddA["total_mid"] as! String)))
+        )
+    }
+    
+    static func oddValues (oddA: Odd, oddB: Odd) -> (psA:String, psB:String, mlA:String, mlB:String, over:String, under:String, overUnder:String) {
+        return (
+            Utils.pointSpreadString(oddA),
+            Utils.pointSpreadString(oddB),
+            oddA.money != nil ? Utils.signedString((oddA.money as String)) : "-",
+            oddB.money != nil ? Utils.signedString((oddB.money as String)) : "-",
+            oddA.over  != nil ? Utils.signedString((oddA.over as String)) : "-",
+            oddA.under != nil ? Utils.signedString((oddA.under as String)) : "-",
+            String(format: "Over\n| %@ |\nUnder", Utils.signedString((oddA.totalMid as String)))
         )
     }
     

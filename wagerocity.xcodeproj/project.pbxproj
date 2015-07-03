@@ -34,6 +34,9 @@
 		6674ED4C1B45C75E00206FC5 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED431B45C75E00206FC5 /* DTTimePeriodCollection.m */; };
 		6674ED4D1B45C75E00206FC5 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED451B45C75E00206FC5 /* DTTimePeriodGroup.m */; };
 		6674ED4E1B45C75E00206FC5 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED471B45C75E00206FC5 /* NSDate+DateTools.m */; };
+		6674ED501B4707DE00206FC5 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED4F1B4707DE00206FC5 /* GameTableViewCell.swift */; };
+		6674ED561B47103100206FC5 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED551B47103100206FC5 /* Game.m */; };
+		6674ED5A1B47225100206FC5 /* Odd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED591B47225100206FC5 /* Odd.m */; };
 		667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B6B2F1B357DDE00609C4B /* StatsBarView.swift */; };
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
 		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
@@ -181,6 +184,11 @@
 		6674ED451B45C75E00206FC5 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroup.m; sourceTree = "<group>"; };
 		6674ED461B45C75E00206FC5 /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateTools.h"; sourceTree = "<group>"; };
 		6674ED471B45C75E00206FC5 /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
+		6674ED4F1B4707DE00206FC5 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		6674ED541B47103100206FC5 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		6674ED551B47103100206FC5 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		6674ED581B47225100206FC5 /* Odd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Odd.h; sourceTree = "<group>"; };
+		6674ED591B47225100206FC5 /* Odd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Odd.m; sourceTree = "<group>"; };
 		667B6B2F1B357DDE00609C4B /* StatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarView.swift; sourceTree = "<group>"; };
 		667B6B311B357DEF00609C4B /* StatsBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsBarView.xib; sourceTree = "<group>"; };
 		66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
@@ -370,6 +378,8 @@
 		6674ED2E1B44A03000206FC5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6674ED571B47225100206FC5 /* Odd */,
+				6674ED531B47103100206FC5 /* Game */,
 				6674ED331B44A0C300206FC5 /* OddInfo */,
 				6674ED2D1B44A02900206FC5 /* Pick */,
 				66D6C9AA1B3D9CB800A271B0 /* User */,
@@ -415,6 +425,24 @@
 				6674ED471B45C75E00206FC5 /* NSDate+DateTools.m */,
 			);
 			path = DateTools;
+			sourceTree = "<group>";
+		};
+		6674ED531B47103100206FC5 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				6674ED541B47103100206FC5 /* Game.h */,
+				6674ED551B47103100206FC5 /* Game.m */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		6674ED571B47225100206FC5 /* Odd */ = {
+			isa = PBXGroup;
+			children = (
+				6674ED581B47225100206FC5 /* Odd.h */,
+				6674ED591B47225100206FC5 /* Odd.m */,
+			);
+			path = Odd;
 			sourceTree = "<group>";
 		};
 		667B6B2E1B357DAB00609C4B /* NavigationView */ = {
@@ -536,6 +564,7 @@
 				6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */,
 				6674ED281B44768100206FC5 /* ExpertTableViewCell.swift */,
 				6674ED341B44A30E00206FC5 /* MyPickTableViewCell.swift */,
+				6674ED4F1B4707DE00206FC5 /* GameTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -738,6 +767,7 @@
 				6674ED321B44A0BE00206FC5 /* OddInfo.m in Sources */,
 				66FDB6FE1B27807900D0B2F4 /* ViewController.swift in Sources */,
 				667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */,
+				6674ED561B47103100206FC5 /* Game.m in Sources */,
 				6674ED251B431FE300206FC5 /* PickOfPlayerTableViewCell.swift in Sources */,
 				66D6C9E51B3DABF800A271B0 /* NSData+ImageContentType.m in Sources */,
 				66D6CA011B3DAC8F00A271B0 /* PoolDetailViewController.swift in Sources */,
@@ -756,6 +786,7 @@
 				66D6CA091B3DB13A00A271B0 /* Utils.swift in Sources */,
 				66D6CA051B3DACA700A271B0 /* MyPicksViewController.swift in Sources */,
 				6674ED351B44A30E00206FC5 /* MyPickTableViewCell.swift in Sources */,
+				6674ED5A1B47225100206FC5 /* Odd.m in Sources */,
 				66D6C9E71B3DABF800A271B0 /* SDWebImageCompat.m in Sources */,
 				6674ED291B44768100206FC5 /* ExpertTableViewCell.swift in Sources */,
 				66FDB7031B2780CB00D0B2F4 /* BaseViewController.swift in Sources */,
@@ -766,6 +797,7 @@
 				6674ED2C1B44A02100206FC5 /* Pick.m in Sources */,
 				6674ED4D1B45C75E00206FC5 /* DTTimePeriodGroup.m in Sources */,
 				66D6C9F21B3DABF800A271B0 /* UIImageView+WebCache.m in Sources */,
+				6674ED501B4707DE00206FC5 /* GameTableViewCell.swift in Sources */,
 				66DEAF401B42B8DB0079BBC9 /* SportListTableViewCell.swift in Sources */,
 				66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */,
 				6674ED491B45C75E00206FC5 /* DTError.m in Sources */,
