@@ -8,19 +8,16 @@
 
 import UIKit
 
-class BetSlipViewController: UIViewController {
+class BetSlipViewController: BaseViewController {
 
+    var oddHolders : Array<OddHolder> = [OddHolder]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        println(self.oddHolders)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation

@@ -182,8 +182,8 @@
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.4941176471" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="260" sectionHeaderHeight="22" sectionFooterHeight="22" id="z8f-iE-YtN">
-                                <rect key="frame" x="0.0" y="124" width="320" height="444"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="124" width="320" height="402"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="x8z-Gr-Kcc" customClass="GameTableViewCell" customModule="wagerocity" customModuleProvider="target">
@@ -389,17 +389,59 @@
                                     <outlet property="delegate" destination="8Z8-hq-Yhy" id="iwQ-l5-kzd"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heading_bg" id="Fuh-E3-1mz">
+                                <rect key="frame" x="0.0" y="526" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vlg-dD-lrA">
+                                <rect key="frame" x="101" y="533" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Show Bet Slip" backgroundImage="blue_button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showBetSlip:" destination="8Z8-hq-Yhy" eventType="touchUpInside" id="egb-Jh-BOl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ltf-hG-oaW"/>
                     <connections>
                         <outlet property="tableView" destination="z8f-iE-YtN" id="Zeu-m8-WJI"/>
+                        <segue destination="zlw-gc-zj4" kind="push" identifier="betSlip" id="SaD-kj-pws"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ukl-de-Nxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2284" y="-1048"/>
+        </scene>
+        <!--Bet Slip View Controller-->
+        <scene sceneID="mb2-0n-dd6">
+            <objects>
+                <viewController id="zlw-gc-zj4" customClass="BetSlipViewController" customModule="wagerocity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YXa-ZX-iQX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="SYH-c8-kVA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" restorationIdentifier="statsBar" id="ksn-G7-9tS" customClass="StatsBarView" customModule="wagerocity">
+                                <rect key="frame" x="0.0" y="64" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.4941176471" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DPh-qz-vL4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jw9-Yr-DVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2774" y="-1048"/>
         </scene>
         <!--My Picks View Controller-->
         <scene sceneID="na8-X7-LTN">
@@ -1173,6 +1215,7 @@
         <image name="expert_icon" width="328" height="151"/>
         <image name="get_dollar_field" width="264" height="82"/>
         <image name="get_dollar_icon" width="328" height="151"/>
+        <image name="heading_bg" width="720" height="101"/>
         <image name="leader_board_icon" width="328" height="151"/>
         <image name="logo 2" width="390" height="71"/>
         <image name="mypicks_icon" width="328" height="151"/>

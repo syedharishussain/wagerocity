@@ -73,6 +73,13 @@ class GameTableViewCell: UITableViewCell {
         buttonMLB.selected = false;
         buttonOver.selected = false;
         buttonUnder.selected = false;
+        
+        if value.psA == "-" { buttonPSA.enabled = false }
+        if value.psB == "-" { buttonPSB.enabled = false }
+        if value.mlA == "-" { buttonMLA.enabled = false }
+        if value.mlB == "-" { buttonMLB.enabled = false }
+        if value.over == "-" { buttonOver.enabled = false }
+        if value.under == "-" { buttonUnder.enabled = false }
     }
     
     @IBAction func pointSpreadA(sender: AnyObject) {
