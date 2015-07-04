@@ -48,10 +48,10 @@ class MyPickTableViewCell: UITableViewCell {
         self.teamVsTeam.text    = pick.matchDet
         self.betType.text       = Utils.getBetTypeOT(pick.betOt, position: pick.pos)
         self.team.text          = pick.teamName
-        self.betValue.text      = getBetValue(pick.oddInfo.first as! OddInfo, isTeamA: isTeamA)
-        self.stakeValue.text    = pick.stake
-        self.winValue.text      = Utils.getToWinAmountString(self.stakeValue.text!, betOddValue: self.betValue.text!)
-        self.result.text        = pick.result
+        self.betValue.text      = Utils.signedString(pick.oddsVal) //getBetValue(pick.oddInfo.first as! OddInfo, isTeamA: isTeamA)
+        self.stakeValue.text    = "$"+pick.stake
+        self.winValue.text      = "$"+Utils.getToWinAmountString(pick.stake, betOddValue: pick.oddsVal)
+        self.result.text        = pick.betResult
         self.poolName.text      = pick.poolName == "" ? "-" : pick.poolName
     }
     

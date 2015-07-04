@@ -26,6 +26,7 @@ class OddHolder {
     var teaser1: Int = 0
     var teaser2: Int = 0
     var teaser3: Int = 0
+    var teaserValues: Dictionary<Double, Int> = Dictionary<Double, Int>()
     var isTeamA:Bool = false
     
 }

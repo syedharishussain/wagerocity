@@ -115,9 +115,8 @@ class ServiceModel: NSObject {
                 } else {
                     //TODO: status Code
                     //warning: status
-                    var arr : NSArray = body as! NSArray
                     
-                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, arr]))
+                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
                     let responseObject = response as NSHTTPURLResponse?
                     completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
                 }
@@ -125,7 +124,6 @@ class ServiceModel: NSObject {
     }
     
     static func betOnGame (
-        userID:         String,
         oddID:          String,
         oddVal:         String,
         position:       String,
@@ -142,7 +140,7 @@ class ServiceModel: NSObject {
         completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
             
             var params = [
-                "userID"        : userID,
+                "userID"        : Utils.getUser().userId,
                 "oddID"         : oddID,
                 "oddVal"        : oddVal,
                 "position"      : position,
@@ -164,20 +162,18 @@ class ServiceModel: NSObject {
             Utils.showLoader()
             Alamofire.request(.POST, "http://api.wagerocity.com/betOnGame", parameters: params, encoding: ParameterEncoding.JSON)
                 .responseJSON{ (request, response, body, error) -> Void in
-                    
+                    Utils.hideLoader()
                     if (error != nil) {
                         if let newError:NSError = error {
-                            Utils.hideLoader()
+                            
                             Utils.showError(newError)
                             return
                         }
                         
                     } else {
-                        var array : NSArray = body as! NSArray
                         
-                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, array]))
+                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
                         
-                        Utils.saveUserObject(body!)
                         let responseObject = response as NSHTTPURLResponse?
                         completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
                     }
