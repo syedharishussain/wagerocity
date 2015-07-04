@@ -121,7 +121,6 @@ class Utils {
         }
         
     }
-    
     static func getToWinAmountString (value: String, betOddValue: String) -> String {
         return String(format: "%.2f", Utils.getToWinAmount((value as NSString).doubleValue, betOddValue: (betOddValue as NSString).doubleValue))
     }

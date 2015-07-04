@@ -113,6 +113,8 @@ class ServiceModel: NSObject {
                         return
                     }
                 } else {
+                    //TODO: status Code
+                    //warning: status
                     var arr : NSArray = body as! NSArray
                     
                     CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, arr]))

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class BetSlipViewController: BaseViewController {
+class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
     var oddHolders : Array<OddHolder> = [OddHolder]()
     
     override func viewDidLoad() {
@@ -19,6 +20,17 @@ class BetSlipViewController: BaseViewController {
         println(self.oddHolders)
     }
 
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return oddHolders.count;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! BetSlipTableViewCell
+        cell.setViews(&oddHolders[indexPath.row])
+        return cell
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -13,7 +13,7 @@ class OddHolder {
     var oddId: String = ""
     var name: String = ""
     var teamVsTeam: String = ""
-    var oddValue: String = ""
+    var oddValue: String = "0.0"
     var betTypeSPT: String = ""
     var betOT: String = ""
     var betTypeString: String = ""
