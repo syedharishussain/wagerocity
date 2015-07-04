@@ -40,6 +40,7 @@
 		6674ED5C1B472FE900206FC5 /* OddHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED5B1B472FE900206FC5 /* OddHolder.swift */; };
 		6674ED5E1B474F0600206FC5 /* BetSlipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED5D1B474F0600206FC5 /* BetSlipTableViewCell.swift */; };
 		6674ED611B47637200206FC5 /* doubleStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED601B47637200206FC5 /* doubleStringExtension.swift */; };
+		6679AD341B487DCA001350D0 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6679AD331B487DCA001350D0 /* DAKeyboardControl.m */; };
 		667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B6B2F1B357DDE00609C4B /* StatsBarView.swift */; };
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
 		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
@@ -195,6 +196,8 @@
 		6674ED5B1B472FE900206FC5 /* OddHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OddHolder.swift; sourceTree = "<group>"; };
 		6674ED5D1B474F0600206FC5 /* BetSlipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetSlipTableViewCell.swift; sourceTree = "<group>"; };
 		6674ED601B47637200206FC5 /* doubleStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = doubleStringExtension.swift; sourceTree = "<group>"; };
+		6679AD321B487DCA001350D0 /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
+		6679AD331B487DCA001350D0 /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		667B6B2F1B357DDE00609C4B /* StatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarView.swift; sourceTree = "<group>"; };
 		667B6B311B357DEF00609C4B /* StatsBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsBarView.xib; sourceTree = "<group>"; };
 		66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
@@ -453,6 +456,15 @@
 			path = Odd;
 			sourceTree = "<group>";
 		};
+		6679AD311B487DCA001350D0 /* DAKeyboardControl */ = {
+			isa = PBXGroup;
+			children = (
+				6679AD321B487DCA001350D0 /* DAKeyboardControl.h */,
+				6679AD331B487DCA001350D0 /* DAKeyboardControl.m */,
+			);
+			path = DAKeyboardControl;
+			sourceTree = "<group>";
+		};
 		667B6B2E1B357DAB00609C4B /* NavigationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +528,7 @@
 		66D6C9BB1B3D9F2F00A271B0 /* ThirdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				6679AD311B487DCA001350D0 /* DAKeyboardControl */,
 				6674ED381B45C75E00206FC5 /* DateTools */,
 				66D6C9C21B3DABF800A271B0 /* SDWebImage */,
 				66D6C9B41B3D9F1600A271B0 /* SVProgressHUD */,
@@ -812,6 +825,7 @@
 				6674ED501B4707DE00206FC5 /* GameTableViewCell.swift in Sources */,
 				66DEAF401B42B8DB0079BBC9 /* SportListTableViewCell.swift in Sources */,
 				66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */,
+				6679AD341B487DCA001350D0 /* DAKeyboardControl.m in Sources */,
 				6674ED491B45C75E00206FC5 /* DTError.m in Sources */,
 				66D6C9F31B3DABF800A271B0 /* UIView+WebCacheOperation.m in Sources */,
 				666CF71E1B28DCB100AD4DF5 /* NavigationBar.swift in Sources */,

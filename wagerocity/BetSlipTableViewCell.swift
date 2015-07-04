@@ -21,6 +21,8 @@ class BetSlipTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var oddholder:OddHolder = OddHolder()
     
+    var oddValue: String = "0.0"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,35 +37,27 @@ class BetSlipTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func setViews (inout oddholder: OddHolder) {
+        
+        var isParlay = oddholder.betTypeSPT == Constants.BetTypeSPT.Parley
+        
+        oddValue = isParlay ? NSString(format: "%.2f", oddholder.parlayValue) as String :  oddholder.oddValue
+        
         self.oddholder = oddholder
         self.name.text = oddholder.name
         self.teamVsTeam.text = oddholder.teamVsTeam
-        self.betInfo.text = oddholder.betTypeString + oddholder.oddValue
-        self.risk.text = oddholder.riskValue
-        self.win.text = Utils.getToWinAmountString(self.risk.text, betOddValue: oddholder.oddValue)
+        self.betInfo.text = isParlay ? "" :  oddholder.betTypeString + " " + Utils.signedString( oddholder.oddValue )
+        self.risk.text = isParlay ? "" :  oddholder.riskValue
+        self.win.text = Utils.getToWinAmountString(self.risk.text, betOddValue: oddValue)
     }
     
     @IBAction func checkBox(sender: AnyObject) {
         self.checkbox.selected = !self.checkbox.selected
+        oddholder.isChecked = self.checkbox.selected
     }
     
     @IBAction func riskValueUpdate(sender: AnyObject) {
         var tf: UITextField = sender as! UITextField
-        self.win.text = Utils.getToWinAmountString(tf.text, betOddValue:"120" )
+        self.win.text = Utils.getToWinAmountString(tf.text, betOddValue:oddValue )
         self.oddholder.riskValue = tf.text
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-
-        
-        return true
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        return true
     }
 }

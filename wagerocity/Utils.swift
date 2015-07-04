@@ -178,4 +178,23 @@ class Utils {
         var formattedDate = String(format: "%@", NSDate(string: dateString, formatString: "yyyy-MM-dd HH:mm:ss", timeZone: NSTimeZone(abbreviation: "CST")).formattedDateWithFormat("EEEE, MMM dd, yyyy hh:mm")) + " CST"
         return formattedDate
     }
+    
+    static func parlayValue (oddHolders : Array<OddHolder>) -> Double {
+        var parlayValue = 1.0
+
+        for oddholder in oddHolders {
+            var oddValue: Double = oddholder.oddValue.doubleValue()
+            
+            if oddValue > 0 {
+                let multipliyer = (oddValue + 100.0) / 100.0
+                parlayValue = parlayValue * multipliyer
+            } else {
+                let multipliyer = (abs(oddValue) + 100.0) / abs(oddValue)
+                parlayValue = parlayValue * multipliyer
+            }
+        }
+        
+        return parlayValue - 1.0
+    }
+    
 }
