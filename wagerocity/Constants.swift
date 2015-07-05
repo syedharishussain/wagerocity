@@ -56,5 +56,6 @@ struct Constants {
         static let BetSlip          = "betSlip"
         static let PicksOfPlayer    = "buyPicks"
         static let Settings         = "settings"
+        static let PoolLeaderbpards = "poolLeaderboards"
     }
 }

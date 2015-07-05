@@ -54,6 +54,7 @@
 		668ECCD61B49C63100043813 /* Commisioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD11B49C63100043813 /* Commisioner.m */; };
 		668ECCD71B49C63100043813 /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD31B49C63100043813 /* Pool.m */; };
 		668ECCD81B49C63100043813 /* PoolMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD51B49C63100043813 /* PoolMembers.m */; };
+		668ECCDA1B49CE4800043813 /* PoolLeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD91B49CE4800043813 /* PoolLeaderboardViewController.swift */; };
 		66D6C9BA1B3D9F1600A271B0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */; };
 		66D6C9BF1B3DAAB800A271B0 /* angle-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BC1B3DAAB800A271B0 /* angle-mask@2x.png */; };
 		66D6C9C01B3DAAB800A271B0 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BD1B3DAAB800A271B0 /* error@2x.png */; };
@@ -230,6 +231,7 @@
 		668ECCD31B49C63100043813 /* Pool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pool.m; sourceTree = "<group>"; };
 		668ECCD41B49C63100043813 /* PoolMembers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolMembers.h; sourceTree = "<group>"; };
 		668ECCD51B49C63100043813 /* PoolMembers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolMembers.m; sourceTree = "<group>"; };
+		668ECCD91B49CE4800043813 /* PoolLeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolLeaderboardViewController.swift; sourceTree = "<group>"; };
 		66D6C9B51B3D9F1600A271B0 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		66D6C9B71B3D9F1600A271B0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -669,6 +671,7 @@
 				66D6CA021B3DAC9D00A271B0 /* BetSlipViewController.swift */,
 				66D6CA041B3DACA700A271B0 /* MyPicksViewController.swift */,
 				66D6CA061B3DACB200A271B0 /* PicksOfPlayerViewController.swift */,
+				668ECCD91B49CE4800043813 /* PoolLeaderboardViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				66D6C9EA1B3DABF800A271B0 /* SDWebImageDownloaderOperation.m in Sources */,
 				6674ED5E1B474F0600206FC5 /* BetSlipTableViewCell.swift in Sources */,
 				668ECCD81B49C63100043813 /* PoolMembers.m in Sources */,
+				668ECCDA1B49CE4800043813 /* PoolLeaderboardViewController.swift in Sources */,
 				66D6C9E41B3DABF800A271B0 /* MKAnnotationView+WebCache.m in Sources */,
 				6674ED4E1B45C75E00206FC5 /* NSDate+DateTools.m in Sources */,
 				668ECCCA1B49A37700043813 /* MKSKSubscriptionProduct.m in Sources */,

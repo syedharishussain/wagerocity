@@ -49,21 +49,23 @@ class MyPoolViewController: BaseViewController, UITableViewDataSource, UITableVi
 
     func showPoolDetails (sender: Button) {
         var pool: Pool = Pool.modelObjectWithDictionary(sender.data)
-        println(pool.poolId)
+        self.performSegueWithIdentifier(Constants.Segue.PoolDetail, sender: pool)
         
     }
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.Segue.PoolDetail {
+            var vc = segue.destinationViewController as! PoolDetailViewController
+            vc.data = sender as! Pool
+        }
     }
-    */
+    
 
 }
 
