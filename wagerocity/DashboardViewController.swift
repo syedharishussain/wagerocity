@@ -95,6 +95,13 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func clearBalance(sender: AnyObject) {
+        MKStoreManager.sharedManager().buyFeature(Constants.IAP.ClearRecord,
+            onComplete: { (purchasedProduct, _, _) -> Void in
+                println(purchasedProduct)
+            })
+            { () -> Void in
+        }
+
     }
     
     @IBAction func settings(sender: AnyObject) {
