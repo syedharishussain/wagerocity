@@ -77,6 +77,8 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             
             completionJugar.append("1")
             
+            ServiceModel.consumeCredits(odd.riskValue, delegate: self)
+            
             ServiceModel.betOnGame(
                 odd.oddId,
                 oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,

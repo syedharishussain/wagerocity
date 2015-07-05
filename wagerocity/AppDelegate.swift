@@ -86,7 +86,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 object: nil,
                 queue: NSOperationQueue.mainQueue())
                 { note in
-                    Utils.hideLoader()
+                    println("\(note.object)")
+        }
+        
+        NSNotificationCenter
+            .defaultCenter()
+            .addObserverForName(
+                kMKStoreKitRestoringPurchasesFailedNotification,
+                object: nil,
+                queue: NSOperationQueue.mainQueue())
+                { note in
                     println("\(note.object)")
         }
     }

@@ -178,7 +178,61 @@ class ServiceModel: NSObject {
                         completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
                     }
             }
-            
-            
+    }
+    
+    static func buyCredits (amount: String, delegate: BaseViewController) {
+        Utils.showLoader()
+        Alamofire.request(.POST, "http://api.wagerocity.com/buyCredits", parameters: [
+            "userId" : Utils.getUser().userId,
+            "creditAmount" : amount
+            ], encoding: ParameterEncoding.JSON)
+            .responseJSON{ (request, response, body, error) -> Void in
+                Utils.hideLoader()
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        
+                        Utils.showError(newError)
+                        return
+                    }
+                    
+                } else {
+                    var dic : NSDictionary = body as! NSDictionary
+                    
+                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
+                    
+                    Utils.saveUserObject(body!)
+                    let responseObject = response as NSHTTPURLResponse?
+                    delegate.updateStatsBar()
+                }
+        }
+
+    }
+    
+    static func consumeCredits (amount: String, delegate: BaseViewController) {
+        Utils.showLoader()
+        Alamofire.request(.POST, "http://api.wagerocity.com/consumeCredits", parameters: [
+            "userId" : Utils.getUser().userId,
+            "debitAmount" : amount
+            ], encoding: ParameterEncoding.JSON)
+            .responseJSON{ (request, response, body, error) -> Void in
+                Utils.hideLoader()
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        
+                        Utils.showError(newError)
+                        return
+                    }
+                    
+                } else {
+                    var dic : NSDictionary = body as! NSDictionary
+                    
+                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
+                    
+                    Utils.saveUserObject(body!)
+                    let responseObject = response as NSHTTPURLResponse?
+                    delegate.updateStatsBar()
+                }
+        }
+        
     }
 }
