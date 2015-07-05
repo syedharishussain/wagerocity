@@ -8,28 +8,77 @@
 
 import UIKit
 
-class PoolViewController: UIViewController {
-
+class PoolViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var data = Array<AnyObject>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count;
     }
     
-
-    /*
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        
+        var pool = data[indexPath.row] as! Dictionary<NSObject, AnyObject>
+        
+        var name = cell.viewWithTag(1) as! UILabel
+        name.text = pool["name"] as? String
+        
+        var status = cell.viewWithTag(2) as! UILabel
+        status.text = pool["privacy"] as? String
+        
+        var start = cell.viewWithTag(3) as! UILabel
+        start.text = Utils.formatDateAmerican( (pool["from_date"] as? String)! )
+        
+        var end = cell.viewWithTag(4) as! UILabel
+        end.text = Utils.formatDateAmerican( (pool["to_date"] as? String)! )
+        
+        var button = cell.viewWithTag(5) as! UIButton
+//        button.addTarget(self, action: "Join", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        if let isPoolJoined = pool["is_join"] as? Bool {
+            if isPoolJoined {
+                button.titleLabel?.text = "Joined"
+                button.enabled = false
+            }
+        }
+        
+        
+        return cell
+    }
+    
+    
+    @IBAction func showMyPool(sender: AnyObject) {
+        ServiceModel.getPools { (request, response, anyObject, error, statusCode) -> Void in
+            if statusCode == 200 {
+                self.performSegueWithIdentifier(Constants.Segue.MyPools, sender: anyObject as! Array<AnyObject>)
+            } else {
+                Utils.showMessage(self, message: "You have not joined any Pools yet!")
+            }
+        }
+    }
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+        if segue.identifier == Constants.Segue.MyPools {
+            var vc = segue.destinationViewController as! MyPoolViewController
+            vc.data = sender as! Array<AnyObject>
+        }
 
+        
+    }
+    
+    
 }

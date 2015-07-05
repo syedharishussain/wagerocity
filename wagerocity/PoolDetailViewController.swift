@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PoolDetailViewController: UIViewController {
+class PoolDetailViewController: BaseViewController {
+    
+    var data = Pool()
 
     override func viewDidLoad() {
         super.viewDidLoad()

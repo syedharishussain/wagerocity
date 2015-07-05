@@ -51,6 +51,9 @@
 		668ECCCC1B49A37700043813 /* MKStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC31B49A37700043813 /* MKStoreManager.m */; };
 		668ECCCD1B49A37700043813 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC41B49A37700043813 /* README.mdown */; };
 		668ECCCE1B49A37700043813 /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC61B49A37700043813 /* VerificationController.m */; };
+		668ECCD61B49C63100043813 /* Commisioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD11B49C63100043813 /* Commisioner.m */; };
+		668ECCD71B49C63100043813 /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD31B49C63100043813 /* Pool.m */; };
+		668ECCD81B49C63100043813 /* PoolMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD51B49C63100043813 /* PoolMembers.m */; };
 		66D6C9BA1B3D9F1600A271B0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */; };
 		66D6C9BF1B3DAAB800A271B0 /* angle-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BC1B3DAAB800A271B0 /* angle-mask@2x.png */; };
 		66D6C9C01B3DAAB800A271B0 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BD1B3DAAB800A271B0 /* error@2x.png */; };
@@ -221,6 +224,12 @@
 		668ECCC41B49A37700043813 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		668ECCC51B49A37700043813 /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationController.h; sourceTree = "<group>"; };
 		668ECCC61B49A37700043813 /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationController.m; sourceTree = "<group>"; };
+		668ECCD01B49C63100043813 /* Commisioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commisioner.h; sourceTree = "<group>"; };
+		668ECCD11B49C63100043813 /* Commisioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commisioner.m; sourceTree = "<group>"; };
+		668ECCD21B49C63100043813 /* Pool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pool.h; sourceTree = "<group>"; };
+		668ECCD31B49C63100043813 /* Pool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pool.m; sourceTree = "<group>"; };
+		668ECCD41B49C63100043813 /* PoolMembers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolMembers.h; sourceTree = "<group>"; };
+		668ECCD51B49C63100043813 /* PoolMembers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolMembers.m; sourceTree = "<group>"; };
 		66D6C9B51B3D9F1600A271B0 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		66D6C9B71B3D9F1600A271B0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -411,6 +420,7 @@
 				6674ED331B44A0C300206FC5 /* OddInfo */,
 				6674ED2D1B44A02900206FC5 /* Pick */,
 				66D6C9AA1B3D9CB800A271B0 /* User */,
+				668ECCCF1B49C63100043813 /* Pool */,
 				6674ED5B1B472FE900206FC5 /* OddHolder.swift */,
 			);
 			name = Models;
@@ -539,6 +549,19 @@
 				668ECCBB1B49A37700043813 /* SFHFKeychainUtils.m */,
 			);
 			path = External;
+			sourceTree = "<group>";
+		};
+		668ECCCF1B49C63100043813 /* Pool */ = {
+			isa = PBXGroup;
+			children = (
+				668ECCD01B49C63100043813 /* Commisioner.h */,
+				668ECCD11B49C63100043813 /* Commisioner.m */,
+				668ECCD21B49C63100043813 /* Pool.h */,
+				668ECCD31B49C63100043813 /* Pool.m */,
+				668ECCD41B49C63100043813 /* PoolMembers.h */,
+				668ECCD51B49C63100043813 /* PoolMembers.m */,
+			);
+			path = Pool;
 			sourceTree = "<group>";
 		};
 		66D6C9AA1B3D9CB800A271B0 /* User */ = {
@@ -820,6 +843,7 @@
 			files = (
 				66D6C9FD1B3DAC7C00A271B0 /* GamesViewController.swift in Sources */,
 				66DEAF481B42C5770079BBC9 /* LeaderboardTableViewCell.swift in Sources */,
+				668ECCD71B49C63100043813 /* Pool.m in Sources */,
 				66D6C9EE1B3DABF800A271B0 /* UIImage+GIF.m in Sources */,
 				6674ED4A1B45C75E00206FC5 /* DTTimePeriod.m in Sources */,
 				666CF7121B28C4A600AD4DF5 /* User.m in Sources */,
@@ -833,6 +857,7 @@
 				66D6C9E51B3DABF800A271B0 /* NSData+ImageContentType.m in Sources */,
 				66D6CA011B3DAC8F00A271B0 /* PoolDetailViewController.swift in Sources */,
 				668ECCCD1B49A37700043813 /* README.mdown in Sources */,
+				668ECCD61B49C63100043813 /* Commisioner.m in Sources */,
 				668ECCCC1B49A37700043813 /* MKStoreManager.m in Sources */,
 				666CF7161B28CCDD00AD4DF5 /* DashboardViewController.swift in Sources */,
 				66D6C9F71B3DAC5300A271B0 /* ExpertViewController.swift in Sources */,
@@ -845,6 +870,7 @@
 				6674ED611B47637200206FC5 /* doubleStringExtension.swift in Sources */,
 				66D6C9EA1B3DABF800A271B0 /* SDWebImageDownloaderOperation.m in Sources */,
 				6674ED5E1B474F0600206FC5 /* BetSlipTableViewCell.swift in Sources */,
+				668ECCD81B49C63100043813 /* PoolMembers.m in Sources */,
 				66D6C9E41B3DABF800A271B0 /* MKAnnotationView+WebCache.m in Sources */,
 				6674ED4E1B45C75E00206FC5 /* NSDate+DateTools.m in Sources */,
 				668ECCCA1B49A37700043813 /* MKSKSubscriptionProduct.m in Sources */,

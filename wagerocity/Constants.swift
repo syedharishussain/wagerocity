@@ -49,12 +49,12 @@ struct Constants {
         static let Experts          = "experts_controller"
         static let Leaderboard      = "leaderboards_controller"
         static let MyPicks          = "MyPicks_Controller"
-        static let Pools            = "dashboard"
-        static let MyPools          = "dashboard"
-        static let PoolDetail       = "dashboard"
+        static let Pools            = "Pools_Controller"
+        static let MyPools          = "myPools"
+        static let PoolDetail       = "poolDetail"
         static let Games            = "gamesList"
         static let BetSlip          = "betSlip"
         static let PicksOfPlayer    = "buyPicks"
-        static let Settings         = "dashboard"
+        static let Settings         = "settings"
     }
 }

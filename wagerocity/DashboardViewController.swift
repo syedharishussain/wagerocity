@@ -38,6 +38,13 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func pools(sender: AnyObject) {
+        ServiceModel.getPools { (request, responseObject, anyObject, error, statusCode) -> Void in
+            if statusCode == 200 {
+                self.performSegueWithIdentifier(Constants.Segue.Pools, sender: anyObject as! Array<AnyObject>)
+            } else {
+                Utils.showMessage(self, message: "There are currently no pools available!")
+            }
+        }
     }
     
     @IBAction func myPicks(sender: AnyObject) {
@@ -122,6 +129,11 @@ class DashboardViewController: BaseViewController {
         if segue.identifier == Constants.Segue.MyPicks {
             var controller = segue.destinationViewController as! MyPicksViewController
             controller.data = sender as! NSArray
+        }
+        
+        if segue.identifier == Constants.Segue.Pools {
+            var vc = segue.destinationViewController as! PoolViewController
+            vc.data = sender as! Array<AnyObject>
         }
         
     }

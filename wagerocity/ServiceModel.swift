@@ -233,6 +233,47 @@ class ServiceModel: NSObject {
                     delegate.updateStatsBar()
                 }
         }
-        
+    }
+    
+    static func getPools (completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+        Utils.showLoader()
+        Alamofire.request(.GET, "http://api.wagerocity.com/getAllPools", parameters:
+            ["userId" : Utils.getUser().userId])
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    let responseObject = response as NSHTTPURLResponse?
+                    completion(request, responseObject, body, error, (responseObject?.statusCode as Int?)!)
+
+                }
+        }
+    }
+    
+    static func getMyPools (completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+        Utils.showLoader()
+        Alamofire.request(.GET, "http://api.wagerocity.com/getMyPools", parameters:
+            ["userId" : Utils.getUser().userId])
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    let responseObject = response as NSHTTPURLResponse?
+                    completion(request, responseObject, body, error, (responseObject?.statusCode as Int?)!)
+                    
+                }
+        }
     }
 }

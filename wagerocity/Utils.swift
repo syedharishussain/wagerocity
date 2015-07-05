@@ -179,6 +179,12 @@ class Utils {
         return formattedDate
     }
     
+    static func formatDateAmerican (dateString:String) -> String {
+        var formattedDate = String(format: "%@", NSDate(string: dateString, formatString: "yyyy-MM-dd", timeZone: NSTimeZone(abbreviation: "CST")).formattedDateWithFormat("MM-dd-yyyy"))
+        return formattedDate
+    }
+    
+    
     static func parlayValue (oddHolders : Array<OddHolder>) -> Double {
         var parlayValue = 1.0
 
