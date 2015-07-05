@@ -41,8 +41,8 @@ class PoolViewController: BaseViewController, UITableViewDataSource, UITableView
         var end = cell.viewWithTag(4) as! UILabel
         end.text = Utils.formatDateAmerican( (pool["to_date"] as? String)! )
         
-        var button = cell.viewWithTag(5) as! UIButton
-//        button.addTarget(self, action: "Join", forControlEvents: UIControlEvents.TouchUpInside)
+        var button = cell.viewWithTag(5) as! Button
+        button.addTarget(self, action: "joinPool:", forControlEvents: UIControlEvents.TouchUpInside)
         
         if let isPoolJoined = pool["is_join"] as? Bool {
             if isPoolJoined {
@@ -51,19 +51,30 @@ class PoolViewController: BaseViewController, UITableViewDataSource, UITableView
             }
         }
         
+        button.id = (pool["pool_id"] as? String)!
         
         return cell
     }
     
     
     @IBAction func showMyPool(sender: AnyObject) {
-        ServiceModel.getPools { (request, response, anyObject, error, statusCode) -> Void in
+        ServiceModel.getMyPools { (request, response, anyObject, error, statusCode) -> Void in
             if statusCode == 200 {
                 self.performSegueWithIdentifier(Constants.Segue.MyPools, sender: anyObject as! Array<AnyObject>)
             } else {
                 Utils.showMessage(self, message: "You have not joined any Pools yet!")
             }
         }
+    }
+    
+    func joinPool(sender: Button) {
+        ServiceModel.joinPool(sender.id, completion: { (_, _, anyObject, _, statusCode) -> Void in
+            if statusCode == 200 {
+                self.performSegueWithIdentifier(Constants.Segue.MyPools, sender: anyObject as! Array<AnyObject>)
+            } else {
+                
+            }
+        })
     }
     
     

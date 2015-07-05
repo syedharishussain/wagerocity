@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSString *teamANumber;
 @property (nonatomic, strong) NSString *cstStartTime;
 @property (nonatomic, strong) NSString *leagueName;
+@property (nonatomic, strong) NSString *poolId;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

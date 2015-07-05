@@ -92,7 +92,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
                 bet_type: odd.betTypeSPT,
                 bet_ot: odd.betOT,
                 bet_parent: "",
-                is_pool_bet: "",
+                is_pool_bet: odd.poolId,
                 completion: { (request, response, body, error, statusCode) -> Void in
                     if statusCode == 200 {
                         completionJugar.removeLast()
@@ -120,7 +120,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             pOdd.riskValue = ""
             pOdd.parlayValue = parlayValue
             pOdd.leagueName = oddHolders[0].leagueName
-            
+            pOdd.poolId = oddHolders[0].poolId
             oddHolders.append(pOdd)
         }
     }
@@ -143,8 +143,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             tOdd.betOT = "1"
             tOdd.riskValue = "0.0"
             tOdd.teaserValues = value
-            
-            //            oddHolders.append(tOdd)
+            tOdd.poolId = oddHolders[0].poolId
         }
     }
     

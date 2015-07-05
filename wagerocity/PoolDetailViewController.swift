@@ -60,7 +60,21 @@ class PoolDetailViewController: BaseViewController {
     }
     
     @IBAction func poolGames(sender: AnyObject) {
-        
+        ServiceModel.getGames(self.data.poolLeague, completion: { (_, _, body, _, statusCode) -> Void in
+            if statusCode == 200 {
+                var games : Array <Game> = [Game]()
+                var gameArray : NSArray! = body as! NSArray
+                gameArray.enumerateObjectsUsingBlock({ (object, _, _) -> Void in
+                    var game: Game = Game.modelObjectWithDictionary(object as! NSDictionary as [NSObject : AnyObject])
+                    game.leagueName = self.data.poolLeague
+                    game.poolId = self.data.poolId
+                    games.append(game)
+                })
+                self.performSegueWithIdentifier(Constants.Segue.Games, sender: games)
+            } else {
+                Utils.showMessage(self, message: "There are currently no games!")
+            }
+        })
     }
     
     // MARK: - Navigation
@@ -70,6 +84,11 @@ class PoolDetailViewController: BaseViewController {
         if segue.identifier == Constants.Segue.PoolLeaderbpards {
             var vc = segue.destinationViewController as! PoolLeaderboardViewController
             vc.data = sender as! NSArray
+        }
+        
+        if segue.identifier == Constants.Segue.Games {
+            var vc = segue.destinationViewController as! GamesViewController
+            vc.data = sender as! Array
         }
     }
     

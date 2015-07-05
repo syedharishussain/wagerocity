@@ -134,6 +134,7 @@ NSString *const kPoolAmount = @"amount";
             self.games = [self objectOrNilForKey:kPoolGames fromDictionary:dict];
             self.size = [self objectOrNilForKey:kPoolSize fromDictionary:dict];
             self.userId = [self objectOrNilForKey:kPoolUserId fromDictionary:dict];
+        
     NSObject *receivedCommisioner = [dict objectForKey:kPoolCommisioner];
     NSMutableArray *parsedCommisioner = [NSMutableArray array];
     if ([receivedCommisioner isKindOfClass:[NSArray class]]) {

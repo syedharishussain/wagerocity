@@ -205,7 +205,7 @@ class ServiceModel: NSObject {
                     delegate.updateStatsBar()
                 }
         }
-
+        
     }
     
     static func consumeCredits (amount: String, delegate: BaseViewController) {
@@ -251,7 +251,7 @@ class ServiceModel: NSObject {
                 } else {
                     let responseObject = response as NSHTTPURLResponse?
                     completion(request, responseObject, body, error, (responseObject?.statusCode as Int?)!)
-
+                    
                 }
         }
     }
@@ -260,6 +260,28 @@ class ServiceModel: NSObject {
         Utils.showLoader()
         Alamofire.request(.GET, "http://api.wagerocity.com/getMyPools", parameters:
             ["userId" : Utils.getUser().userId])
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    let responseObject = response as NSHTTPURLResponse?
+                    completion(request, responseObject, body, error, (responseObject?.statusCode as Int?)!)
+                    
+                }
+        }
+    }
+    
+    static func joinPool (poolId: String, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+        Utils.showLoader()
+        Alamofire.request(.POST, "http://api.wagerocity.com/joinPool", parameters:
+            ["userId" : Utils.getUser().userId,
+                "poolId" : poolId], encoding: ParameterEncoding.JSON)
             .responseJSON{ (request, response, body, error) in
                 Utils .hideLoader()
                 

@@ -30,7 +30,7 @@ class PoolLeaderboardViewController: BaseViewController, UITableViewDataSource, 
         var pool = data[indexPath.row] as! PoolMembers
         
         var rank = cell.viewWithTag(1) as! UILabel
-        rank.text = NSString(format: "%d", indexPath.row) as String
+        rank.text = NSString(format: "%d", indexPath.row + 1) as String
         
         var name = cell.viewWithTag(2) as! UILabel
         name.text = pool.username
@@ -39,7 +39,7 @@ class PoolLeaderboardViewController: BaseViewController, UITableViewDataSource, 
         amount.text = NSString(format: "$%.2f", pool.dollars) as String
         
         var wlt = cell.viewWithTag(4) as! UILabel
-        wlt.text = NSString(format: "%.2f - %.2f - %.2f", pool.win, pool.lost, pool.tie) as String
+        wlt.text = NSString(format: "%.0f-%.0f-%.0f", pool.win, pool.lost, pool.tie) as String
         
         return cell
     }

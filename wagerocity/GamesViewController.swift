@@ -26,7 +26,6 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //        tableView.registerClass(GameTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! GameTableViewCell
         cell.setViews(&data[indexPath.row])
         return cell
@@ -38,6 +37,7 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
         for game in data {
             if game.oddHolders.count > 0 {
                 game.oddHolders.enumerateObjectsUsingBlock({ (oddholder  , _, _) -> Void in
+                    (oddholder as! OddHolder).poolId = game.poolId as String
                     oddHolders.append(oddholder as! OddHolder)
                 })
             }

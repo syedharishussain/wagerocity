@@ -84,6 +84,7 @@ NSString *const kGameCstStartTime = @"cst_start_time";
             self.cstStartTime = [self objectOrNilForKey:kGameCstStartTime fromDictionary:dict];
             self.oddHolders = [NSMutableArray new];
             self.leagueName = @"";
+            self.poolId = @"";
     }
     
     return self;
