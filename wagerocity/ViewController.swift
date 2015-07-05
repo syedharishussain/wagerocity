@@ -81,7 +81,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 let firstName : String = result.valueForKey("first_name") as! String
                 let lastName : String = result.valueForKey("last_name") as! String
-                let email : String = result.valueForKey("email") as! String
+                var email : String = ""
+                
+                if let userEmail =  result.valueForKey("email") as? String {
+                    email = userEmail
+                }
                 
                 let id : String = result.valueForKey("id") as! String
                 

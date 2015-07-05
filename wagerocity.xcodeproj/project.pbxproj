@@ -43,8 +43,14 @@
 		6679AD341B487DCA001350D0 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6679AD331B487DCA001350D0 /* DAKeyboardControl.m */; };
 		667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B6B2F1B357DDE00609C4B /* StatsBarView.swift */; };
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
-		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
-		66D6C9B31B3D9D1900A271B0 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9B21B3D9D1900A271B0 /* MKStoreKitConfigs.plist */; };
+		668ECCC71B49A37700043813 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCB91B49A37700043813 /* NSData+MKBase64.m */; };
+		668ECCC81B49A37700043813 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCBB1B49A37700043813 /* SFHFKeychainUtils.m */; };
+		668ECCC91B49A37700043813 /* MKSKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCBD1B49A37700043813 /* MKSKProduct.m */; };
+		668ECCCA1B49A37700043813 /* MKSKSubscriptionProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCBF1B49A37700043813 /* MKSKSubscriptionProduct.m */; };
+		668ECCCB1B49A37700043813 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 668ECCC11B49A37700043813 /* MKStoreKitConfigs.plist */; };
+		668ECCCC1B49A37700043813 /* MKStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC31B49A37700043813 /* MKStoreManager.m */; };
+		668ECCCD1B49A37700043813 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC41B49A37700043813 /* README.mdown */; };
+		668ECCCE1B49A37700043813 /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC61B49A37700043813 /* VerificationController.m */; };
 		66D6C9BA1B3D9F1600A271B0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */; };
 		66D6C9BF1B3DAAB800A271B0 /* angle-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BC1B3DAAB800A271B0 /* angle-mask@2x.png */; };
 		66D6C9C01B3DAAB800A271B0 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BD1B3DAAB800A271B0 /* error@2x.png */; };
@@ -200,9 +206,21 @@
 		6679AD331B487DCA001350D0 /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		667B6B2F1B357DDE00609C4B /* StatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarView.swift; sourceTree = "<group>"; };
 		667B6B311B357DEF00609C4B /* StatsBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsBarView.xib; sourceTree = "<group>"; };
-		66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
-		66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
-		66D6C9B21B3D9D1900A271B0 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
+		668ECCB81B49A37700043813 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
+		668ECCB91B49A37700043813 /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
+		668ECCBA1B49A37700043813 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		668ECCBB1B49A37700043813 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		668ECCBC1B49A37700043813 /* MKSKProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSKProduct.h; sourceTree = "<group>"; };
+		668ECCBD1B49A37700043813 /* MKSKProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSKProduct.m; sourceTree = "<group>"; };
+		668ECCBE1B49A37700043813 /* MKSKSubscriptionProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSKSubscriptionProduct.h; sourceTree = "<group>"; };
+		668ECCBF1B49A37700043813 /* MKSKSubscriptionProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSKSubscriptionProduct.m; sourceTree = "<group>"; };
+		668ECCC01B49A37700043813 /* MKStoreKitConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKitConfigs.h; sourceTree = "<group>"; };
+		668ECCC11B49A37700043813 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
+		668ECCC21B49A37700043813 /* MKStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreManager.h; sourceTree = "<group>"; };
+		668ECCC31B49A37700043813 /* MKStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreManager.m; sourceTree = "<group>"; };
+		668ECCC41B49A37700043813 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		668ECCC51B49A37700043813 /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationController.h; sourceTree = "<group>"; };
+		668ECCC61B49A37700043813 /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationController.m; sourceTree = "<group>"; };
 		66D6C9B51B3D9F1600A271B0 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		66D6C9B71B3D9F1600A271B0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -493,6 +511,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		668ECCB61B49A37700043813 /* MKStoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				668ECCB71B49A37700043813 /* External */,
+				668ECCBC1B49A37700043813 /* MKSKProduct.h */,
+				668ECCBD1B49A37700043813 /* MKSKProduct.m */,
+				668ECCBE1B49A37700043813 /* MKSKSubscriptionProduct.h */,
+				668ECCBF1B49A37700043813 /* MKSKSubscriptionProduct.m */,
+				668ECCC01B49A37700043813 /* MKStoreKitConfigs.h */,
+				668ECCC11B49A37700043813 /* MKStoreKitConfigs.plist */,
+				668ECCC21B49A37700043813 /* MKStoreManager.h */,
+				668ECCC31B49A37700043813 /* MKStoreManager.m */,
+				668ECCC41B49A37700043813 /* README.mdown */,
+				668ECCC51B49A37700043813 /* VerificationController.h */,
+				668ECCC61B49A37700043813 /* VerificationController.m */,
+			);
+			path = MKStoreKit;
+			sourceTree = "<group>";
+		};
+		668ECCB71B49A37700043813 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				668ECCB81B49A37700043813 /* NSData+MKBase64.h */,
+				668ECCB91B49A37700043813 /* NSData+MKBase64.m */,
+				668ECCBA1B49A37700043813 /* SFHFKeychainUtils.h */,
+				668ECCBB1B49A37700043813 /* SFHFKeychainUtils.m */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
 		66D6C9AA1B3D9CB800A271B0 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,16 +548,6 @@
 				666CF7111B28C4A600AD4DF5 /* User.m */,
 			);
 			name = User;
-			sourceTree = "<group>";
-		};
-		66D6C9B11B3D9CD200A271B0 /* MKStoreKit */ = {
-			isa = PBXGroup;
-			children = (
-				66D6C9B21B3D9D1900A271B0 /* MKStoreKitConfigs.plist */,
-				66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */,
-				66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */,
-			);
-			name = MKStoreKit;
 			sourceTree = "<group>";
 		};
 		66D6C9B41B3D9F1600A271B0 /* SVProgressHUD */ = {
@@ -528,11 +566,11 @@
 		66D6C9BB1B3D9F2F00A271B0 /* ThirdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				668ECCB61B49A37700043813 /* MKStoreKit */,
 				6679AD311B487DCA001350D0 /* DAKeyboardControl */,
 				6674ED381B45C75E00206FC5 /* DateTools */,
 				66D6C9C21B3DABF800A271B0 /* SDWebImage */,
 				66D6C9B41B3D9F1600A271B0 /* SVProgressHUD */,
-				66D6C9B11B3D9CD200A271B0 /* MKStoreKit */,
 			);
 			name = ThirdPartyLibs;
 			sourceTree = "<group>";
@@ -738,7 +776,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66D6C9B31B3D9D1900A271B0 /* MKStoreKitConfigs.plist in Resources */,
+				668ECCCB1B49A37700043813 /* MKStoreKitConfigs.plist in Resources */,
 				667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */,
 				66D6C9BF1B3DAAB800A271B0 /* angle-mask@2x.png in Resources */,
 				6603B5C91B277E0D0014489A /* Main.storyboard in Resources */,
@@ -789,10 +827,13 @@
 				6674ED321B44A0BE00206FC5 /* OddInfo.m in Sources */,
 				66FDB6FE1B27807900D0B2F4 /* ViewController.swift in Sources */,
 				667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */,
+				668ECCCE1B49A37700043813 /* VerificationController.m in Sources */,
 				6674ED561B47103100206FC5 /* Game.m in Sources */,
 				6674ED251B431FE300206FC5 /* PickOfPlayerTableViewCell.swift in Sources */,
 				66D6C9E51B3DABF800A271B0 /* NSData+ImageContentType.m in Sources */,
 				66D6CA011B3DAC8F00A271B0 /* PoolDetailViewController.swift in Sources */,
+				668ECCCD1B49A37700043813 /* README.mdown in Sources */,
+				668ECCCC1B49A37700043813 /* MKStoreManager.m in Sources */,
 				666CF7161B28CCDD00AD4DF5 /* DashboardViewController.swift in Sources */,
 				66D6C9F71B3DAC5300A271B0 /* ExpertViewController.swift in Sources */,
 				6603B5C41B277E0D0014489A /* AppDelegate.swift in Sources */,
@@ -806,6 +847,7 @@
 				6674ED5E1B474F0600206FC5 /* BetSlipTableViewCell.swift in Sources */,
 				66D6C9E41B3DABF800A271B0 /* MKAnnotationView+WebCache.m in Sources */,
 				6674ED4E1B45C75E00206FC5 /* NSDate+DateTools.m in Sources */,
+				668ECCCA1B49A37700043813 /* MKSKSubscriptionProduct.m in Sources */,
 				66D6C9FF1B3DAC8800A271B0 /* MyPoolViewController.swift in Sources */,
 				66D6CA091B3DB13A00A271B0 /* Utils.swift in Sources */,
 				66D6CA051B3DACA700A271B0 /* MyPicksViewController.swift in Sources */,
@@ -818,14 +860,15 @@
 				66D6C9F51B3DAC4700A271B0 /* LeaderboardViewController.swift in Sources */,
 				6674ED271B4325FE00206FC5 /* ServiceModel.swift in Sources */,
 				66D6CA031B3DAC9D00A271B0 /* BetSlipViewController.swift in Sources */,
+				668ECCC81B49A37700043813 /* SFHFKeychainUtils.m in Sources */,
 				6674ED2C1B44A02100206FC5 /* Pick.m in Sources */,
 				6674ED4D1B45C75E00206FC5 /* DTTimePeriodGroup.m in Sources */,
 				66D6C9F21B3DABF800A271B0 /* UIImageView+WebCache.m in Sources */,
 				6674ED5C1B472FE900206FC5 /* OddHolder.swift in Sources */,
 				6674ED501B4707DE00206FC5 /* GameTableViewCell.swift in Sources */,
 				66DEAF401B42B8DB0079BBC9 /* SportListTableViewCell.swift in Sources */,
-				66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */,
 				6679AD341B487DCA001350D0 /* DAKeyboardControl.m in Sources */,
+				668ECCC91B49A37700043813 /* MKSKProduct.m in Sources */,
 				6674ED491B45C75E00206FC5 /* DTError.m in Sources */,
 				66D6C9F31B3DABF800A271B0 /* UIView+WebCacheOperation.m in Sources */,
 				666CF71E1B28DCB100AD4DF5 /* NavigationBar.swift in Sources */,
@@ -836,6 +879,7 @@
 				66D6C9E81B3DABF800A271B0 /* SDWebImageDecoder.m in Sources */,
 				66D6C9F01B3DABF800A271B0 /* UIImage+WebP.m in Sources */,
 				66D6C9EB1B3DABF800A271B0 /* SDWebImageManager.m in Sources */,
+				668ECCC71B49A37700043813 /* NSData+MKBase64.m in Sources */,
 				66D6C9BA1B3D9F1600A271B0 /* SVProgressHUD.m in Sources */,
 				66DA44701B3D82C400CF24F7 /* GetDollarsViewController.swift in Sources */,
 				66D6C9E61B3DABF800A271B0 /* SDImageCache.m in Sources */,
@@ -972,8 +1016,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Syed Hussain (8HPFP63RRB)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Syed Hussain (8HPFP63RRB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -984,7 +1028,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a2da0b50-d91a-414e-848b-b7b6a9e609db";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "wagerocity/wagerocity-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

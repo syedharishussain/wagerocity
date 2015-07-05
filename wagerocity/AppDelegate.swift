@@ -26,9 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         [UINavigationBar .appearance().setBackgroundImage(logo, forBarMetrics:.Default)]
         
-        MKStoreKit.sharedKit().startProductRequest()
-        
-        setupNotifications()
+        MKStoreManager.sharedManager()
         
         Fabric.with([Crashlytics()])
 
@@ -67,38 +65,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
-    func setupNotifications() {
-        
-        NSNotificationCenter
-            .defaultCenter()
-            .addObserverForName(
-                kMKStoreKitProductsAvailableNotification,
-                object: nil,
-                queue: NSOperationQueue.mainQueue())
-                { note in
-            println("\(MKStoreKit.sharedKit().availableProducts)")
-        }
-        
-        NSNotificationCenter
-            .defaultCenter()
-            .addObserverForName(
-                kMKStoreKitProductPurchasedNotification,
-                object: nil,
-                queue: NSOperationQueue.mainQueue())
-                { note in
-                    println("\(note.object)")
-        }
-        
-        NSNotificationCenter
-            .defaultCenter()
-            .addObserverForName(
-                kMKStoreKitRestoringPurchasesFailedNotification,
-                object: nil,
-                queue: NSOperationQueue.mainQueue())
-                { note in
-                    println("\(note.object)")
-        }
-    }
+//    func setupNotifications() {
+//        
+//        NSNotificationCenter
+//            .defaultCenter()
+//            .addObserverForName(
+//                kMKStoreKitProductsAvailableNotification,
+//                object: nil,
+//                queue: NSOperationQueue.mainQueue())
+//                { note in
+//            println("\(MKStoreKit.sharedKit().availableProducts)")
+//        }
+//        
+//        NSNotificationCenter
+//            .defaultCenter()
+//            .addObserverForName(
+//                kMKStoreKitProductPurchasedNotification,
+//                object: nil,
+//                queue: NSOperationQueue.mainQueue())
+//                { note in
+//                    println("\(note.object)")
+//        }
+//        
+//        NSNotificationCenter
+//            .defaultCenter()
+//            .addObserverForName(
+//                kMKStoreKitRestoringPurchasesFailedNotification,
+//                object: nil,
+//                queue: NSOperationQueue.mainQueue())
+//                { note in
+//                    println("\(note.object)")
+//        }
+//    }
     
 }
 

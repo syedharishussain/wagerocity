@@ -23,7 +23,11 @@ class GetDollarsViewController: BaseViewController {
     
     @IBAction func rookie(sender: AnyObject) {
 
-        MKStoreKit.sharedKit().initiatePaymentRequestForProductWithIdentifier(Constants.IAP.Rookie)
+        MKStoreManager.sharedManager().buyFeature(Constants.IAP.Rookie, onComplete: { (purchasedProduct, _, _) -> Void in
+            println(purchasedProduct)
+        }) { () -> Void in
+            
+        }
     }
 
     @IBAction func chaser(sender: AnyObject) {

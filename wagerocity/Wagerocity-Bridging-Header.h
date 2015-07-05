@@ -7,7 +7,7 @@
 #import "OddInfo.h"
 #import "Odd.h"
 #import "Game.h"
-#import "MKStoreKit.h"
+#import "MKStoreManager.h"
 #import "SVProgressHUD.h"
 #import "UIImageView+WebCache.h"
 #import "DateTools.h"
