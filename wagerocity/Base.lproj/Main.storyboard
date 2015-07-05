@@ -411,6 +411,7 @@
                     <connections>
                         <outlet property="tableView" destination="z8f-iE-YtN" id="Zeu-m8-WJI"/>
                         <segue destination="zlw-gc-zj4" kind="push" identifier="betSlip" id="SaD-kj-pws"/>
+                        <segue destination="4gd-We-pNU" kind="push" identifier="MyPicks_Controller" id="lu1-4z-bvh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ukl-de-Nxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -573,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jw9-Yr-DVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2725" y="-1048"/>
+            <point key="canvasLocation" x="2721" y="-1048"/>
         </scene>
         <!--My Picks View Controller-->
         <scene sceneID="na8-X7-LTN">
@@ -832,7 +833,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="7" id="uhH-Yw-ig3">
-                                                    <rect key="frame" x="10" y="78" width="302" height="64"/>
+                                                    <rect key="frame" x="10" y="77.999999850988402" width="302" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                     <string key="text">With over 20 years of experience and 20 of winning. I look forward to hearing from you. MY three Rules 1. Play MY plays and MY plays only ! 2. Play the SAME amount on every play I put out ! 3. TRUST ME !!!</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1363,5 +1364,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="k0j-d9-A9D"/>
+        <segue reference="lu1-4z-bvh"/>
     </inferredMetricsTieBreakers>
 </document>

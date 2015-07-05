@@ -171,7 +171,7 @@ class GameTableViewCell: UITableViewCell {
         oddHolder.betTypeSPT = Constants.BetTypeSPT.Single
         oddHolder.betTypeString = betTypeString
         oddHolder.leagueName = game.leagueName
-        oddHolder.isChecked = false
+        oddHolder.isChecked = true
         oddHolder.isTeamA = isTeamA
         
         switch (betTypeString) {

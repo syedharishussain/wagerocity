@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol BetSlipCompletion {
+    func showMyPicks()
+}
+
 class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var placeBetButton: UIButton!
+    
+    var delegate:BetSlipCompletion! = nil
     
     var oddHolders : Array<OddHolder> = [OddHolder]()
     
@@ -65,7 +71,12 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             return
         }
         
+        var completionJugar = Array<String>()
+        
         for odd: OddHolder in array {
+            
+            completionJugar.append("1")
+            
             ServiceModel.betOnGame(
                 odd.oddId,
                 oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
@@ -82,7 +93,11 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
                 is_pool_bet: "",
                 completion: { (request, response, body, error, statusCode) -> Void in
                     if statusCode == 200 {
-                        println(body)
+                        completionJugar.removeLast()
+                        if completionJugar.isEmpty {
+                            self.navigationController?.popViewControllerAnimated(false)
+                            self.delegate.showMyPicks()
+                        }
                     }
             })
         }
@@ -96,8 +111,8 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             
             pOdd.teamId = oddHolders[0].teamId
             pOdd.oddId = oddHolders[0].oddId
-            pOdd.name = "Parlay " + (NSString(format: "( %d Odds)", oddHolders.count) as String)
-            pOdd.teamVsTeam = ""
+            pOdd.name = "Parlay "
+            pOdd.teamVsTeam = "Parlay " + (NSString(format: "( %d Odds)", oddHolders.count) as String)
             pOdd.betTypeSPT = Constants.BetTypeSPT.Parley
             pOdd.betOT = "1"
             pOdd.riskValue = ""

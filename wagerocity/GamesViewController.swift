@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, BetSlipCompletion {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -57,6 +57,41 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
         if segue.identifier == Constants.Segue.BetSlip {
             var betSlip = segue.destinationViewController as! BetSlipViewController
             betSlip.oddHolders = sender as! Array <OddHolder>
+            betSlip.delegate = self
         }
+        
+        if segue.identifier == Constants.Segue.MyPicks {
+            var controller = segue.destinationViewController as! MyPicksViewController
+            controller.data = sender as! NSArray
+        }
+    }
+    
+    // MARK: - BetSlipCompletion Delegate
+    
+    func showMyPicks() {
+        ServiceModel.getMyPicks { (body, error, statusCode:Int) -> Void in
+            if let err = error as NSError? {
+                println(err)
+                Utils.showError(err)
+                return
+            }
+            
+            if statusCode == 200 {
+                var array = body as! NSArray
+                
+                array = array.filteredArrayUsingPredicate(NSPredicate(block: { (object , _) -> Bool in
+                    let dic : NSDictionary = object as! NSDictionary
+                    return (dic["odd_info"] as! NSArray).count > 0
+                }))
+                
+                if array.count > 0 {
+                    
+                }
+                self.performSegueWithIdentifier(Constants.Segue.MyPicks, sender: array)
+            } else {
+                Utils.showMessage(self, message: "There are currently no picks!")
+            }
+        }
+
     }
 }

@@ -38,6 +38,8 @@ class BetSlipTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func setViews (inout oddholder: OddHolder) {
         
+        self.checkbox.selected = oddholder.isChecked
+        
         var isParlay = oddholder.betTypeSPT == Constants.BetTypeSPT.Parley
         
         oddValue = isParlay ? NSString(format: "%.2f", oddholder.parlayValue) as String :  oddholder.oddValue

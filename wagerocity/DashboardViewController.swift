@@ -55,6 +55,8 @@ class DashboardViewController: BaseViewController {
                     let dic : NSDictionary = object as! NSDictionary
                     return (dic["odd_info"] as! NSArray).count > 0
                 }))
+
+                array = array.sortedArrayUsingDescriptors([NSSortDescriptor(key: "bet_id", ascending: false)])
                 
                 if array.count > 0 {
                     
@@ -81,7 +83,6 @@ class DashboardViewController: BaseViewController {
             
             if statusCode == 200 {
                 var array = body as! NSArray
-                println(array)
                 self.performSegueWithIdentifier(Constants.Segue.Experts, sender: array)
             } else {
                 Utils.showMessage(self, message: "There are currently no picks!")

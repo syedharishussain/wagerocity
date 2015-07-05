@@ -53,6 +53,11 @@ class MyPickTableViewCell: UITableViewCell {
         self.winValue.text      = "$"+Utils.getToWinAmountString(pick.stake, betOddValue: pick.oddsVal)
         self.result.text        = pick.betResult
         self.poolName.text      = pick.poolName == "" ? "-" : pick.poolName
+        
+        if pick.teamName == "Parlay" {
+            self.betType.text = "Parlay"
+            self.betValue.text = "-"
+        }
     }
     
     @IBAction func facebookShare(sender: AnyObject) {
