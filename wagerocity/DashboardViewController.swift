@@ -62,7 +62,7 @@ class DashboardViewController: BaseViewController {
                     let dic : NSDictionary = object as! NSDictionary
                     return (dic["odd_info"] as! NSArray).count > 0
                 }))
-
+                
                 array = array.sortedArrayUsingDescriptors([NSSortDescriptor(key: "bet_id", ascending: false)])
                 
                 if array.count > 0 {
@@ -102,13 +102,28 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func clearBalance(sender: AnyObject) {
-        MKStoreManager.sharedManager().buyFeature(Constants.IAP.ClearRecord,
-            onComplete: { (purchasedProduct, _, _) -> Void in
-                println(purchasedProduct)
-            })
-            { () -> Void in
-        }
-
+        var alert = UIAlertController(
+            title: "Clear Records for $1.99?",
+            message: "You will be charged $1.99 to clear you record?",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Clear Record", style: UIAlertActionStyle.Default, handler: { (alert) -> Void in
+            MKStoreManager.sharedManager().buyFeature(Constants.IAP.ClearRecord,
+                onComplete: { (purchasedProduct, _, _) -> Void in
+                    println(purchasedProduct)
+                    ServiceModel.clearRecord(self)
+                })
+                { () -> Void in
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel!", style: UIAlertActionStyle.Cancel, handler: { (alert) -> Void in
+            
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
+        
+        
     }
     
     @IBAction func settings(sender: AnyObject) {

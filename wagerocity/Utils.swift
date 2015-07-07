@@ -143,11 +143,17 @@ class Utils {
     }
     
     static func pointSpreadString (odd: Odd) -> String  {
-        var value = (odd.point as String)
-        var point = value
-        var pointSpread = Utils.signedString(odd.pointMid as String) + "(" + Utils.signedString(point) + ")"
-        return pointSpread
-        
+        if let point = odd.point {
+            var value = (point as String)
+            var point = value
+            var pointSpread = "-"
+            if let pointMid = odd.pointMid {
+                pointSpread =  Utils.signedString(odd.pointMid as String) + "(" + Utils.signedString(value) + ")"
+            }
+            return pointSpread
+        } else {
+            return "-"
+        }
     }
     
     static func oddValues (oddA: NSDictionary, oddB: NSDictionary) -> (psA:String, psB:String, mlA:String, mlB:String, over:String, under:String, overUnder:String) {
@@ -163,6 +169,11 @@ class Utils {
     }
     
     static func oddValues (oddA: Odd, oddB: Odd) -> (psA:String, psB:String, mlA:String, mlB:String, over:String, under:String, overUnder:String) {
+        var overUnder = "-"
+        if let ou = oddA.totalMid {
+            overUnder = String(format: "Over\n| %@ |\nUnder", Utils.signedString(ou))
+        }
+        
         return (
             Utils.pointSpreadString(oddA),
             Utils.pointSpreadString(oddB),
@@ -170,7 +181,7 @@ class Utils {
             oddB.money != nil ? Utils.signedString((oddB.money as String)) : "-",
             oddA.over  != nil ? Utils.signedString((oddA.over as String)) : "-",
             oddA.under != nil ? Utils.signedString((oddA.under as String)) : "-",
-            String(format: "Over\n| %@ |\nUnder", Utils.signedString((oddA.totalMid as String)))
+            overUnder
         )
     }
     

@@ -298,4 +298,32 @@ class ServiceModel: NSObject {
                 }
         }
     }
+    
+    static func clearRecord (delegate: BaseViewController) {
+        Utils.showLoader()
+        Alamofire.request(.POST, "http://api.wagerocity.com/clearRecord", parameters:
+            ["userId" : Utils.getUser().userId], encoding: ParameterEncoding.JSON)
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    if ((response as NSHTTPURLResponse?)!.statusCode as Int?)! == 200 {
+                        ServiceModel.getUser("", completion: { (request, response, body, error, statusCode) -> Void in
+                            if statusCode == 200 {
+                                delegate.updateStatsBar()
+                            }
+                        })
+                    } else {
+                        
+                    }
+                    
+                }
+        }
+    }
 }
