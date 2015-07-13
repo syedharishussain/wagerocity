@@ -13,6 +13,7 @@
 		6603B5CE1B277E0D0014489A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6603B5CC1B277E0D0014489A /* LaunchScreen.xib */; };
 		6603B5DA1B277E0D0014489A /* wagerocityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6603B5D91B277E0D0014489A /* wagerocityTests.swift */; };
 		664373411B3C8B5A00953458 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664373401B3C8B5A00953458 /* Constants.swift */; };
+		66452B8D1B50354B0087C9E9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66452B8C1B50354B0087C9E9 /* SettingViewController.swift */; };
 		666CF6971B2788B600AD4DF5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666CF6901B27884E00AD4DF5 /* Alamofire.framework */; };
 		666CF6981B2788B600AD4DF5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 666CF6901B27884E00AD4DF5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		666CF7121B28C4A600AD4DF5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 666CF7111B28C4A600AD4DF5 /* User.m */; };
@@ -166,6 +167,7 @@
 		6603B5D81B277E0D0014489A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6603B5D91B277E0D0014489A /* wagerocityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wagerocityTests.swift; sourceTree = "<group>"; };
 		664373401B3C8B5A00953458 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		66452B8C1B50354B0087C9E9 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		666CF6881B27884D00AD4DF5 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		666CF70F1B28C4A500AD4DF5 /* wagerocity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wagerocity-Bridging-Header.h"; sourceTree = "<group>"; };
 		666CF7101B28C4A600AD4DF5 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 				66D6CA041B3DACA700A271B0 /* MyPicksViewController.swift */,
 				66D6CA061B3DACB200A271B0 /* PicksOfPlayerViewController.swift */,
 				668ECCD91B49CE4800043813 /* PoolLeaderboardViewController.swift */,
+				66452B8C1B50354B0087C9E9 /* SettingViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				668ECCD71B49C63100043813 /* Pool.m in Sources */,
 				66D6C9EE1B3DABF800A271B0 /* UIImage+GIF.m in Sources */,
 				6674ED4A1B45C75E00206FC5 /* DTTimePeriod.m in Sources */,
+				66452B8D1B50354B0087C9E9 /* SettingViewController.swift in Sources */,
 				666CF7121B28C4A600AD4DF5 /* User.m in Sources */,
 				66D6C9EC1B3DABF800A271B0 /* SDWebImagePrefetcher.m in Sources */,
 				6674ED321B44A0BE00206FC5 /* OddInfo.m in Sources */,

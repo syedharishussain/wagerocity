@@ -11,6 +11,16 @@ import UIKit
 
 class Utils {
     
+    static func facebookId () -> String {
+        let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.FacebookId) as! String
+        return data
+    }
+    
+    static func setFacebookId (facebookId: String) {
+        NSUserDefaults.standardUserDefaults().setObject(facebookId, forKey: Constants.UserDefaults.FacebookId)
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
     static func getUser () -> User {
         let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.User) as! NSData
         var user: User = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! User
@@ -20,6 +30,7 @@ class Utils {
     static func saveUserObject(body: AnyObject) {
         var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(user), forKey: Constants.UserDefaults.User)
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     static func showLoader () {
@@ -135,9 +146,17 @@ class Utils {
     }
     
     static func pointSpreadString (data: NSDictionary) -> String  {
-        var value = (data["point"] as! String)
-        var point = value
-        var pointSpread = Utils.signedString((data["point_mid"] as! String)) + "(" + Utils.signedString(point) + ")"
+        var point: String = "0.0"
+        var pointMid:String = "0.0"
+        if let value = (data["point"] as? String) {
+            point = value
+        }
+        
+        if let pointMidValue = data["point_mid"] as? String {
+            pointMid = pointMidValue
+        }
+
+        var pointSpread = Utils.signedString(pointMid) + "(" + Utils.signedString(point) + ")"
         return pointSpread
         
     }

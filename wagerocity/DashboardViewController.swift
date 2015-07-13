@@ -127,6 +127,7 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func settings(sender: AnyObject) {
+        self.performSegueWithIdentifier(Constants.Segue.Settings, sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

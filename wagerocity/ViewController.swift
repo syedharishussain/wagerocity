@@ -89,6 +89,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 let id : String = result.valueForKey("id") as! String
                 
+                Utils.setFacebookId(id)
+                
                 ServiceModel.createUser(
                     id,
                     firstName: firstName,

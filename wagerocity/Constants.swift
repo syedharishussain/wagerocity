@@ -9,6 +9,7 @@
 struct Constants {
     struct UserDefaults {
         static let User = "user_object"
+        static let FacebookId = "fb_id"
     }
     
     struct IAP {
@@ -55,7 +56,7 @@ struct Constants {
         static let Games            = "gamesList"
         static let BetSlip          = "betSlip"
         static let PicksOfPlayer    = "buyPicks"
-        static let Settings         = "settings"
+        static let Settings         = "settings_controller"
         static let PoolLeaderbpards = "poolLeaderboards"
     }
 }
