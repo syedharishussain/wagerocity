@@ -9,7 +9,17 @@
 import UIKit
 
 
-class Utils: NSObject {
+class Utils {
+    
+    static func facebookId () -> String {
+        let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.FacebookId) as! String
+        return data
+    }
+    
+    static func setFacebookId (facebookId: String) {
+        NSUserDefaults.standardUserDefaults().setObject(facebookId, forKey: Constants.UserDefaults.FacebookId)
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
     
     static func getUser () -> User {
         let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.User) as! NSData
@@ -17,19 +27,17 @@ class Utils: NSObject {
         return user
     }
     
+    static func saveUserObject(body: AnyObject) {
+        var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(user), forKey: Constants.UserDefaults.User)
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
     static func showLoader () {
         SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
     }
     
     static func showMessage (delegate: UIViewController, message:String) {
-//        var alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { action in
-//            
-//        }))
-//        delegate.presentViewController(alert, animated: true) { () -> Void in
-//            
-//        }
-        
         UIAlertView(title: nil, message: message, delegate: delegate, cancelButtonTitle: "Ok").show()
     }
     
@@ -90,12 +98,12 @@ class Utils: NSObject {
         return ""
     }
     
-    static func getBetTypeOT(betOt: Int , position: String ) -> String {
+    static func getBetTypeOT(betOt: String , position: String ) -> String {
         switch (betOt) {
-        case 1: return "MoneyLine"
-        case 3: return "PointSpread"
-        case 4: return position.lowercaseString == "over" ? "Over" : "Under"
-        default: return ""
+        case "1": return "MoneyLine"
+        case "3": return "PointSpread"
+        case "4": return position.lowercaseString == "over" ? "Over" : "Under"
+        default: return "-"
         }
     }
     
@@ -124,6 +132,9 @@ class Utils: NSObject {
         }
         
     }
+    static func getToWinAmountString (value: String, betOddValue: String) -> String {
+        return String(format: "%.2f", Utils.getToWinAmount((value as NSString).doubleValue, betOddValue: (betOddValue as NSString).doubleValue))
+    }
     
     static func signedString (value: AnyObject) -> String {
         
@@ -135,11 +146,33 @@ class Utils: NSObject {
     }
     
     static func pointSpreadString (data: NSDictionary) -> String  {
-        var value = (data["point"] as! String)
-        var point = value
-        var pointSpread = Utils.signedString((data["point_mid"] as! String)) + "(" + point + ")"
+        var point: String = "0.0"
+        var pointMid:String = "0.0"
+        if let value = (data["point"] as? String) {
+            point = value
+        }
+        
+        if let pointMidValue = data["point_mid"] as? String {
+            pointMid = pointMidValue
+        }
+
+        var pointSpread = Utils.signedString(pointMid) + "(" + Utils.signedString(point) + ")"
         return pointSpread
         
+    }
+    
+    static func pointSpreadString (odd: Odd) -> String  {
+        if let point = odd.point {
+            var value = (point as String)
+            var point = value
+            var pointSpread = "-"
+            if let pointMid = odd.pointMid {
+                pointSpread =  Utils.signedString(odd.pointMid as String) + "(" + Utils.signedString(value) + ")"
+            }
+            return pointSpread
+        } else {
+            return "-"
+        }
     }
     
     static func oddValues (oddA: NSDictionary, oddB: NSDictionary) -> (psA:String, psB:String, mlA:String, mlB:String, over:String, under:String, overUnder:String) {
@@ -153,4 +186,51 @@ class Utils: NSObject {
             String(format: "Over\n| %@ |\nUnder", Utils.signedString((oddA["total_mid"] as! String)))
         )
     }
+    
+    static func oddValues (oddA: Odd, oddB: Odd) -> (psA:String, psB:String, mlA:String, mlB:String, over:String, under:String, overUnder:String) {
+        var overUnder = "-"
+        if let ou = oddA.totalMid {
+            overUnder = String(format: "Over\n| %@ |\nUnder", Utils.signedString(ou))
+        }
+        
+        return (
+            Utils.pointSpreadString(oddA),
+            Utils.pointSpreadString(oddB),
+            oddA.money != nil ? Utils.signedString((oddA.money as String)) : "-",
+            oddB.money != nil ? Utils.signedString((oddB.money as String)) : "-",
+            oddA.over  != nil ? Utils.signedString((oddA.over as String)) : "-",
+            oddA.under != nil ? Utils.signedString((oddA.under as String)) : "-",
+            overUnder
+        )
+    }
+    
+    static func formatDate (dateString:String) -> String {
+        var formattedDate = String(format: "%@", NSDate(string: dateString, formatString: "yyyy-MM-dd HH:mm:ss", timeZone: NSTimeZone(abbreviation: "CST")).formattedDateWithFormat("EEEE, MMM dd, yyyy hh:mm")) + " CST"
+        return formattedDate
+    }
+    
+    static func formatDateAmerican (dateString:String) -> String {
+        var formattedDate = String(format: "%@", NSDate(string: dateString, formatString: "yyyy-MM-dd", timeZone: NSTimeZone(abbreviation: "CST")).formattedDateWithFormat("MM-dd-yyyy"))
+        return formattedDate
+    }
+    
+    
+    static func parlayValue (oddHolders : Array<OddHolder>) -> Double {
+        var parlayValue = 1.0
+
+        for oddholder in oddHolders {
+            var oddValue: Double = oddholder.oddValue.doubleValue()
+            
+            if oddValue > 0 {
+                let multipliyer = (oddValue + 100.0) / 100.0
+                parlayValue = parlayValue * multipliyer
+            } else {
+                let multipliyer = (abs(oddValue) + 100.0) / abs(oddValue)
+                parlayValue = parlayValue * multipliyer
+            }
+        }
+        
+        return parlayValue - 1.0
+    }
+    
 }

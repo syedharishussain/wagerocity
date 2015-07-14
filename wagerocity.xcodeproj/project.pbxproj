@@ -13,6 +13,7 @@
 		6603B5CE1B277E0D0014489A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6603B5CC1B277E0D0014489A /* LaunchScreen.xib */; };
 		6603B5DA1B277E0D0014489A /* wagerocityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6603B5D91B277E0D0014489A /* wagerocityTests.swift */; };
 		664373411B3C8B5A00953458 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664373401B3C8B5A00953458 /* Constants.swift */; };
+		66452B8D1B50354B0087C9E9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66452B8C1B50354B0087C9E9 /* SettingViewController.swift */; };
 		666CF6971B2788B600AD4DF5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666CF6901B27884E00AD4DF5 /* Alamofire.framework */; };
 		666CF6981B2788B600AD4DF5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 666CF6901B27884E00AD4DF5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		666CF7121B28C4A600AD4DF5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 666CF7111B28C4A600AD4DF5 /* User.m */; };
@@ -27,10 +28,34 @@
 		6674ED2C1B44A02100206FC5 /* Pick.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED2B1B44A02100206FC5 /* Pick.m */; };
 		6674ED321B44A0BE00206FC5 /* OddInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED311B44A0BE00206FC5 /* OddInfo.m */; };
 		6674ED351B44A30E00206FC5 /* MyPickTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED341B44A30E00206FC5 /* MyPickTableViewCell.swift */; };
+		6674ED481B45C75E00206FC5 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6674ED391B45C75E00206FC5 /* DateTools.bundle */; };
+		6674ED491B45C75E00206FC5 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED3D1B45C75E00206FC5 /* DTError.m */; };
+		6674ED4A1B45C75E00206FC5 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED3F1B45C75E00206FC5 /* DTTimePeriod.m */; };
+		6674ED4B1B45C75E00206FC5 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED411B45C75E00206FC5 /* DTTimePeriodChain.m */; };
+		6674ED4C1B45C75E00206FC5 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED431B45C75E00206FC5 /* DTTimePeriodCollection.m */; };
+		6674ED4D1B45C75E00206FC5 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED451B45C75E00206FC5 /* DTTimePeriodGroup.m */; };
+		6674ED4E1B45C75E00206FC5 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED471B45C75E00206FC5 /* NSDate+DateTools.m */; };
+		6674ED501B4707DE00206FC5 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED4F1B4707DE00206FC5 /* GameTableViewCell.swift */; };
+		6674ED561B47103100206FC5 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED551B47103100206FC5 /* Game.m */; };
+		6674ED5A1B47225100206FC5 /* Odd.m in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED591B47225100206FC5 /* Odd.m */; };
+		6674ED5C1B472FE900206FC5 /* OddHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED5B1B472FE900206FC5 /* OddHolder.swift */; };
+		6674ED5E1B474F0600206FC5 /* BetSlipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED5D1B474F0600206FC5 /* BetSlipTableViewCell.swift */; };
+		6674ED611B47637200206FC5 /* doubleStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED601B47637200206FC5 /* doubleStringExtension.swift */; };
+		6679AD341B487DCA001350D0 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6679AD331B487DCA001350D0 /* DAKeyboardControl.m */; };
 		667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B6B2F1B357DDE00609C4B /* StatsBarView.swift */; };
 		667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667B6B311B357DEF00609C4B /* StatsBarView.xib */; };
-		66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */; };
-		66D6C9B31B3D9D1900A271B0 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9B21B3D9D1900A271B0 /* MKStoreKitConfigs.plist */; };
+		668ECCC71B49A37700043813 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCB91B49A37700043813 /* NSData+MKBase64.m */; };
+		668ECCC81B49A37700043813 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCBB1B49A37700043813 /* SFHFKeychainUtils.m */; };
+		668ECCC91B49A37700043813 /* MKSKProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCBD1B49A37700043813 /* MKSKProduct.m */; };
+		668ECCCA1B49A37700043813 /* MKSKSubscriptionProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCBF1B49A37700043813 /* MKSKSubscriptionProduct.m */; };
+		668ECCCB1B49A37700043813 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 668ECCC11B49A37700043813 /* MKStoreKitConfigs.plist */; };
+		668ECCCC1B49A37700043813 /* MKStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC31B49A37700043813 /* MKStoreManager.m */; };
+		668ECCCD1B49A37700043813 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC41B49A37700043813 /* README.mdown */; };
+		668ECCCE1B49A37700043813 /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCC61B49A37700043813 /* VerificationController.m */; };
+		668ECCD61B49C63100043813 /* Commisioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD11B49C63100043813 /* Commisioner.m */; };
+		668ECCD71B49C63100043813 /* Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD31B49C63100043813 /* Pool.m */; };
+		668ECCD81B49C63100043813 /* PoolMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD51B49C63100043813 /* PoolMembers.m */; };
+		668ECCDA1B49CE4800043813 /* PoolLeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668ECCD91B49CE4800043813 /* PoolLeaderboardViewController.swift */; };
 		66D6C9BA1B3D9F1600A271B0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */; };
 		66D6C9BF1B3DAAB800A271B0 /* angle-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BC1B3DAAB800A271B0 /* angle-mask@2x.png */; };
 		66D6C9C01B3DAAB800A271B0 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6C9BD1B3DAAB800A271B0 /* error@2x.png */; };
@@ -143,6 +168,7 @@
 		6603B5D81B277E0D0014489A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6603B5D91B277E0D0014489A /* wagerocityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wagerocityTests.swift; sourceTree = "<group>"; };
 		664373401B3C8B5A00953458 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		66452B8C1B50354B0087C9E9 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		666CF6881B27884D00AD4DF5 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		666CF70F1B28C4A500AD4DF5 /* wagerocity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wagerocity-Bridging-Header.h"; sourceTree = "<group>"; };
 		666CF7101B28C4A600AD4DF5 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -160,11 +186,55 @@
 		6674ED301B44A0BE00206FC5 /* OddInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OddInfo.h; sourceTree = "<group>"; };
 		6674ED311B44A0BE00206FC5 /* OddInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OddInfo.m; sourceTree = "<group>"; };
 		6674ED341B44A30E00206FC5 /* MyPickTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPickTableViewCell.swift; sourceTree = "<group>"; };
+		6674ED391B45C75E00206FC5 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DateTools.bundle; sourceTree = "<group>"; };
+		6674ED3A1B45C75E00206FC5 /* DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTools.h; sourceTree = "<group>"; };
+		6674ED3B1B45C75E00206FC5 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
+		6674ED3C1B45C75E00206FC5 /* DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTError.h; sourceTree = "<group>"; };
+		6674ED3D1B45C75E00206FC5 /* DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTError.m; sourceTree = "<group>"; };
+		6674ED3E1B45C75E00206FC5 /* DTTimePeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriod.h; sourceTree = "<group>"; };
+		6674ED3F1B45C75E00206FC5 /* DTTimePeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriod.m; sourceTree = "<group>"; };
+		6674ED401B45C75E00206FC5 /* DTTimePeriodChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodChain.h; sourceTree = "<group>"; };
+		6674ED411B45C75E00206FC5 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodChain.m; sourceTree = "<group>"; };
+		6674ED421B45C75E00206FC5 /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodCollection.h; sourceTree = "<group>"; };
+		6674ED431B45C75E00206FC5 /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodCollection.m; sourceTree = "<group>"; };
+		6674ED441B45C75E00206FC5 /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTimePeriodGroup.h; sourceTree = "<group>"; };
+		6674ED451B45C75E00206FC5 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroup.m; sourceTree = "<group>"; };
+		6674ED461B45C75E00206FC5 /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateTools.h"; sourceTree = "<group>"; };
+		6674ED471B45C75E00206FC5 /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
+		6674ED4F1B4707DE00206FC5 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		6674ED541B47103100206FC5 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		6674ED551B47103100206FC5 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		6674ED581B47225100206FC5 /* Odd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Odd.h; sourceTree = "<group>"; };
+		6674ED591B47225100206FC5 /* Odd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Odd.m; sourceTree = "<group>"; };
+		6674ED5B1B472FE900206FC5 /* OddHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OddHolder.swift; sourceTree = "<group>"; };
+		6674ED5D1B474F0600206FC5 /* BetSlipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetSlipTableViewCell.swift; sourceTree = "<group>"; };
+		6674ED601B47637200206FC5 /* doubleStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = doubleStringExtension.swift; sourceTree = "<group>"; };
+		6679AD321B487DCA001350D0 /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
+		6679AD331B487DCA001350D0 /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		667B6B2F1B357DDE00609C4B /* StatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarView.swift; sourceTree = "<group>"; };
 		667B6B311B357DEF00609C4B /* StatsBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsBarView.xib; sourceTree = "<group>"; };
-		66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
-		66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
-		66D6C9B21B3D9D1900A271B0 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
+		668ECCB81B49A37700043813 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
+		668ECCB91B49A37700043813 /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
+		668ECCBA1B49A37700043813 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		668ECCBB1B49A37700043813 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		668ECCBC1B49A37700043813 /* MKSKProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSKProduct.h; sourceTree = "<group>"; };
+		668ECCBD1B49A37700043813 /* MKSKProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSKProduct.m; sourceTree = "<group>"; };
+		668ECCBE1B49A37700043813 /* MKSKSubscriptionProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSKSubscriptionProduct.h; sourceTree = "<group>"; };
+		668ECCBF1B49A37700043813 /* MKSKSubscriptionProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSKSubscriptionProduct.m; sourceTree = "<group>"; };
+		668ECCC01B49A37700043813 /* MKStoreKitConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKitConfigs.h; sourceTree = "<group>"; };
+		668ECCC11B49A37700043813 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MKStoreKitConfigs.plist; sourceTree = "<group>"; };
+		668ECCC21B49A37700043813 /* MKStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreManager.h; sourceTree = "<group>"; };
+		668ECCC31B49A37700043813 /* MKStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreManager.m; sourceTree = "<group>"; };
+		668ECCC41B49A37700043813 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		668ECCC51B49A37700043813 /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationController.h; sourceTree = "<group>"; };
+		668ECCC61B49A37700043813 /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationController.m; sourceTree = "<group>"; };
+		668ECCD01B49C63100043813 /* Commisioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commisioner.h; sourceTree = "<group>"; };
+		668ECCD11B49C63100043813 /* Commisioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commisioner.m; sourceTree = "<group>"; };
+		668ECCD21B49C63100043813 /* Pool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pool.h; sourceTree = "<group>"; };
+		668ECCD31B49C63100043813 /* Pool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pool.m; sourceTree = "<group>"; };
+		668ECCD41B49C63100043813 /* PoolMembers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolMembers.h; sourceTree = "<group>"; };
+		668ECCD51B49C63100043813 /* PoolMembers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolMembers.m; sourceTree = "<group>"; };
+		668ECCD91B49CE4800043813 /* PoolLeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolLeaderboardViewController.swift; sourceTree = "<group>"; };
 		66D6C9B51B3D9F1600A271B0 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		66D6C9B71B3D9F1600A271B0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		66D6C9B81B3D9F1600A271B0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -290,6 +360,7 @@
 				66D6C9BB1B3D9F2F00A271B0 /* ThirdPartyLibs */,
 				6603B5C11B277E0D0014489A /* Supporting Files */,
 				666CF70F1B28C4A500AD4DF5 /* wagerocity-Bridging-Header.h */,
+				6674ED601B47637200206FC5 /* doubleStringExtension.swift */,
 			);
 			path = wagerocity;
 			sourceTree = "<group>";
@@ -351,9 +422,13 @@
 		6674ED2E1B44A03000206FC5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6674ED571B47225100206FC5 /* Odd */,
+				6674ED531B47103100206FC5 /* Game */,
 				6674ED331B44A0C300206FC5 /* OddInfo */,
 				6674ED2D1B44A02900206FC5 /* Pick */,
 				66D6C9AA1B3D9CB800A271B0 /* User */,
+				668ECCCF1B49C63100043813 /* Pool */,
+				6674ED5B1B472FE900206FC5 /* OddHolder.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -374,6 +449,55 @@
 				6674ED311B44A0BE00206FC5 /* OddInfo.m */,
 			);
 			name = OddInfo;
+			sourceTree = "<group>";
+		};
+		6674ED381B45C75E00206FC5 /* DateTools */ = {
+			isa = PBXGroup;
+			children = (
+				6674ED391B45C75E00206FC5 /* DateTools.bundle */,
+				6674ED3A1B45C75E00206FC5 /* DateTools.h */,
+				6674ED3B1B45C75E00206FC5 /* DTConstants.h */,
+				6674ED3C1B45C75E00206FC5 /* DTError.h */,
+				6674ED3D1B45C75E00206FC5 /* DTError.m */,
+				6674ED3E1B45C75E00206FC5 /* DTTimePeriod.h */,
+				6674ED3F1B45C75E00206FC5 /* DTTimePeriod.m */,
+				6674ED401B45C75E00206FC5 /* DTTimePeriodChain.h */,
+				6674ED411B45C75E00206FC5 /* DTTimePeriodChain.m */,
+				6674ED421B45C75E00206FC5 /* DTTimePeriodCollection.h */,
+				6674ED431B45C75E00206FC5 /* DTTimePeriodCollection.m */,
+				6674ED441B45C75E00206FC5 /* DTTimePeriodGroup.h */,
+				6674ED451B45C75E00206FC5 /* DTTimePeriodGroup.m */,
+				6674ED461B45C75E00206FC5 /* NSDate+DateTools.h */,
+				6674ED471B45C75E00206FC5 /* NSDate+DateTools.m */,
+			);
+			path = DateTools;
+			sourceTree = "<group>";
+		};
+		6674ED531B47103100206FC5 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				6674ED541B47103100206FC5 /* Game.h */,
+				6674ED551B47103100206FC5 /* Game.m */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		6674ED571B47225100206FC5 /* Odd */ = {
+			isa = PBXGroup;
+			children = (
+				6674ED581B47225100206FC5 /* Odd.h */,
+				6674ED591B47225100206FC5 /* Odd.m */,
+			);
+			path = Odd;
+			sourceTree = "<group>";
+		};
+		6679AD311B487DCA001350D0 /* DAKeyboardControl */ = {
+			isa = PBXGroup;
+			children = (
+				6679AD321B487DCA001350D0 /* DAKeyboardControl.h */,
+				6679AD331B487DCA001350D0 /* DAKeyboardControl.m */,
+			);
+			path = DAKeyboardControl;
 			sourceTree = "<group>";
 		};
 		667B6B2E1B357DAB00609C4B /* NavigationView */ = {
@@ -405,6 +529,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		668ECCB61B49A37700043813 /* MKStoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				668ECCB71B49A37700043813 /* External */,
+				668ECCBC1B49A37700043813 /* MKSKProduct.h */,
+				668ECCBD1B49A37700043813 /* MKSKProduct.m */,
+				668ECCBE1B49A37700043813 /* MKSKSubscriptionProduct.h */,
+				668ECCBF1B49A37700043813 /* MKSKSubscriptionProduct.m */,
+				668ECCC01B49A37700043813 /* MKStoreKitConfigs.h */,
+				668ECCC11B49A37700043813 /* MKStoreKitConfigs.plist */,
+				668ECCC21B49A37700043813 /* MKStoreManager.h */,
+				668ECCC31B49A37700043813 /* MKStoreManager.m */,
+				668ECCC41B49A37700043813 /* README.mdown */,
+				668ECCC51B49A37700043813 /* VerificationController.h */,
+				668ECCC61B49A37700043813 /* VerificationController.m */,
+			);
+			path = MKStoreKit;
+			sourceTree = "<group>";
+		};
+		668ECCB71B49A37700043813 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				668ECCB81B49A37700043813 /* NSData+MKBase64.h */,
+				668ECCB91B49A37700043813 /* NSData+MKBase64.m */,
+				668ECCBA1B49A37700043813 /* SFHFKeychainUtils.h */,
+				668ECCBB1B49A37700043813 /* SFHFKeychainUtils.m */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		668ECCCF1B49C63100043813 /* Pool */ = {
+			isa = PBXGroup;
+			children = (
+				668ECCD01B49C63100043813 /* Commisioner.h */,
+				668ECCD11B49C63100043813 /* Commisioner.m */,
+				668ECCD21B49C63100043813 /* Pool.h */,
+				668ECCD31B49C63100043813 /* Pool.m */,
+				668ECCD41B49C63100043813 /* PoolMembers.h */,
+				668ECCD51B49C63100043813 /* PoolMembers.m */,
+			);
+			path = Pool;
+			sourceTree = "<group>";
+		};
 		66D6C9AA1B3D9CB800A271B0 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,16 +579,6 @@
 				666CF7111B28C4A600AD4DF5 /* User.m */,
 			);
 			name = User;
-			sourceTree = "<group>";
-		};
-		66D6C9B11B3D9CD200A271B0 /* MKStoreKit */ = {
-			isa = PBXGroup;
-			children = (
-				66D6C9B21B3D9D1900A271B0 /* MKStoreKitConfigs.plist */,
-				66D6C9AE1B3D9CCE00A271B0 /* MKStoreKit.h */,
-				66D6C9AF1B3D9CCE00A271B0 /* MKStoreKit.m */,
-			);
-			name = MKStoreKit;
 			sourceTree = "<group>";
 		};
 		66D6C9B41B3D9F1600A271B0 /* SVProgressHUD */ = {
@@ -440,9 +597,11 @@
 		66D6C9BB1B3D9F2F00A271B0 /* ThirdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				668ECCB61B49A37700043813 /* MKStoreKit */,
+				6679AD311B487DCA001350D0 /* DAKeyboardControl */,
+				6674ED381B45C75E00206FC5 /* DateTools */,
 				66D6C9C21B3DABF800A271B0 /* SDWebImage */,
 				66D6C9B41B3D9F1600A271B0 /* SVProgressHUD */,
-				66D6C9B11B3D9CD200A271B0 /* MKStoreKit */,
 			);
 			name = ThirdPartyLibs;
 			sourceTree = "<group>";
@@ -495,6 +654,8 @@
 				6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */,
 				6674ED281B44768100206FC5 /* ExpertTableViewCell.swift */,
 				6674ED341B44A30E00206FC5 /* MyPickTableViewCell.swift */,
+				6674ED4F1B4707DE00206FC5 /* GameTableViewCell.swift */,
+				6674ED5D1B474F0600206FC5 /* BetSlipTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -516,6 +677,8 @@
 				66D6CA021B3DAC9D00A271B0 /* BetSlipViewController.swift */,
 				66D6CA041B3DACA700A271B0 /* MyPicksViewController.swift */,
 				66D6CA061B3DACB200A271B0 /* PicksOfPlayerViewController.swift */,
+				668ECCD91B49CE4800043813 /* PoolLeaderboardViewController.swift */,
+				66452B8C1B50354B0087C9E9 /* SettingViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -646,7 +809,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66D6C9B31B3D9D1900A271B0 /* MKStoreKitConfigs.plist in Resources */,
+				668ECCCB1B49A37700043813 /* MKStoreKitConfigs.plist in Resources */,
 				667B6B321B357DEF00609C4B /* StatsBarView.xib in Resources */,
 				66D6C9BF1B3DAAB800A271B0 /* angle-mask@2x.png in Resources */,
 				6603B5C91B277E0D0014489A /* Main.storyboard in Resources */,
@@ -654,6 +817,7 @@
 				6603B5CE1B277E0D0014489A /* LaunchScreen.xib in Resources */,
 				6603B5CB1B277E0D0014489A /* Images.xcassets in Resources */,
 				66D6C9C01B3DAAB800A271B0 /* error@2x.png in Resources */,
+				6674ED481B45C75E00206FC5 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,27 +853,44 @@
 			files = (
 				66D6C9FD1B3DAC7C00A271B0 /* GamesViewController.swift in Sources */,
 				66DEAF481B42C5770079BBC9 /* LeaderboardTableViewCell.swift in Sources */,
+				668ECCD71B49C63100043813 /* Pool.m in Sources */,
 				66D6C9EE1B3DABF800A271B0 /* UIImage+GIF.m in Sources */,
+				6674ED4A1B45C75E00206FC5 /* DTTimePeriod.m in Sources */,
+				66452B8D1B50354B0087C9E9 /* SettingViewController.swift in Sources */,
 				666CF7121B28C4A600AD4DF5 /* User.m in Sources */,
 				66D6C9EC1B3DABF800A271B0 /* SDWebImagePrefetcher.m in Sources */,
 				6674ED321B44A0BE00206FC5 /* OddInfo.m in Sources */,
 				66FDB6FE1B27807900D0B2F4 /* ViewController.swift in Sources */,
 				667B6B301B357DDE00609C4B /* StatsBarView.swift in Sources */,
+				668ECCCE1B49A37700043813 /* VerificationController.m in Sources */,
+				6674ED561B47103100206FC5 /* Game.m in Sources */,
 				6674ED251B431FE300206FC5 /* PickOfPlayerTableViewCell.swift in Sources */,
 				66D6C9E51B3DABF800A271B0 /* NSData+ImageContentType.m in Sources */,
 				66D6CA011B3DAC8F00A271B0 /* PoolDetailViewController.swift in Sources */,
+				668ECCCD1B49A37700043813 /* README.mdown in Sources */,
+				668ECCD61B49C63100043813 /* Commisioner.m in Sources */,
+				668ECCCC1B49A37700043813 /* MKStoreManager.m in Sources */,
 				666CF7161B28CCDD00AD4DF5 /* DashboardViewController.swift in Sources */,
 				66D6C9F71B3DAC5300A271B0 /* ExpertViewController.swift in Sources */,
 				6603B5C41B277E0D0014489A /* AppDelegate.swift in Sources */,
 				66D6C9ED1B3DABF800A271B0 /* UIButton+WebCache.m in Sources */,
 				66D6C9FB1B3DAC6E00A271B0 /* SportsViewController.swift in Sources */,
+				6674ED4C1B45C75E00206FC5 /* DTTimePeriodCollection.m in Sources */,
 				66D6C9F91B3DAC5F00A271B0 /* PoolViewController.swift in Sources */,
+				6674ED4B1B45C75E00206FC5 /* DTTimePeriodChain.m in Sources */,
+				6674ED611B47637200206FC5 /* doubleStringExtension.swift in Sources */,
 				66D6C9EA1B3DABF800A271B0 /* SDWebImageDownloaderOperation.m in Sources */,
+				6674ED5E1B474F0600206FC5 /* BetSlipTableViewCell.swift in Sources */,
+				668ECCD81B49C63100043813 /* PoolMembers.m in Sources */,
+				668ECCDA1B49CE4800043813 /* PoolLeaderboardViewController.swift in Sources */,
 				66D6C9E41B3DABF800A271B0 /* MKAnnotationView+WebCache.m in Sources */,
+				6674ED4E1B45C75E00206FC5 /* NSDate+DateTools.m in Sources */,
+				668ECCCA1B49A37700043813 /* MKSKSubscriptionProduct.m in Sources */,
 				66D6C9FF1B3DAC8800A271B0 /* MyPoolViewController.swift in Sources */,
 				66D6CA091B3DB13A00A271B0 /* Utils.swift in Sources */,
 				66D6CA051B3DACA700A271B0 /* MyPicksViewController.swift in Sources */,
 				6674ED351B44A30E00206FC5 /* MyPickTableViewCell.swift in Sources */,
+				6674ED5A1B47225100206FC5 /* Odd.m in Sources */,
 				66D6C9E71B3DABF800A271B0 /* SDWebImageCompat.m in Sources */,
 				6674ED291B44768100206FC5 /* ExpertTableViewCell.swift in Sources */,
 				66FDB7031B2780CB00D0B2F4 /* BaseViewController.swift in Sources */,
@@ -717,10 +898,16 @@
 				66D6C9F51B3DAC4700A271B0 /* LeaderboardViewController.swift in Sources */,
 				6674ED271B4325FE00206FC5 /* ServiceModel.swift in Sources */,
 				66D6CA031B3DAC9D00A271B0 /* BetSlipViewController.swift in Sources */,
+				668ECCC81B49A37700043813 /* SFHFKeychainUtils.m in Sources */,
 				6674ED2C1B44A02100206FC5 /* Pick.m in Sources */,
+				6674ED4D1B45C75E00206FC5 /* DTTimePeriodGroup.m in Sources */,
 				66D6C9F21B3DABF800A271B0 /* UIImageView+WebCache.m in Sources */,
+				6674ED5C1B472FE900206FC5 /* OddHolder.swift in Sources */,
+				6674ED501B4707DE00206FC5 /* GameTableViewCell.swift in Sources */,
 				66DEAF401B42B8DB0079BBC9 /* SportListTableViewCell.swift in Sources */,
-				66D6C9B01B3D9CCE00A271B0 /* MKStoreKit.m in Sources */,
+				6679AD341B487DCA001350D0 /* DAKeyboardControl.m in Sources */,
+				668ECCC91B49A37700043813 /* MKSKProduct.m in Sources */,
+				6674ED491B45C75E00206FC5 /* DTError.m in Sources */,
 				66D6C9F31B3DABF800A271B0 /* UIView+WebCacheOperation.m in Sources */,
 				666CF71E1B28DCB100AD4DF5 /* NavigationBar.swift in Sources */,
 				664373411B3C8B5A00953458 /* Constants.swift in Sources */,
@@ -730,6 +917,7 @@
 				66D6C9E81B3DABF800A271B0 /* SDWebImageDecoder.m in Sources */,
 				66D6C9F01B3DABF800A271B0 /* UIImage+WebP.m in Sources */,
 				66D6C9EB1B3DABF800A271B0 /* SDWebImageManager.m in Sources */,
+				668ECCC71B49A37700043813 /* NSData+MKBase64.m in Sources */,
 				66D6C9BA1B3D9F1600A271B0 /* SVProgressHUD.m in Sources */,
 				66DA44701B3D82C400CF24F7 /* GetDollarsViewController.swift in Sources */,
 				66D6C9E61B3DABF800A271B0 /* SDImageCache.m in Sources */,
@@ -868,6 +1056,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/haris/Documents/FacebookSDK,
@@ -891,6 +1080,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/haris/Documents/FacebookSDK,

@@ -79,42 +79,43 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
             } else {
                 
-                //                println("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
-                //                println("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
-                //                println("User Email is: \(userEmail)")
+                let firstName : String = result.valueForKey("first_name") as! String
+                let lastName : String = result.valueForKey("last_name") as! String
+                var email : String = ""
                 
-                let id : AnyObject? = result.valueForKey("id")
-                
-                Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : id!])
-                    .responseJSON{ (request, response, body, error) in
-                        Utils.hideLoader()
-                        var dic : NSDictionary = body as! NSDictionary
-                        
-                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
-                        if (error != nil) {
-                            if let newError:NSError = error {
-                                Utils.hideLoader()
-                                Utils.showError(newError)
-                            }
-                            
-                        } else {
-                            let request1:NSMutableURLRequest = request as! NSMutableURLRequest
-                            
-                            var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
-                            self.saveUserObject(user)
-                            self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
-                        }
+                if let userEmail =  result.valueForKey("email") as? String {
+                    email = userEmail
                 }
                 
+                let id : String = result.valueForKey("id") as! String
                 
+                Utils.setFacebookId(id)
+                
+                ServiceModel.createUser(
+                    id,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    completion: { (request, response, body, error, statusCode) -> Void in
+                        
+                        if statusCode == 200 {
+                            
+                            Utils.saveUserObject(body!)
+                            self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
+                            
+                        } else {
+                            
+                            ServiceModel.getUser(id, completion: { (request, response, body, error, statusCode) -> Void in
+                                if statusCode == 200 {
+                                    self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
+                                } else {
+                                    UIAlertView(title: "Error!", message: String(format:"%@", body as! NSDictionary), delegate: nil, cancelButtonTitle: "ok")
+                                }
+                            })
+                        }
+                })
             }
         })
-    }
-    
-    func saveUserObject(user: User) {
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(user), forKey: Constants.UserDefaults.User)
     }
     
 }

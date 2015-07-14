@@ -70,11 +70,24 @@ class SportsViewController: BaseViewController, UITableViewDelegate, UITableView
                     }
                     
                 }
+        } else {
+            ServiceModel.getGames(leagueName, completion: { (_, _, body, _, statusCode) -> Void in
+                if statusCode == 200 {
+                    var games : Array <Game> = [Game]()
+                    var gameArray : NSArray! = body as! NSArray
+                    gameArray.enumerateObjectsUsingBlock({ (object, _, _) -> Void in
+                        var game: Game = Game.modelObjectWithDictionary(object as! NSDictionary as [NSObject : AnyObject])
+                        game.leagueName = self.leagueName
+                        games.append(game)
+                    })
+                    self.performSegueWithIdentifier(Constants.Segue.Games, sender: games)
+                } else {
+                    Utils.showMessage(self, message: "There are currently no games!")
+                }
+            })
         }
     }
     
-    
- 
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -82,6 +95,10 @@ class SportsViewController: BaseViewController, UITableViewDelegate, UITableView
         if segue.identifier == Constants.Segue.Leaderboard {
             var leaderboardViewController = segue.destinationViewController as! LeaderboardViewController
             leaderboardViewController.data = sender as! NSArray
+        }
+        if segue.identifier == Constants.Segue.Games {
+            var controller = segue.destinationViewController as! GamesViewController
+            controller.data = sender as! Array<Game>
         }
     }
     

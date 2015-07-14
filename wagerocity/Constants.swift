@@ -9,6 +9,7 @@
 struct Constants {
     struct UserDefaults {
         static let User = "user_object"
+        static let FacebookId = "fb_id"
     }
     
     struct IAP {
@@ -29,18 +30,33 @@ struct Constants {
         static let StatsBarView     = "statsBar"
     }
     
+    struct BetTypeSPT {
+        static let Single = "SINGLE"
+        static let Parley = "PARLEY"
+        static let Teaser = "TEASER"
+    }
+    
+    struct BetType {
+        static let PointSpread = "Point Spread"
+        static let MoneyLine = "Money Line"
+        static let Over = "Over"
+        static let Under = "Under"
+        
+    }
+    
     struct Segue {
         static let Dashboard        = "dashboard"
         static let SportsList       = "sportsList"
         static let Experts          = "experts_controller"
         static let Leaderboard      = "leaderboards_controller"
         static let MyPicks          = "MyPicks_Controller"
-        static let Pools            = "dashboard"
-        static let MyPools          = "dashboard"
-        static let PoolDetail       = "dashboard"
+        static let Pools            = "Pools_Controller"
+        static let MyPools          = "myPools"
+        static let PoolDetail       = "poolDetail"
         static let Games            = "gamesList"
-        static let BetSlip          = "dashboard"
+        static let BetSlip          = "betSlip"
         static let PicksOfPlayer    = "buyPicks"
-        static let Settings         = "dashboard"
+        static let Settings         = "settings_controller"
+        static let PoolLeaderbpards = "poolLeaderboards"
     }
 }

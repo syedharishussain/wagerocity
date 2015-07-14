@@ -81,7 +81,7 @@ NSString *const kUserEmail = @"email";
             self.city = [self objectOrNilForKey:kUserCity fromDictionary:dict];
             self.timezone = [self objectOrNilForKey:kUserTimezone fromDictionary:dict];
             self.country = [self objectOrNilForKey:kUserCountry fromDictionary:dict];
-            self.currentrecord = [self objectOrNilForKey:kUserCurrentrecord fromDictionary:dict];
+            self.currentrecord = [[self objectOrNilForKey:kUserCurrentrecord fromDictionary:dict] isKindOfClass:[NSNumber class]] ? ((NSNumber *)[self objectOrNilForKey:kUserCurrentrecord fromDictionary:dict]).stringValue : [self objectOrNilForKey:kUserCurrentrecord fromDictionary:dict];
             self.email = [self objectOrNilForKey:kUserEmail fromDictionary:dict];
 
     }
