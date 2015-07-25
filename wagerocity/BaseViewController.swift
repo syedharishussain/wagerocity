@@ -18,12 +18,12 @@ class BaseViewController: UIViewController {
         
         addGetDollarsButton()
         addStatsBarView()
-        updateStatsBar()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        updateStatsBar()
     }
     
     override func viewDidAppear(animated: Bool) {
