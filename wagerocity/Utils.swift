@@ -49,8 +49,15 @@ class Utils {
         SVProgressHUD.showErrorWithStatus(error.localizedDescription)
     }
     
-    static func sportsList () -> Array<String> {
-        return ["NFL", "NCAA Football", "MLB", "NBA", "NCAA Basketball", "NHL", "Soccer" ,"Tennis"]
+    static func sportsList (isLeaderboard: Bool) -> Array<String> {
+        
+        var array = ["NFL", "NCAA Football", "MLB", "NBA", "NCAA Basketball", "NHL", "Soccer" ,"Tennis"]
+        
+        if isLeaderboard {
+            array = ["Overall", "NFL", "NCAA Football", "MLB", "NBA", "NCAA Basketball", "NHL", "Soccer" ,"Tennis"]
+        }
+        
+        return array
     }
     
     static func sportsImage(name: String) -> UIImage {
@@ -71,6 +78,8 @@ class Utils {
             return UIImage(named: "soccer")!
         }else if string == "tennis" {
             return UIImage(named: "tennis")!
+        }else if string == "overall" {
+            return UIImage(named: "Icon-60")!
         }
         return UIImage(named: "sports")!
     }
@@ -94,6 +103,8 @@ class Utils {
             return "soccer"
         }else if string == "tennis" {
             return "tennis"
+        }else if string == "overall" {
+            return "all"
         }
         return ""
     }

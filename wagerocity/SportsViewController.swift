@@ -16,11 +16,11 @@ class SportsViewController: BaseViewController, UITableViewDelegate, UITableView
     var isLeaderboards : Bool = false
     var leagueName : String = ""
     
-    var sportsList = Utils.sportsList()
+    var sportsList : Array<String>! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        sportsList = Utils.sportsList(isLeaderboards)
         // Do any additional setup after loading the view.
     }
     
