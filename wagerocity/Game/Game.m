@@ -26,6 +26,8 @@ NSString *const kGameTeamANickname = @"team_A_nickname";
 NSString *const kGameTeamAFullname = @"team_A_fullname";
 NSString *const kGameTeamANumber = @"team_A_number";
 NSString *const kGameCstStartTime = @"cst_start_time";
+NSString *const kGamePitcherA = @"team_A_pitcher";
+NSString *const kGamePitcherB = @"team_B_pitcher";
 
 
 @interface Game ()
@@ -66,25 +68,27 @@ NSString *const kGameCstStartTime = @"cst_start_time";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.oddA = [Odd modelObjectWithDictionary:[dict objectForKey:kGameTeamAOdds]];
-            self.oddB = [Odd modelObjectWithDictionary:[dict objectForKey:kGameTeamBOdds]];
-            self.teamBNickname = [self objectOrNilForKey:kGameTeamBNickname fromDictionary:dict];
-            self.nameA = [self objectOrNilForKey:kGameTeamAName fromDictionary:dict];
-            self.sports = [self objectOrNilForKey:kGameSports fromDictionary:dict];
-            self.fullNameB = [self objectOrNilForKey:kGameTeamBFullname fromDictionary:dict];
-            self.logoA = [self objectOrNilForKey:kGameTeamALogo fromDictionary:dict];
-            self.teamBPitcher = [self objectOrNilForKey:kGameTeamBPitcher fromDictionary:dict];
-            self.teamAPitcher = [self objectOrNilForKey:kGameTeamAPitcher fromDictionary:dict];
-            self.logoB = [self objectOrNilForKey:kGameTeamBLogo fromDictionary:dict];
-            self.teamBNumber = [self objectOrNilForKey:kGameTeamBNumber fromDictionary:dict];
-            self.nameB = [self objectOrNilForKey:kGameTeamBName fromDictionary:dict];
-            self.teamANickname = [self objectOrNilForKey:kGameTeamANickname fromDictionary:dict];
-            self.fullNameA = [self objectOrNilForKey:kGameTeamAFullname fromDictionary:dict];
-            self.teamANumber = [self objectOrNilForKey:kGameTeamANumber fromDictionary:dict];
-            self.cstStartTime = [self objectOrNilForKey:kGameCstStartTime fromDictionary:dict];
-            self.oddHolders = [NSMutableArray new];
-            self.leagueName = @"";
-            self.poolId = @"";
+        self.oddA = [Odd modelObjectWithDictionary:[dict objectForKey:kGameTeamAOdds]];
+        self.oddB = [Odd modelObjectWithDictionary:[dict objectForKey:kGameTeamBOdds]];
+        self.teamBNickname = [self objectOrNilForKey:kGameTeamBNickname fromDictionary:dict];
+        self.nameA = [self objectOrNilForKey:kGameTeamAName fromDictionary:dict];
+        self.sports = [self objectOrNilForKey:kGameSports fromDictionary:dict];
+        self.fullNameB = [self objectOrNilForKey:kGameTeamBFullname fromDictionary:dict];
+        self.logoA = [self objectOrNilForKey:kGameTeamALogo fromDictionary:dict];
+        self.teamBPitcher = [self objectOrNilForKey:kGameTeamBPitcher fromDictionary:dict];
+        self.teamAPitcher = [self objectOrNilForKey:kGameTeamAPitcher fromDictionary:dict];
+        self.logoB = [self objectOrNilForKey:kGameTeamBLogo fromDictionary:dict];
+        self.teamBNumber = [self objectOrNilForKey:kGameTeamBNumber fromDictionary:dict];
+        self.nameB = [self objectOrNilForKey:kGameTeamBName fromDictionary:dict];
+        self.teamANickname = [self objectOrNilForKey:kGameTeamANickname fromDictionary:dict];
+        self.fullNameA = [self objectOrNilForKey:kGameTeamAFullname fromDictionary:dict];
+        self.teamANumber = [self objectOrNilForKey:kGameTeamANumber fromDictionary:dict];
+        self.cstStartTime = [self objectOrNilForKey:kGameCstStartTime fromDictionary:dict];
+        self.pitcherA = [self objectOrNilForKey:kGamePitcherA fromDictionary:dict];
+        self.pitcherB = [self objectOrNilForKey:kGamePitcherB fromDictionary:dict];
+        self.oddHolders = [NSMutableArray new];
+        self.leagueName = @"";
+        self.poolId = @"";
     }
     
     return self;
@@ -120,11 +124,13 @@ NSString *const kGameCstStartTime = @"cst_start_time";
     [mutableDict setValue:self.fullNameA forKey:kGameTeamAFullname];
     [mutableDict setValue:self.teamANumber forKey:kGameTeamANumber];
     [mutableDict setValue:self.cstStartTime forKey:kGameCstStartTime];
-
+    [mutableDict setValue:self.pitcherA forKey:kGamePitcherA];
+    [mutableDict setValue:self.pitcherB forKey:kGamePitcherB];
+    
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
-- (NSString *)description 
+- (NSString *)description
 {
     return [NSString stringWithFormat:@"%@", [self dictionaryRepresentation]];
 }
@@ -142,7 +148,7 @@ NSString *const kGameCstStartTime = @"cst_start_time";
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];
-
+    
     self.oddA = [aDecoder decodeObjectForKey:kGameTeamAOdds];
     self.oddB = [aDecoder decodeObjectForKey:kGameTeamBOdds];
     self.teamBNickname = [aDecoder decodeObjectForKey:kGameTeamBNickname];
@@ -159,12 +165,15 @@ NSString *const kGameCstStartTime = @"cst_start_time";
     self.fullNameA = [aDecoder decodeObjectForKey:kGameTeamAFullname];
     self.teamANumber = [aDecoder decodeObjectForKey:kGameTeamANumber];
     self.cstStartTime = [aDecoder decodeObjectForKey:kGameCstStartTime];
+    self.pitcherA = [aDecoder decodeObjectForKey:kGamePitcherA];
+    self.pitcherB = [aDecoder decodeObjectForKey:kGamePitcherB];
+    
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-
+    
     [aCoder encodeObject:_oddA forKey:kGameTeamAOdds];
     [aCoder encodeObject:_oddB forKey:kGameTeamBOdds];
     [aCoder encodeObject:_teamBNickname forKey:kGameTeamBNickname];
@@ -181,6 +190,8 @@ NSString *const kGameCstStartTime = @"cst_start_time";
     [aCoder encodeObject:_fullNameA forKey:kGameTeamAFullname];
     [aCoder encodeObject:_teamANumber forKey:kGameTeamANumber];
     [aCoder encodeObject:_cstStartTime forKey:kGameCstStartTime];
+    [aCoder encodeObject:self.pitcherA forKey:kGamePitcherA];
+    [aCoder encodeObject:self.pitcherB forKey:kGamePitcherB];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -188,7 +199,7 @@ NSString *const kGameCstStartTime = @"cst_start_time";
     Game *copy = [[Game alloc] init];
     
     if (copy) {
-
+        
         copy.oddA = [self.oddA copyWithZone:zone];
         copy.oddB = [self.oddB copyWithZone:zone];
         copy.teamBNickname = [self.teamBNickname copyWithZone:zone];
@@ -205,6 +216,8 @@ NSString *const kGameCstStartTime = @"cst_start_time";
         copy.fullNameA = [self.fullNameA copyWithZone:zone];
         copy.teamANumber = [self.teamANumber copyWithZone:zone];
         copy.cstStartTime = [self.cstStartTime copyWithZone:zone];
+        copy.pitcherA = [self.pitcherA copyWithZone:zone];
+        copy.pitcherB = [self.pitcherB copyWithZone:zone];
     }
     
     return copy;

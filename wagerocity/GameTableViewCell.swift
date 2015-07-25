@@ -26,6 +26,9 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var under: UILabel!
     @IBOutlet weak var overUnder: UILabel!
     
+    @IBOutlet weak var pitcherA: UILabel!
+    @IBOutlet weak var pitcherB: UILabel!
+    
     @IBOutlet weak var buttonPSA: UIButton!
     @IBOutlet weak var buttonPSB: UIButton!
     @IBOutlet weak var buttonMLA: UIButton!
@@ -80,6 +83,14 @@ class GameTableViewCell: UITableViewCell {
         if value.mlB == "-" { buttonMLB.enabled = false }
         if value.over == "-" { buttonOver.enabled = false }
         if value.under == "-" { buttonUnder.enabled = false }
+        
+        if game.leagueName == "mlb" {
+            self.pitcherA.hidden = false
+            self.pitcherB.hidden = false
+            
+            self.pitcherA.text = game.pitcherA
+            self.pitcherB.text = game.pitcherB
+        }
     }
     
     @IBAction func pointSpreadA(sender: AnyObject) {
