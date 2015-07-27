@@ -216,7 +216,10 @@ class Utils {
     }
     
     static func formatDate (dateString:String) -> String {
-        var formattedDate = String(format: "%@", NSDate(string: dateString, formatString: "yyyy-MM-dd HH:mm:ss", timeZone: NSTimeZone(abbreviation: "CST")).formattedDateWithFormat("EEEE, MMM dd, yyyy hh:mm")) + " CST"
+        var formattedDate = String(format: "%@", NSDate(string: dateString, formatString: "yyyy-MM-dd HH:mm:ss"
+//            , timeZone: NSTimeZone(abbreviation: "CST")
+            )
+            .formattedDateWithFormat("EEEE, MMM dd, yyyy hh:mm a")) + " CST"
         return formattedDate
     }
     
