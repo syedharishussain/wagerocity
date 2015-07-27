@@ -28,6 +28,7 @@ class MyPicksViewController: BaseViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! MyPickTableViewCell
         var pick : Pick! = Pick.modelObjectWithDictionary(data[indexPath.row] as! NSDictionary as [NSObject : AnyObject])
         cell.setViews(pick)
+        cell.controller = self
 
         return cell
     }

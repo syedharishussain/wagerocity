@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FBSDKShareKit
 
-class MyPickTableViewCell: UITableViewCell {
+class MyPickTableViewCell: UITableViewCell, FBSDKSharingDelegate {
     
     @IBOutlet weak var flagA: UIImageView!
     @IBOutlet weak var flagB: UIImageView!
@@ -26,6 +27,9 @@ class MyPickTableViewCell: UITableViewCell {
     
     @IBOutlet weak var facebookShareButton: UIButton!
     
+    var pick : Pick = Pick()
+    var controller : BaseViewController! = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,6 +42,8 @@ class MyPickTableViewCell: UITableViewCell {
     }
     
     func setViews (pick : Pick) {
+        
+        self.pick  = pick
         
         self.flagA.sd_setImageWithURL(NSURL(string: pick.teamALogo), placeholderImage: UIImage(named: "sports"))
         self.flagB.sd_setImageWithURL(NSURL(string: pick.teamBLogo), placeholderImage: UIImage(named: "sports"))
@@ -61,6 +67,24 @@ class MyPickTableViewCell: UITableViewCell {
     }
     
     @IBAction func facebookShare(sender: AnyObject) {
+//        FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+//        content.contentURL = [NSURL URLWithString:@"https://developers.facebook.com"];
+        
+        var betTypeString = ""
+        
+        if pick.teamAName == "Parlay" || pick.teamAName == "Teaser" {
+            betTypeString = pick.teamAName
+        } else {
+            betTypeString = Utils.getBetTypeOT(pick.betOt, position: pick.pos)
+        }
+        
+        var  content: FBSDKShareLinkContent = FBSDKShareLinkContent()
+        content.contentURL = NSURL(string: "https://www.wagerocity.com")
+        content.imageURL = NSURL(string: "https://www.wagerocity.com/user_data/images/logo1.png")
+        content.contentTitle = pick.matchDet
+        content.contentDescription = "I have put my stakes " + "$" + pick.stake + " on " + pick.teamAName + " " + betTypeString + " " + pick.oddsVal;
+        
+        FBSDKShareDialog.showFromViewController(controller, withContent: content, delegate: self)
         
     }
     
@@ -71,6 +95,18 @@ class MyPickTableViewCell: UITableViewCell {
         case "" : return isTeamA ? odd.overMoney : odd.underMoney
         default : return "-"
         }
+    }
+    
+    func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        ServiceModel.buyCredits("250", delegate: controller)
+    }
+
+    func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
+        
+    }
+
+    func sharerDidCancel(sharer: FBSDKSharing!) {
+        
     }
 }
 
