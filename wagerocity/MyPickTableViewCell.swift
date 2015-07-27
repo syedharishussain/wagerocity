@@ -67,8 +67,6 @@ class MyPickTableViewCell: UITableViewCell, FBSDKSharingDelegate {
     }
     
     @IBAction func facebookShare(sender: AnyObject) {
-//        FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-//        content.contentURL = [NSURL URLWithString:@"https://developers.facebook.com"];
         
         var betTypeString = ""
         

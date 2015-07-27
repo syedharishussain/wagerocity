@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import FBSDKShareKit
 
 protocol BetSlipCompletion {
     func showMyPicks()
 }
 
-class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, FBSDKSharingDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var placeBetButton: UIButton!
@@ -20,6 +21,8 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
     var delegate:BetSlipCompletion! = nil
     
     var oddHolders : Array<OddHolder> = [OddHolder]()
+    
+    var finalOdds : Array<OddHolder> = [OddHolder]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,18 +61,42 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
     }
     
     @IBAction func placeBet(sender: AnyObject) {
-        processBet()
-    }
-    
-    func processBet () {
+        
         var array = oddHolders.filter { (oddholder) -> Bool in
             return oddholder.isChecked && oddholder.riskValue != "0.0" && oddholder.riskValue != ""
         }
         
         if array.isEmpty {
-//            Utils.showMessage(self, message: "")
             return
         }
+        
+        finalOdds = array
+        
+        var alert = UIAlertController(
+            title: "Share This With Your Friends!",
+            message: "Earn $250 and Share This on Facebook With Your Friends.",
+            preferredStyle: UIAlertControllerStyle.Alert)
+
+        alert.addAction(UIAlertAction(title: "Yes do it!", style: UIAlertActionStyle.Default, handler: { (alert) -> Void in
+            let odd : OddHolder = array.first!
+            var  content: FBSDKShareLinkContent = FBSDKShareLinkContent()
+            content.contentURL = NSURL(string: "https://www.wagerocity.com")
+            content.imageURL = NSURL(string: "https://www.wagerocity.com/user_data/images/logo1.png")
+            content.contentTitle = odd.name
+            content.contentDescription = "I have put my stakes " + "$" + odd.riskValue + " on " + odd.name + " " + odd.betTypeString + " " + odd.oddValue;
+            
+            FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: self)
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel!", style: UIAlertActionStyle.Cancel, handler: { (alert) -> Void in
+            self.processBet(array)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    func processBet (array : Array<OddHolder>) {
+        
         
         var completionJugar = Array<String>()
         
@@ -268,6 +295,22 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    
+    func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        ServiceModel.buyCredits("250", delegate: self)
+        processBet(finalOdds)
+        finalOdds = [OddHolder]()
+    }
+    
+    func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
+        processBet(finalOdds)
+        finalOdds = [OddHolder]()
+    }
+    
+    func sharerDidCancel(sharer: FBSDKSharing!) {
+        processBet(finalOdds)
+        finalOdds = [OddHolder]()
     }
     
     
