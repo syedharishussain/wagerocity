@@ -62,4 +62,9 @@ class BetSlipTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.win.text = Utils.getToWinAmountString(tf.text, betOddValue:oddValue )
         self.oddholder.riskValue = tf.text
     }
+    @IBAction func toWinValueUpdate(sender: AnyObject) {
+        var tf: UITextField = sender as! UITextField
+        self.risk.text = Utils.getRiskAmountString(tf.text, betOddValue: oddValue)
+        self.oddholder.riskValue = self.risk.text
+    }
 }

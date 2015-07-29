@@ -91,7 +91,6 @@
 		66DEAF401B42B8DB0079BBC9 /* SportListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DEAF3E1B42B8DB0079BBC9 /* SportListTableViewCell.swift */; };
 		66DEAF481B42C5770079BBC9 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DEAF471B42C5770079BBC9 /* LeaderboardTableViewCell.swift */; };
 		66DFA0031B5542BF008A8FAC /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DFA0021B5542BF008A8FAC /* FBSDKShareKit.framework */; };
-		66E85BE01B695D6400AD5260 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E85BDF1B695D6400AD5260 /* FacebookSDK.framework */; };
 		66FDB6F91B277FAD00D0B2F4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDB6F71B277FAD00D0B2F4 /* FBSDKCoreKit.framework */; };
 		66FDB6FA1B277FAD00D0B2F4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDB6F81B277FAD00D0B2F4 /* FBSDKLoginKit.framework */; };
 		66FDB6FE1B27807900D0B2F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FDB6FD1B27807900D0B2F4 /* ViewController.swift */; };
@@ -290,7 +289,6 @@
 		66DEAF3E1B42B8DB0079BBC9 /* SportListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportListTableViewCell.swift; sourceTree = "<group>"; };
 		66DEAF471B42C5770079BBC9 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		66DFA0021B5542BF008A8FAC /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
-		66E85BDF1B695D6400AD5260 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		66FDB6F71B277FAD00D0B2F4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		66FDB6F81B277FAD00D0B2F4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		66FDB6FD1B27807900D0B2F4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -303,7 +301,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66E85BE01B695D6400AD5260 /* FacebookSDK.framework in Frameworks */,
 				66DFA0031B5542BF008A8FAC /* FBSDKShareKit.framework in Frameworks */,
 				66FDB7051B2782DA00D0B2F4 /* Bolts.framework in Frameworks */,
 				6674ED1E1B3DF3DC00206FC5 /* StoreKit.framework in Frameworks */,
@@ -523,7 +520,6 @@
 		667B6B341B35851B00609C4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				66E85BDF1B695D6400AD5260 /* FacebookSDK.framework */,
 				66DFA0021B5542BF008A8FAC /* FBSDKShareKit.framework */,
 				6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */,
 				66FDB7041B2782DA00D0B2F4 /* Bolts.framework */,

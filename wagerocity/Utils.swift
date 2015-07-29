@@ -143,8 +143,34 @@ class Utils {
         }
         
     }
+    
     static func getToWinAmountString (value: String, betOddValue: String) -> String {
         return String(format: "%.2f", Utils.getToWinAmount((value as NSString).doubleValue, betOddValue: (betOddValue as NSString).doubleValue))
+    }
+    
+    static func getRiskAmount (value: Double, betOddValue:Double ) -> Double {
+        if betOddValue > 0 {
+            var amountNeededToWinADollar = abs(betOddValue) / 100
+            
+            var percentage = abs(amountNeededToWinADollar - 1) / amountNeededToWinADollar
+            
+            var percentageBasedValue = value * percentage
+            
+            return ceil(value - percentageBasedValue)
+        } else {
+            var amountNeededToWinADollar = 100 / abs(betOddValue)
+            
+            var percentage = abs(amountNeededToWinADollar - 1) / amountNeededToWinADollar
+            
+            var percentageBasedValue = value * percentage
+            
+            return ceil(value + percentageBasedValue)
+        }
+        
+    }
+    
+    static func getRiskAmountString (value: String, betOddValue: String) -> String {
+        return String(format: "%.2f", Utils.getRiskAmount((value as NSString).doubleValue, betOddValue: (betOddValue as NSString).doubleValue))
     }
     
     static func signedString (value: AnyObject) -> String {
