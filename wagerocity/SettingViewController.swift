@@ -8,8 +8,10 @@
 
 import UIKit
 import FBSDKLoginKit
+import FBSDKShareKit
 
-class SettingViewController: BaseViewController, FBSDKLoginButtonDelegate {
+
+class SettingViewController: BaseViewController, FBSDKLoginButtonDelegate, FBSDKAppInviteDialogDelegate {
 
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -17,6 +19,7 @@ class SettingViewController: BaseViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var rank: UILabel!
     @IBOutlet weak var record: UILabel!
     @IBOutlet weak var fblogin: FBSDKLoginButton!
+        @IBOutlet weak var inviteFacebookFriendsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,4 +60,24 @@ class SettingViewController: BaseViewController, FBSDKLoginButtonDelegate {
         Utils.setFacebookId("")
     }
     
+    @IBAction func inviteFacebookFriends(sender: AnyObject) {
+        var content = FBSDKAppInviteContent()
+        content.appLinkURL = NSURL(string: "https://www.wagerocity.com/")
+        content.appInvitePreviewImageURL = NSURL(string: "https://www.wagerocity.com/user_data/images/logo1.png")
+        FBSDKAppInviteDialog.showWithContent(content, delegate: self)
+
+    }
+    
+    func appInviteDialog(appInviteDialog: FBSDKAppInviteDialog!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        if results["completionGesture"] as! String == "cancel" {
+            
+        } else {
+            ServiceModel.buyCredits("2500", delegate: self)
+        }
+    }
+
+    func appInviteDialog(appInviteDialog: FBSDKAppInviteDialog!, didFailWithError error: NSError!) {
+        Utils.showError(error)
+    }
+
 }

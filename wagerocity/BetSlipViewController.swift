@@ -30,23 +30,23 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
         checkteaserCase()
         // Do any additional setup after loading the view.
         
-        self.view .addKeyboardNonpanningWithActionHandler({ (keyboardFrameInView: CGRect, opening: Bool, closing: Bool) -> Void in
-            
-            if self.oddHolders.count > 2 {
-                var frame = self.view.frame
-                if opening {
-                    frame.origin.y = frame.origin.y - keyboardFrameInView.size.height
-                    self.view.frame = frame
-                    self.navigationController?.navigationBar.hidden = true
-                }
-                if closing {
-                    frame.origin.y = 0
-                    self.view.frame = frame
-                    self.navigationController?.navigationBar.hidden = false
-                }
-            }
-            
-        })
+//        self.view .addKeyboardNonpanningWithActionHandler({ (keyboardFrameInView: CGRect, opening: Bool, closing: Bool) -> Void in
+//            
+//            if self.oddHolders.count > 2 {
+//                var frame = self.view.frame
+//                if opening {
+//                    frame.origin.y = frame.origin.y - keyboardFrameInView.size.height
+//                    self.view.frame = frame
+//                    self.navigationController?.navigationBar.hidden = true
+//                }
+//                if closing {
+//                    frame.origin.y = 0
+//                    self.view.frame = frame
+//                    self.navigationController?.navigationBar.hidden = false
+//                }
+//            }
+//            
+//        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
