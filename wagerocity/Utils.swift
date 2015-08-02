@@ -128,7 +128,7 @@ class Utils {
             
             var percentageBasedValue = value * percentage
             
-            return ceil(value + percentageBasedValue)
+            return value + percentageBasedValue//ceil(value + percentageBasedValue)
             
         } else {
             
@@ -138,7 +138,7 @@ class Utils {
             
             var percentageBasedValue = value * percentage
             
-            return ceil(value - percentageBasedValue)
+            return value - percentageBasedValue//ceil(value - percentageBasedValue)
             
         }
         
@@ -156,7 +156,7 @@ class Utils {
             
             var percentageBasedValue = value * percentage
             
-            return ceil(value - percentageBasedValue)
+            return value - percentageBasedValue//ceil(value - percentageBasedValue)
         } else {
             var amountNeededToWinADollar = 100 / abs(betOddValue)
             
@@ -164,7 +164,7 @@ class Utils {
             
             var percentageBasedValue = value * percentage
             
-            return ceil(value + percentageBasedValue)
+            return value + percentageBasedValue//ceil(value + percentageBasedValue)
         }
         
     }
