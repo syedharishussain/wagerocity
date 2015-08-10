@@ -326,4 +326,37 @@ class ServiceModel: NSObject {
                 }
         }
     }
+    
+    static func followPlayer (playerId: String, follow: Bool, completion: (Bool) -> Void) {
+        Utils.showLoader()
+        
+        var methodName = follow ? "followPlayer" : "unfollowPlayer"
+        var params = [
+            "userId" : Utils.getUser().userId,
+            "playerId" : playerId
+        ]
+        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        Alamofire.request(.POST, "http://api.wagerocity.com/" + methodName, parameters:
+            params, encoding: ParameterEncoding.JSON)
+            
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        completion(false)
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    if ((response as NSHTTPURLResponse?)!.statusCode as Int?)! == 200 {
+                        completion(true)
+                    } else {
+                        
+                    }
+                    
+                }
+        }
+
+    }
 }

@@ -56,9 +56,10 @@ class SportsViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func APICall () {
         if isLeaderboards {
+            NSURLCache.sharedURLCache().removeAllCachedResponses()
             SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
             Alamofire.request(.GET, "http://api.wagerocity.com/getLeaderboards", parameters: ["leagueName" : leagueName ,
-                "year" : "2015"])
+                "year" : "2015", "userId" : Utils.getUser().userId])
                 .responseJSON{ (request, response, body, error) in
                     SVProgressHUD.dismiss()
                     if let newError:NSError = error {
@@ -66,7 +67,7 @@ class SportsViewController: BaseViewController, UITableViewDelegate, UITableView
                     } else {
                         var array = body as! NSArray
                         array = array.sortedArrayUsingDescriptors([NSSortDescriptor(key: "points", ascending: false)])
-                        self.performSegueWithIdentifier(Constants.Segue.Leaderboard, sender: array)
+                        self.performSegueWithIdentifier(Constants.Segue.Leaderboard, sender: array.mutableCopy())
                     }
                     
                 }
@@ -104,7 +105,8 @@ class SportsViewController: BaseViewController, UITableViewDelegate, UITableView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Constants.Segue.Leaderboard {
             var leaderboardViewController = segue.destinationViewController as! LeaderboardViewController
-            leaderboardViewController.data = sender as! NSArray
+            leaderboardViewController.data = sender as! NSMutableArray
+            leaderboardViewController.leagueName = leagueName
         }
         if segue.identifier == Constants.Segue.Games {
             var controller = segue.destinationViewController as! GamesViewController
