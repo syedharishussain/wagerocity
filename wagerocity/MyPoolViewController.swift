@@ -72,4 +72,5 @@ class MyPoolViewController: BaseViewController, UITableViewDataSource, UITableVi
 class Button : UIButton {
     var data: Dictionary<NSObject, AnyObject>?
     var id: String = ""
+    var amount : String = "0"
 }

@@ -52,6 +52,7 @@ class PoolViewController: BaseViewController, UITableViewDataSource, UITableView
         }
         
         button.id = (pool["pool_id"] as? String)!
+        button.amount = (pool["amount"] as? String)!
         
         return cell
     }
@@ -68,6 +69,9 @@ class PoolViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func joinPool(sender: Button) {
+        if sender.amount != "0" {
+            ServiceModel.consumeCredits(sender.amount, delegate: self)
+        }
         ServiceModel.joinPool(sender.id, completion: { (_, _, anyObject, _, statusCode) -> Void in
             if statusCode == 200 {
                 self.performSegueWithIdentifier(Constants.Segue.MyPools, sender: anyObject as! Array<AnyObject>)

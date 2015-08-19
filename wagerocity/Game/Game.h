@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSString *cstStartTime;
 @property (nonatomic, strong) NSString *leagueName;
 @property (nonatomic, strong) NSString *poolId;
+@property (nonatomic, assign) double poolCredit;
 @property (nonatomic, strong) NSString *pitcherA;
 @property (nonatomic, strong) NSString *pitcherB;
 

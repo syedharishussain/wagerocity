@@ -40,7 +40,7 @@ class ExpertTableViewCell: UITableViewCell {
         self.userImage.sd_setImageWithURL(NSURL(string: (data["image_url"] as? String)!), placeholderImage: UIImage(named: "user1"))
         
         if (data["total_picks"] as? NSNumber)!.intValue == 0 {
-            self.buyPicksButton.enabled = false
+            self.buyPicksButton.hidden = true
         }
 
     }

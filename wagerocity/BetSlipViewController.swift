@@ -24,29 +24,31 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
     
     var finalOdds : Array<OddHolder> = [OddHolder]()
     
+    var poolCredits : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addParlayOdd()
         checkteaserCase()
         // Do any additional setup after loading the view.
         
-//        self.view .addKeyboardNonpanningWithActionHandler({ (keyboardFrameInView: CGRect, opening: Bool, closing: Bool) -> Void in
-//            
-//            if self.oddHolders.count > 2 {
-//                var frame = self.view.frame
-//                if opening {
-//                    frame.origin.y = frame.origin.y - keyboardFrameInView.size.height
-//                    self.view.frame = frame
-//                    self.navigationController?.navigationBar.hidden = true
-//                }
-//                if closing {
-//                    frame.origin.y = 0
-//                    self.view.frame = frame
-//                    self.navigationController?.navigationBar.hidden = false
-//                }
-//            }
-//            
-//        })
+        //        self.view .addKeyboardNonpanningWithActionHandler({ (keyboardFrameInView: CGRect, opening: Bool, closing: Bool) -> Void in
+        //
+        //            if self.oddHolders.count > 2 {
+        //                var frame = self.view.frame
+        //                if opening {
+        //                    frame.origin.y = frame.origin.y - keyboardFrameInView.size.height
+        //                    self.view.frame = frame
+        //                    self.navigationController?.navigationBar.hidden = true
+        //                }
+        //                if closing {
+        //                    frame.origin.y = 0
+        //                    self.view.frame = frame
+        //                    self.navigationController?.navigationBar.hidden = false
+        //                }
+        //            }
+        //
+        //        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +78,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             title: "Share This With Your Friends!",
             message: "Earn $250 and Share This on Facebook With Your Friends.",
             preferredStyle: UIAlertControllerStyle.Alert)
-
+        
         alert.addAction(UIAlertAction(title: "Yes do it!", style: UIAlertActionStyle.Default, handler: { (alert) -> Void in
             let odd : OddHolder = array.first!
             var  content: FBSDKShareLinkContent = FBSDKShareLinkContent()
@@ -104,36 +106,65 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             
             completionJugar.append("1")
             
-            ServiceModel.consumeCredits(odd.riskValue, delegate: self)
+            if odd.poolId == "" {
+                if Utils.getUser().credits < (odd.riskValue as NSString).doubleValue {
+                    Utils.showMessage(self, message: "Not Enough Credit!")
+                    continue
+                } else {
+                    ServiceModel.consumeCredits(odd.riskValue, delegate: self)
+                }
+            } else {
+                if odd.poolCredit < (odd.riskValue as NSString).doubleValue {
+                    Utils.showMessage(self, message: "Not Enough Credit in your Pool Account!")
+                    continue
+                }
+            }
             
-            ServiceModel.betOnGame(
-                odd.oddId,
-                oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
-                position: odd.isTeamA ? "over" : "under",
-                matchDetail: odd.teamVsTeam,
-                oddType: "ao",
-                stake: odd.riskValue,
-                matchID: odd.teamId,
-                teamName: odd.name,
-                sportsName: odd.leagueName,
-                bet_type: odd.betTypeSPT,
-                bet_ot: odd.betOT,
-                bet_parent: "",
-                is_pool_bet: odd.poolId,
-                completion: { (request, response, body, error, statusCode) -> Void in
-                    if statusCode == 200 {
-                        completionJugar.removeLast()
-                        if completionJugar.isEmpty {
-                            self.navigationController?.popViewControllerAnimated(false)
-                            self.delegate.showMyPicks()
+            ServiceModel.getBetParent { (request, response, object, error, code) -> Void in
+                
+                let betParent: String = (object as! Dictionary<NSObject, NSObject>)["bet_parent"] as! String
+                
+                ServiceModel.betOnGame(
+                    odd.oddId,
+                    oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
+                    position: odd.isTeamA ? "over" : "under",
+                    matchDetail: odd.teamVsTeam,
+                    oddType: "ao",
+                    stake: odd.riskValue,
+                    matchID: odd.teamId,
+                    teamName: odd.name,
+                    sportsName: odd.leagueName,
+                    bet_type: odd.betTypeSPT,
+                    bet_ot: odd.betOT,
+                    bet_parent: betParent,
+                    is_pool_bet: odd.poolId,
+                    completion: { (request, response, body, error, statusCode) -> Void in
+                        if statusCode == 200 {
+                            completionJugar.removeLast()
+                            if completionJugar.isEmpty {
+                                self.navigationController?.popViewControllerAnimated(false)
+                                self.delegate.showMyPicks()
+                            }
                         }
-                    }
-            })
+                })
+            }
         }
     }
     
     func addParlayOdd () {
         if isParlayCaseTrue() {
+            
+            var teamName = ""
+            
+            for oddHolder in oddHolders {
+                if oddHolder.betTypeString == "Point Spread" {
+                    teamName = teamName + oddHolder.name + " " + oddHolder.pointSpreadString
+                } else {
+                    teamName  = teamName + oddHolder.name + " " + oddHolder.oddValue
+                }
+                
+            }
+            
             let parlayValue = Utils.parlayValue(oddHolders)
             
             var pOdd = OddHolder()
@@ -141,7 +172,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             pOdd.teamId = oddHolders[0].teamId
             pOdd.oddId = oddHolders[0].oddId
             pOdd.name = "Parlay "
-            pOdd.teamVsTeam = "Parlay " + (NSString(format: "( %d Odds)", oddHolders.count) as String)
+            pOdd.teamVsTeam = teamName + (NSString(format: "( %d Odds)", oddHolders.count) as String)
             pOdd.betTypeSPT = Constants.BetTypeSPT.Parley
             pOdd.betOT = "1"
             pOdd.riskValue = ""

@@ -213,7 +213,8 @@ class ServiceModel: NSObject {
         Alamofire.request(.POST, "http://api.wagerocity.com/consumeCredits", parameters: [
             "userId" : Utils.getUser().userId,
             "debitAmount" : amount
-            ], encoding: ParameterEncoding.JSON)
+            ]
+            , encoding: ParameterEncoding.JSON)
             .responseJSON{ (request, response, body, error) -> Void in
                 Utils.hideLoader()
                 if (error != nil) {
@@ -357,6 +358,27 @@ class ServiceModel: NSObject {
                     
                 }
         }
-
+        
     }
+    
+    static func getBetParent (completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+        Utils.showLoader()
+        Alamofire.request(.GET, "http://api.wagerocity.com/getBetParent", parameters:nil)
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    let responseObject = response as NSHTTPURLResponse?
+                    completion(request, responseObject, body, error, (responseObject?.statusCode as Int?)!)
+                    
+                }
+        }
+    }
+    
 }

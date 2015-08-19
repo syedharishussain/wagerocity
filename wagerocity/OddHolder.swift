@@ -29,5 +29,5 @@ class OddHolder {
     var teaserValues: Dictionary<Double, Int> = Dictionary<Double, Int>()
     var isTeamA:Bool = false
     var poolId:String = ""
-    
+    var poolCredit : Double = 0.0
 }

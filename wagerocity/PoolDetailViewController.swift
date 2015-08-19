@@ -22,11 +22,23 @@ class PoolDetailViewController: BaseViewController {
     @IBOutlet weak var poolGamesButton: UIButton!
     
     var data = Pool()
+    var poolCredit:Double = 0.0
+    var userId :  String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.userId = Utils.getUser().userId
+        
+        for object in self.data.poolMembers {
+            var member = object as! PoolMembers
+            if member.userId == userId {
+                poolCredit = member.dollars
+            }
+        }
+        
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,6 +80,7 @@ class PoolDetailViewController: BaseViewController {
                     var game: Game = Game.modelObjectWithDictionary(object as! NSDictionary as [NSObject : AnyObject])
                     game.leagueName = self.data.poolLeague
                     game.poolId = self.data.poolId
+                    game.poolCredit = self.poolCredit
                     games.append(game)
                 })
                 self.performSegueWithIdentifier(Constants.Segue.Games, sender: games)
