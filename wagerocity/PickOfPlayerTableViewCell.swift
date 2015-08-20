@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PickOfPlayerProtocol {
+    func purchasedPick(picks : Array<Pick>) -> Void
+}
+
 class PickOfPlayerTableViewCell: UITableViewCell {
 
     @IBOutlet weak var flagA: UIImageView!
@@ -25,6 +29,10 @@ class PickOfPlayerTableViewCell: UITableViewCell {
     
     @IBOutlet weak var buyPickButton: UIButton!
     
+    var data : NSDictionary!
+    
+    var delegate : PickOfPlayerProtocol! = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,6 +45,9 @@ class PickOfPlayerTableViewCell: UITableViewCell {
     }
     
     func setViews (data : NSDictionary) {
+        
+        self.data = data
+        
         var value = Utils.oddValues(data["team_A_Odds"] as! NSDictionary, oddB: data["team_B_Odds"] as! NSDictionary)
         
         self.flagA.sd_setImageWithURL(NSURL(string: (data["team_A_logo"] as? String)!), placeholderImage: UIImage(named: "sports"))
@@ -55,6 +66,28 @@ class PickOfPlayerTableViewCell: UITableViewCell {
     }
 
     @IBAction func buyPick(sender: AnyObject) {
+        MKStoreManager.sharedManager().buyFeature(Constants.IAP.PurchasePicks,
+            onComplete: { (purchasedProduct, _, _) -> Void in
+                var pick : Pick = Pick()
+                var dic: NSDictionary = self.data["bet_info"] as! NSDictionary
+                pick.teamName = dic["team_name"] as! String
+                pick.startTime = self.data["cst_start_time"] as! String
+                pick.matchDet = dic["match_det"] as! String
+                pick.betOt = dic["bet_ot"] as! String
+                pick.pos = dic["pos"] as! String
+                pick.oddsVal = dic["odds_val"] as! String
+                pick.stake = dic["stake"] as! String
+                pick.betResult = dic["bet_result"] as! String
+                pick.teamALogo = self.data["team_A_logo"] as! String
+                pick.teamBLogo = self.data["team_B_logo"] as! String
+                pick.teamANumber = self.data["team_A_number"] as! String
+        pick.teamBNumber = self.data["team_B_number"] as! String
+        pick.matchId = dic["match_id"] as! String
+                self.delegate .purchasedPick([pick])
+            })
+            { () -> Void in
+        }
+        
         
     }
 

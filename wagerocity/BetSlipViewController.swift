@@ -162,7 +162,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
                 } else {
                     teamName  = teamName + oddHolder.name + " " + oddHolder.oddValue
                 }
-                
+                teamName+="\n"
             }
             
             let parlayValue = Utils.parlayValue(oddHolders)

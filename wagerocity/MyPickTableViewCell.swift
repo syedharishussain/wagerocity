@@ -50,7 +50,7 @@ class MyPickTableViewCell: UITableViewCell, FBSDKSharingDelegate {
         
         let isTeamA : Bool = pick.matchId == pick.teamANumber ? true : false
 
-        self.date.text          = Utils.formatDate(pick.cstScheduledTime)
+        self.date.text          = Utils.formatDate(pick.startTime)
         self.teamVsTeam.text    = pick.matchDet
         self.betType.text       = Utils.getBetTypeOT(pick.betOt, position: pick.pos)
         self.team.text          = pick.teamName
@@ -58,7 +58,7 @@ class MyPickTableViewCell: UITableViewCell, FBSDKSharingDelegate {
         self.stakeValue.text    = "$"+pick.stake
         self.winValue.text      = "$"+Utils.getToWinAmountString(pick.stake, betOddValue: pick.oddsVal)
         self.result.text        = pick.betResult
-        self.poolName.text      = pick.poolName == "" ? "-" : pick.poolName
+        self.poolName.text      = (pick.poolName != nil) ? (pick.poolName == "" ? "-" : pick.poolName) : "-"
         
         if pick.teamName == "Parlay" {
             self.betType.text = "Parlay"

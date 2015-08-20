@@ -105,6 +105,7 @@ func URLRequest(method: Method, URL: URLStringConvertible) -> NSURLRequest {
     :returns: The created request.
 */
 public func request(method: Method, URLString: URLStringConvertible, parameters: [String: AnyObject]? = nil, encoding: ParameterEncoding = .URL) -> Request {
+    NSURLCache.sharedURLCache().removeAllCachedResponses()
     return Manager.sharedInstance.request(method, URLString, parameters: parameters, encoding: encoding)
 }
 

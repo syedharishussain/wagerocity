@@ -62,7 +62,17 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         if segue.identifier == Constants.Segue.MyPicks {
             var controller = segue.destinationViewController as! MyPicksViewController
-            controller.data = sender as! NSArray
+            
+            var picks = [Pick]()
+            
+            for p in sender as! NSArray {
+                
+                var pick :Pick! = Pick.modelObjectWithDictionary(p as! NSDictionary as [NSObject : AnyObject])
+                
+                picks.append(pick)
+            }
+            
+            controller.data = picks
         }
     }
     

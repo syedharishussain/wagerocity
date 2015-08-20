@@ -56,7 +56,7 @@ class SportsViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func APICall () {
         if isLeaderboards {
-            NSURLCache.sharedURLCache().removeAllCachedResponses()
+            
             SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
             Alamofire.request(.GET, "http://api.wagerocity.com/getLeaderboards", parameters: ["leagueName" : leagueName ,
                 "year" : "2015", "userId" : Utils.getUser().userId])

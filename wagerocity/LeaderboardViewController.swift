@@ -78,7 +78,6 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
                     self.data = array.sortedArrayUsingDescriptors([NSSortDescriptor(key: "points", ascending: false)])
                     self.tableView.reloadData()
                 }
-                
         }
         
     }

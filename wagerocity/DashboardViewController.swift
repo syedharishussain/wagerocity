@@ -68,7 +68,17 @@ class DashboardViewController: BaseViewController {
                 if array.count > 0 {
                     
                 }
-                self.performSegueWithIdentifier(Constants.Segue.MyPicks, sender: array)
+                
+                var picks = [Pick]()
+                
+                for p in array {
+                    
+                    var pick :Pick! = Pick.modelObjectWithDictionary(p as! NSDictionary as [NSObject : AnyObject])
+                    
+                    picks.append(pick)
+                }
+                
+                self.performSegueWithIdentifier(Constants.Segue.MyPicks, sender: picks)
             } else {
                 Utils.showMessage(self, message: "There are currently no picks!")
             }
@@ -144,7 +154,7 @@ class DashboardViewController: BaseViewController {
         
         if segue.identifier == Constants.Segue.MyPicks {
             var controller = segue.destinationViewController as! MyPicksViewController
-            controller.data = sender as! NSArray
+            controller.data = sender as! Array<Pick>
         }
         
         if segue.identifier == Constants.Segue.Pools {

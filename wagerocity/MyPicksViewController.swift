@@ -12,7 +12,8 @@ class MyPicksViewController: BaseViewController, UITableViewDataSource, UITableV
 
     @IBOutlet weak var tableView: UITableView!
     
-    var data:NSArray = NSArray.new()
+//    var data:NSArray = NSArray.new()
+    var data = [Pick]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,8 @@ class MyPicksViewController: BaseViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! MyPickTableViewCell
-        var pick : Pick! = Pick.modelObjectWithDictionary(data[indexPath.row] as! NSDictionary as [NSObject : AnyObject])
-        cell.setViews(pick)
+//        var pick : Pick! = Pick.modelObjectWithDictionary(data[indexPath.row] as! NSDictionary as [NSObject : AnyObject])
+        cell.setViews(data[indexPath.row])
         cell.controller = self
 
         return cell

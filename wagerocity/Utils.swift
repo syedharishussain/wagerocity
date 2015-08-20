@@ -227,7 +227,7 @@ class Utils {
     static func oddValues (oddA: Odd, oddB: Odd) -> (psA:String, psB:String, mlA:String, mlB:String, over:String, under:String, overUnder:String) {
         var overUnder = "-"
         if let ou = oddA.totalMid {
-            overUnder = String(format: "Over\n| %@ |\nUnder", Utils.signedString(ou))
+            overUnder = String(format: "Over\nO | %@ | U\nUnder", Utils.signedString(ou))
         }
         
         return (
