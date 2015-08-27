@@ -55,7 +55,7 @@ class PoolDetailViewController: BaseViewController {
         self.start.text = Utils.formatDateAmerican(data.fromDate)
         self.end.text = Utils.formatDateAmerican(data.toDate)
         self.poolSize.text = data.size
-        self.amount.text = data.amount
+        self.amount.text = "$"+data.amount
     }
     
     override func didReceiveMemoryWarning() {
