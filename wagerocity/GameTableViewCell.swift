@@ -185,6 +185,7 @@ class GameTableViewCell: UITableViewCell {
         oddHolder.isChecked = true
         oddHolder.isTeamA = isTeamA
         oddHolder.poolCredit = game.poolCredit
+        oddHolder.position = isTeamA ? "over" : "under"
         
         switch (betTypeString) {
         case Constants.BetType.PointSpread :

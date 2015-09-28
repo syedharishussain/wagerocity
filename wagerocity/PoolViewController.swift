@@ -68,6 +68,10 @@ class PoolViewController: BaseViewController, UITableViewDataSource, UITableView
         }
     }
     
+    @IBAction func createPool(sender: AnyObject) {
+        self.performSegueWithIdentifier("createPool", sender: nil)
+    }
+    
     func joinPool(sender: Button) {
         if sender.amount != "0" {
             ServiceModel.consumeCredits(sender.amount, delegate: self)

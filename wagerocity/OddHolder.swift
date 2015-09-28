@@ -19,10 +19,12 @@ class OddHolder {
     var betTypeString: String = ""
     var pointSpreadString: String = ""
     var teaserString: String = ""
+    var oddType : String = "ao"
     var isChecked:Bool = false
     var leagueName : String = ""
     var riskValue: String = ""
     var parlayValue: Double = 0.0
+    var position : String = ""
     var teaser1: Int = 0
     var teaser2: Int = 0
     var teaser3: Int = 0

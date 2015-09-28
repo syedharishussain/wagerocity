@@ -30,25 +30,6 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         addParlayOdd()
         checkteaserCase()
-        // Do any additional setup after loading the view.
-        
-        //        self.view .addKeyboardNonpanningWithActionHandler({ (keyboardFrameInView: CGRect, opening: Bool, closing: Bool) -> Void in
-        //
-        //            if self.oddHolders.count > 2 {
-        //                var frame = self.view.frame
-        //                if opening {
-        //                    frame.origin.y = frame.origin.y - keyboardFrameInView.size.height
-        //                    self.view.frame = frame
-        //                    self.navigationController?.navigationBar.hidden = true
-        //                }
-        //                if closing {
-        //                    frame.origin.y = 0
-        //                    self.view.frame = frame
-        //                    self.navigationController?.navigationBar.hidden = false
-        //                }
-        //            }
-        //
-        //        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,9 +66,12 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             content.contentURL = NSURL(string: "https://www.wagerocity.com")
             content.imageURL = NSURL(string: "https://www.wagerocity.com/user_data/images/logo1.png")
             content.contentTitle = odd.name
-            content.contentDescription = "I have put my stakes " + "$" + odd.riskValue + " on " + odd.name + " " + odd.betTypeString + " " + odd.oddValue;
+            content.contentDescription = "I just placed a $" + odd.riskValue + " wager via my Wagerocity Mobile App on " + odd.name + " at " + odd.oddValue
+//            content.contentDescription = "I have put my stakes " + "$" + odd.riskValue + " on " + odd.name + " " + odd.betTypeString + " " + odd.oddValue;
+//            I just placed a $100 wager via my Wagerocity Mobile App on Chicago at +100.
             
             FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: self)
+            ServiceModel.buyCredits("250", delegate: self)
             
         }))
         alert.addAction(UIAlertAction(title: "Cancel!", style: UIAlertActionStyle.Cancel, handler: { (alert) -> Void in
@@ -120,34 +104,36 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
                 }
             }
             
-            ServiceModel.getBetParent { (request, response, object, error, code) -> Void in
-                
-                let betParent: String = (object as! Dictionary<NSObject, NSObject>)["bet_parent"] as! String
-                
-                ServiceModel.betOnGame(
-                    odd.oddId,
-                    oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
-                    position: odd.isTeamA ? "over" : "under",
-                    matchDetail: odd.teamVsTeam,
-                    oddType: "ao",
-                    stake: odd.riskValue,
-                    matchID: odd.teamId,
-                    teamName: odd.name,
-                    sportsName: odd.leagueName,
-                    bet_type: odd.betTypeSPT,
-                    bet_ot: odd.betOT,
-                    bet_parent: betParent,
-                    is_pool_bet: odd.poolId,
-                    completion: { (request, response, body, error, statusCode) -> Void in
-                        if statusCode == 200 {
-                            completionJugar.removeLast()
-                            if completionJugar.isEmpty {
-                                self.navigationController?.popViewControllerAnimated(false)
-                                self.delegate.showMyPicks()
-                            }
+//            ServiceModel.getBetParent { (request, response, object, error, code) -> Void in
+//                
+//                let betParent: String = (object as! Dictionary<NSObject, NSObject>)["bet_parent"] as! String
+//                
+//                
+//            }
+            
+            ServiceModel.betOnGame(
+                odd.oddId,
+                oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
+                position: odd.position,
+                matchDetail: odd.teamVsTeam,
+                oddType: odd.oddType,
+                stake: odd.riskValue,
+                matchID: odd.teamId,
+                teamName: odd.name,
+                sportsName: odd.leagueName,
+                bet_type: odd.betTypeSPT,
+                bet_ot: odd.betOT,
+                bet_parent: "",
+                is_pool_bet: odd.poolId,
+                completion: { (request, response, body, error, statusCode) -> Void in
+                    if statusCode == 200 {
+                        completionJugar.removeLast()
+                        if completionJugar.isEmpty {
+                            self.navigationController?.popViewControllerAnimated(false)
+                            self.delegate.showMyPicks()
                         }
-                })
-            }
+                    }
+            })
         }
     }
     
@@ -155,6 +141,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
         if isParlayCaseTrue() {
             
             var teamName = ""
+            var teamANumber = ""
             
             for oddHolder in oddHolders {
                 if oddHolder.betTypeString == "Point Spread" {
@@ -163,22 +150,28 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
                     teamName  = teamName + oddHolder.name + " " + oddHolder.oddValue
                 }
                 teamName+="\n"
+                
+                if oddHolder.isTeamA {
+                    teamANumber = oddHolder.teamId
+                }
             }
             
             let parlayValue = Utils.parlayValue(oddHolders)
             
             var pOdd = OddHolder()
             
-            pOdd.teamId = oddHolders[0].teamId
-            pOdd.oddId = oddHolders[0].oddId
-            pOdd.name = "Parlay "
-            pOdd.teamVsTeam = teamName + (NSString(format: "( %d Odds)", oddHolders.count) as String)
-            pOdd.betTypeSPT = Constants.BetTypeSPT.Parley
-            pOdd.betOT = "1"
+            pOdd.teamId = ""//oddHolders[0].teamId
+            pOdd.oddId = ""
+            pOdd.name = "Parlay" + (NSString(format: "( %d Teams)", oddHolders.count) as String)
+            pOdd.teamVsTeam = ""//teamName + (NSString(format: "( %d Odds)", oddHolders.count) as String)
+            pOdd.betTypeSPT = Constants.BetTypeSPT.Single
+            pOdd.betOT = "0"
+            pOdd.oddType = "parley"
             pOdd.riskValue = ""
             pOdd.parlayValue = parlayValue
-            pOdd.leagueName = oddHolders[0].leagueName
+            pOdd.leagueName = ""
             pOdd.poolId = oddHolders[0].poolId
+            pOdd.position = ""
             oddHolders.append(pOdd)
         }
     }

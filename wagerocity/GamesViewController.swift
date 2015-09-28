@@ -20,6 +20,16 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        for game in data {
+            game.oddHolders = NSMutableArray.new()
+        }
+        
+        self.tableView.reloadData()
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count;
     }

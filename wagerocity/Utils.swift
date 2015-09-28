@@ -109,6 +109,29 @@ class Utils {
         return ""
     }
     
+    static func sportsNameAndIdForPool (name: String) -> (leagueName:String, leagueId:String) {
+        var string = name.lowercaseString
+        
+        if string == "nfl" {
+            return ("nfl","1")
+        } else if string == "ncaa football" {
+            return ("ncaaf","2")
+        } else if string == "mlb" {
+            return ("mlb","5")
+        } else if string == "nba" {
+            return ("nba","3")
+        } else if string == "ncaa basketball" {
+            return ("ncaab","4")
+        } else if string == "nhl" {
+            return ("nhl","7")
+        } else if string == "soccer" {
+            return ("soccer","9")
+        }else if string == "tennis" {
+            return ("tennis","12")
+        }
+        return ("","")
+    }
+    
     static func getBetTypeOT(betOt: String , position: String ) -> String {
         switch (betOt) {
         case "1": return "MoneyLine"

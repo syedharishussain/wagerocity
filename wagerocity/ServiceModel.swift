@@ -180,6 +180,66 @@ class ServiceModel: NSObject {
             }
     }
     
+    static func betOnGame1 (
+        userId:          String,
+        oddId:         String,
+        oddVal:       String,
+        pos:    String,
+        matchDetail:        String,
+        stake:          String,
+        matchID:        String,
+        oddType:    String,
+        teamName:       String,
+        sportsName:     String,
+        bet_ot:         String,
+        is_pool_bet:    String,
+        poolId: String,
+        numberOfBets : String,
+        completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+            
+            var params = [
+                "usr_id"            : Utils.getUser().userId,
+                "odd_id"            : oddId,
+                "odds_val"          : oddVal,
+                "pos"               : pos,
+                "match_det"         : matchDetail,
+                "odd_type"          : oddType,
+                "stake"             : stake,
+                "match_id"          : matchID,
+                "team_name"         : teamName,
+                "pool_id"           : "",
+                "league_name"       : sportsName,
+                "place_bet_type"    : "single_bet",
+                "bet_ot"            : bet_ot,
+                "is_pool_bet"       : is_pool_bet,
+                "num_bets"          : numberOfBets,
+                "mat_cond"          : "GAME"
+            ]
+            
+            Utils.showLoader()
+            var array = [params]
+            
+            Alamofire.request(.POST, "http://api.wagerocity.com/myBetPlace", parameters: params, encoding: .JSON)
+                .responseJSON{ (request, response, body, error) -> Void in
+                    Utils.hideLoader()
+                    if (error != nil) {
+                        if let newError:NSError = error {
+                            
+                            Utils.showError(newError)
+                            return
+                        }
+                        
+                    } else {
+                        
+                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
+                        
+                        let responseObject = response as NSHTTPURLResponse?
+                        completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
+                    }
+            }
+    }
+    
+    
     static func buyCredits (amount: String, delegate: BaseViewController) {
         Utils.showLoader()
         Alamofire.request(.POST, "http://api.wagerocity.com/buyCredits", parameters: [
@@ -205,7 +265,6 @@ class ServiceModel: NSObject {
                     delegate.updateStatsBar()
                 }
         }
-        
     }
     
     static func consumeCredits (amount: String, delegate: BaseViewController) {
@@ -379,6 +438,45 @@ class ServiceModel: NSObject {
                     
                 }
         }
+    }
+    
+    static func createPool (leagueName: String, leagueId:String, userId: String, poolName: String, poolMotto: String, poolDesc: String, poolPrivacy: String, poolSize: String, amount: String, minPeople: String, toDate: String, fromDate: String, poolImage: String, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+        Utils.showLoader()
+        
+        var params = [
+            "league_name": leagueName,
+            "league_id" : leagueId,
+            "userId" : userId,
+            "poolName": poolName,
+            "poolDesc": poolDesc,
+            "poolMotto":poolMotto,
+            "poolPrivacy":poolPrivacy.lowercaseString,
+            "poolSize":poolSize,
+            "amount": amount,
+            "minPeople":minPeople,
+            "to_date": toDate,
+            "from_date":fromDate,
+            "pool_image": poolImage]
+        
+        Alamofire.request(.POST, "http://api.wagerocity.com/createPool", parameters:
+            params, encoding: ParameterEncoding.JSON)
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    
+                    let responseObject = response as NSHTTPURLResponse?
+                    completion(request, responseObject, body, error, (responseObject?.statusCode as Int?)!)
+                }
+        }
+
+        
     }
     
 }
