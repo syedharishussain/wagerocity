@@ -89,7 +89,9 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
     // MARK: - BetSlipCompletion Delegate
     
     func showMyPicks() {
+        SVProgressHUD.show()
         ServiceModel.getMyPicks { (body, error, statusCode:Int) -> Void in
+            SVProgressHUD.dismiss()
             if let err = error as NSError? {
                 println(err)
                 Utils.showError(err)

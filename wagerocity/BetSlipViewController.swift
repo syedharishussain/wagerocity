@@ -26,6 +26,8 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
     
     var poolCredits : String = ""
     
+    var numberOfBets = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addParlayOdd()
@@ -75,66 +77,89 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             
         }))
         alert.addAction(UIAlertAction(title: "Cancel!", style: UIAlertActionStyle.Cancel, handler: { (alert) -> Void in
-            self.processBet(array)
+            self.numberOfBets = array.count
+            self.processBet(&array)
         }))
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
     
-    func processBet (array : Array<OddHolder>) {
+    func processBet (inout array : Array<OddHolder>) {
         
         
         var completionJugar = Array<String>()
         
-        for odd: OddHolder in array {
-            
-            completionJugar.append("1")
+//        for odd: OddHolder in array {
+        let odd: OddHolder = array.first!
             
             if odd.poolId == "" {
                 if Utils.getUser().credits < (odd.riskValue as NSString).doubleValue {
                     Utils.showMessage(self, message: "Not Enough Credit!")
-                    continue
+                    return
                 } else {
                     ServiceModel.consumeCredits(odd.riskValue, delegate: self)
                 }
             } else {
                 if odd.poolCredit < (odd.riskValue as NSString).doubleValue {
                     Utils.showMessage(self, message: "Not Enough Credit in your Pool Account!")
-                    continue
+                    return
                 }
             }
             
-//            ServiceModel.getBetParent { (request, response, object, error, code) -> Void in
-//                
-//                let betParent: String = (object as! Dictionary<NSObject, NSObject>)["bet_parent"] as! String
-//                
-//                
-//            }
-            
-            ServiceModel.betOnGame(
-                odd.oddId,
-                oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
-                position: odd.position,
+            ServiceModel.betOnGame1(Utils.getUser().userId,
+                oddId: odd.oddId,
+                oddVal: odd.oddType == Constants.BetTypeSPT.Parley.lowercaseString ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
+                pos: odd.position,
                 matchDetail: odd.teamVsTeam,
-                oddType: odd.oddType,
                 stake: odd.riskValue,
                 matchID: odd.teamId,
+                oddType: odd.oddType,
                 teamName: odd.name,
                 sportsName: odd.leagueName,
-                bet_type: odd.betTypeSPT,
                 bet_ot: odd.betOT,
-                bet_parent: "",
-                is_pool_bet: odd.poolId,
-                completion: { (request, response, body, error, statusCode) -> Void in
+                is_pool_bet: odd.poolId == "" ? "0" : "1",
+                poolId: odd.poolId,
+                numberOfBets: String(format: "%d", self.numberOfBets),
+                completion: { (request, response, object , error, statusCode) -> Void in
+                    
                     if statusCode == 200 {
-                        completionJugar.removeLast()
-                        if completionJugar.isEmpty {
+                        array.removeAtIndex(0)
+                        if array.count > 0 {
+                            self.processBet(&array)
+                        } else {
+                            self.numberOfBets = 0
                             self.navigationController?.popViewControllerAnimated(false)
                             self.delegate.showMyPicks()
                         }
                     }
+
+                    
             })
-        }
+            
+//            ServiceModel.betOnGame(
+//                odd.oddId,
+//                oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
+//                position: odd.position,
+//                matchDetail: odd.teamVsTeam,
+//                oddType: odd.oddType,
+//                stake: odd.riskValue,
+//                matchID: odd.teamId,
+//                teamName: odd.name,
+//                sportsName: odd.leagueName,
+//                bet_type: odd.betTypeSPT,
+//                bet_ot: odd.betOT,
+//                bet_parent: "",
+//                is_pool_bet: odd.poolId,
+//                completion: { (request, response, body, error, statusCode) -> Void in
+//                    if statusCode == 200 {
+//                        completionJugar.removeLast()
+//                        if completionJugar.isEmpty {
+//                            self.navigationController?.popViewControllerAnimated(false)
+//                            self.delegate.showMyPicks()
+//                        }
+//                    }
+//            })
+//        }
     }
     
     func addParlayOdd () {
@@ -161,17 +186,18 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             var pOdd = OddHolder()
             
             pOdd.teamId = ""//oddHolders[0].teamId
-            pOdd.oddId = ""
-            pOdd.name = "Parlay" + (NSString(format: "( %d Teams)", oddHolders.count) as String)
-            pOdd.teamVsTeam = ""//teamName + (NSString(format: "( %d Odds)", oddHolders.count) as String)
+            pOdd.oddId = "parley_bet"
+            pOdd.name = "Parlay " + (NSString(format: "(%d Teams)", oddHolders.count) as String)
+            pOdd.teamVsTeam = teamName + (NSString(format: "( %d Odds)", oddHolders.count) as String)
             pOdd.betTypeSPT = Constants.BetTypeSPT.Single
-            pOdd.betOT = "0"
+            pOdd.betOT = ""
             pOdd.oddType = "parley"
             pOdd.riskValue = ""
             pOdd.parlayValue = parlayValue
             pOdd.leagueName = ""
             pOdd.poolId = oddHolders[0].poolId
-            pOdd.position = ""
+            pOdd.position = " "
+            pOdd.leagueName = oddHolders[0].leagueName
             oddHolders.append(pOdd)
         }
     }
@@ -323,17 +349,20 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
     
     func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
         ServiceModel.buyCredits("250", delegate: self)
-        processBet(finalOdds)
+        self.numberOfBets = finalOdds.count
+        processBet(&finalOdds)
         finalOdds = [OddHolder]()
     }
     
     func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
-        processBet(finalOdds)
+        self.numberOfBets = finalOdds.count
+        processBet(&finalOdds)
         finalOdds = [OddHolder]()
     }
     
     func sharerDidCancel(sharer: FBSDKSharing!) {
-        processBet(finalOdds)
+        self.numberOfBets = finalOdds.count
+        processBet(&finalOdds)
         finalOdds = [OddHolder]()
     }
     

@@ -213,13 +213,15 @@ class ServiceModel: NSObject {
                 "bet_ot"            : bet_ot,
                 "is_pool_bet"       : is_pool_bet,
                 "num_bets"          : numberOfBets,
-                "mat_cond"          : "GAME"
+                "mat_cond"          : "",
+                "input_stake" : "no",
+                "bet_checked" : "yes",
+                "pool_name" : ""
             ]
             
             Utils.showLoader()
-            var array = [params]
             
-            Alamofire.request(.POST, "http://api.wagerocity.com/myBetPlace", parameters: params, encoding: .JSON)
+            Alamofire.request(.POST, "http://api.wagerocity.com/betOnGame", parameters: params, encoding: .JSON)
                 .responseJSON{ (request, response, body, error) -> Void in
                     Utils.hideLoader()
                     if (error != nil) {
@@ -234,7 +236,8 @@ class ServiceModel: NSObject {
                         CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
                         
                         let responseObject = response as NSHTTPURLResponse?
-                        completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
+                        let statusCode = (responseObject?.statusCode as Int?)!
+                        completion(request, response, body, error, statusCode)
                     }
             }
     }
