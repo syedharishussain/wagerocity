@@ -34,7 +34,7 @@ class Utils {
     }
     
     static func showLoader () {
-        SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
+        SVProgressHUD.showWithStatus("Loading")
     }
     
     static func showMessage (delegate: UIViewController, message:String) {

@@ -44,17 +44,22 @@ class PoolViewController: BaseViewController, UITableViewDataSource, UITableView
         var button = cell.viewWithTag(5) as! Button
         button.addTarget(self, action: "joinPool:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        var label = cell.viewWithTag(6) as! UILabel
+        
         if let isPoolJoined = pool["is_join"] as? Bool {
             if isPoolJoined {
-                button.titleLabel?.text = "Joined"
+                label.text = "Joined"
                 button.enabled = false
+            } else {
+                label.text = "Join"
+                button.enabled = true
             }
         }
         
         button.id = (pool["pool_id"] as? String)!
         button.amount = (pool["amount"] as? String)!
-        
         return cell
+        
     }
     
     
@@ -73,16 +78,43 @@ class PoolViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func joinPool(sender: Button) {
+        
         if sender.amount != "0" {
-            ServiceModel.consumeCredits(sender.amount, delegate: self)
-        }
-        ServiceModel.joinPool(sender.id, completion: { (_, _, anyObject, _, statusCode) -> Void in
-            if statusCode == 200 {
-                self.performSegueWithIdentifier(Constants.Segue.MyPools, sender: anyObject as! Array<AnyObject>)
-            } else {
-                
+            
+            let messageString = String(format: "$%@ will be deducted from your account, do you still want to join?", sender.amount)
+            
+            let alertController = UIAlertController(title: "Join Pool", message: messageString, preferredStyle: .Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+                return
             }
-        })
+            alertController.addAction(cancelAction)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                
+                ServiceModel.joinPool(sender.id, delegate:self, completion: { (_, _, anyObject, _, statusCode) -> Void in
+                    if statusCode == 200 {
+                        self.performSegueWithIdentifier(Constants.Segue.MyPools, sender: anyObject as! Array<AnyObject>)
+                    } else {
+                        
+                    }
+                })
+            }
+            alertController.addAction(OKAction)
+            
+            self.presentViewController(alertController, animated: true) {
+                // ...
+            }
+            
+        } else {
+            ServiceModel.joinPool(sender.id, delegate:self, completion: { (_, _, anyObject, _, statusCode) -> Void in
+                if statusCode == 200 {
+                    self.performSegueWithIdentifier(Constants.Segue.MyPools, sender: anyObject as! Array<AnyObject>)
+                } else {
+                    
+                }
+            })
+        }
     }
     
     
@@ -90,12 +122,12 @@ class PoolViewController: BaseViewController, UITableViewDataSource, UITableView
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
+        
         if segue.identifier == Constants.Segue.MyPools {
             var vc = segue.destinationViewController as! MyPoolViewController
             vc.data = sender as! Array<AnyObject>
         }
-
+        
         
     }
     

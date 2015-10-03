@@ -69,8 +69,6 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             content.imageURL = NSURL(string: "https://www.wagerocity.com/user_data/images/logo1.png")
             content.contentTitle = odd.name
             content.contentDescription = "I just placed a $" + odd.riskValue + " wager via my Wagerocity Mobile App on " + odd.name + " at " + odd.oddValue
-//            content.contentDescription = "I have put my stakes " + "$" + odd.riskValue + " on " + odd.name + " " + odd.betTypeString + " " + odd.oddValue;
-//            I just placed a $100 wager via my Wagerocity Mobile App on Chicago at +100.
             
             FBSDKShareDialog.showFromViewController(self, withContent: content, delegate: self)
             ServiceModel.buyCredits("250", delegate: self)
@@ -89,77 +87,78 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
         
         var completionJugar = Array<String>()
         
-//        for odd: OddHolder in array {
+        //        for odd: OddHolder in array {
         let odd: OddHolder = array.first!
-            
-            if odd.poolId == "" {
-                if Utils.getUser().credits < (odd.riskValue as NSString).doubleValue {
-                    Utils.showMessage(self, message: "Not Enough Credit!")
-                    return
-                } else {
-                    ServiceModel.consumeCredits(odd.riskValue, delegate: self)
-                }
+        
+        if odd.poolId == "" {
+            if Utils.getUser().credits < (odd.riskValue as NSString).doubleValue {
+                Utils.showMessage(self, message: "Not Enough Credit!")
+                return
             } else {
-                if odd.poolCredit < (odd.riskValue as NSString).doubleValue {
-                    Utils.showMessage(self, message: "Not Enough Credit in your Pool Account!")
-                    return
-                }
+//                ServiceModel.consumeCredits(odd.riskValue, delegate: self)
             }
-            
-            ServiceModel.betOnGame1(Utils.getUser().userId,
-                oddId: odd.oddId,
-                oddVal: odd.oddType == Constants.BetTypeSPT.Parley.lowercaseString ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
-                pos: odd.position,
-                matchDetail: odd.teamVsTeam,
-                stake: odd.riskValue,
-                matchID: odd.teamId,
-                oddType: odd.oddType,
-                teamName: odd.name,
-                sportsName: odd.leagueName,
-                bet_ot: odd.betOT,
-                is_pool_bet: odd.poolId == "" ? "0" : "1",
-                poolId: odd.poolId,
-                numberOfBets: String(format: "%d", self.numberOfBets),
-                completion: { (request, response, object , error, statusCode) -> Void in
-                    
-                    if statusCode == 200 {
-                        array.removeAtIndex(0)
-                        if array.count > 0 {
-                            self.processBet(&array)
-                        } else {
-                            self.numberOfBets = 0
-                            self.navigationController?.popViewControllerAnimated(false)
-                            self.delegate.showMyPicks()
-                        }
+        } else {
+            if odd.poolCredit < (odd.riskValue as NSString).doubleValue {
+                Utils.showMessage(self, message: "Not Enough Credit in your Pool Account!")
+                return
+            }
+        }
+        
+        ServiceModel.betOnGame1(Utils.getUser().userId,
+            oddId: odd.oddId,
+            oddVal: odd.oddType == Constants.BetTypeSPT.Parley.lowercaseString ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
+            pos: odd.position,
+            matchDetail: odd.teamVsTeam,
+            stake: odd.riskValue,
+            matchID: odd.teamId,
+            oddType: odd.oddType,
+            teamName: odd.name,
+            sportsName: odd.leagueName,
+            bet_ot: odd.betOT,
+            is_pool_bet: odd.poolId == "" ? "0" : "1",
+            poolId: odd.poolId,
+            numberOfBets: String(format: "%d", self.numberOfBets),
+            completion: { (request, response, object , error, statusCode) -> Void in
+                
+                if statusCode == 200 {
+                    array.removeAtIndex(0)
+                    if array.count > 0 {
+                        self.processBet(&array)
+                    } else {
+                        self.numberOfBets = 0
+                        Utils.showLoader()
+                        self.navigationController?.popViewControllerAnimated(false)
+                        self.delegate.showMyPicks()
                     }
-
-                    
-            })
-            
-//            ServiceModel.betOnGame(
-//                odd.oddId,
-//                oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
-//                position: odd.position,
-//                matchDetail: odd.teamVsTeam,
-//                oddType: odd.oddType,
-//                stake: odd.riskValue,
-//                matchID: odd.teamId,
-//                teamName: odd.name,
-//                sportsName: odd.leagueName,
-//                bet_type: odd.betTypeSPT,
-//                bet_ot: odd.betOT,
-//                bet_parent: "",
-//                is_pool_bet: odd.poolId,
-//                completion: { (request, response, body, error, statusCode) -> Void in
-//                    if statusCode == 200 {
-//                        completionJugar.removeLast()
-//                        if completionJugar.isEmpty {
-//                            self.navigationController?.popViewControllerAnimated(false)
-//                            self.delegate.showMyPicks()
-//                        }
-//                    }
-//            })
-//        }
+                }
+                
+                
+        })
+        
+        //            ServiceModel.betOnGame(
+        //                odd.oddId,
+        //                oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
+        //                position: odd.position,
+        //                matchDetail: odd.teamVsTeam,
+        //                oddType: odd.oddType,
+        //                stake: odd.riskValue,
+        //                matchID: odd.teamId,
+        //                teamName: odd.name,
+        //                sportsName: odd.leagueName,
+        //                bet_type: odd.betTypeSPT,
+        //                bet_ot: odd.betOT,
+        //                bet_parent: "",
+        //                is_pool_bet: odd.poolId,
+        //                completion: { (request, response, body, error, statusCode) -> Void in
+        //                    if statusCode == 200 {
+        //                        completionJugar.removeLast()
+        //                        if completionJugar.isEmpty {
+        //                            self.navigationController?.popViewControllerAnimated(false)
+        //                            self.delegate.showMyPicks()
+        //                        }
+        //                    }
+        //            })
+        //        }
     }
     
     func addParlayOdd () {

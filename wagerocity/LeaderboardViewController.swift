@@ -66,7 +66,7 @@ class LeaderboardViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func refreshTableView() {
-        SVProgressHUD.showWithStatus("Loading", maskType:UInt(SVProgressHUDMaskTypeBlack))
+        SVProgressHUD.showWithStatus("Loading")
         Alamofire.request(.GET, "http://api.wagerocity.com/getLeaderboards", parameters: ["leagueName" : leagueName ,
             "year" : "2015", "userId" : Utils.getUser().userId])
             .responseJSON{ (request, response, body, error) in

@@ -207,7 +207,7 @@ class ServiceModel: NSObject {
                 "stake"             : stake,
                 "match_id"          : matchID,
                 "team_name"         : teamName,
-                "pool_id"           : "",
+                "pool_id"           : poolId,
                 "league_name"       : sportsName,
                 "place_bet_type"    : "single_bet",
                 "bet_ot"            : bet_ot,
@@ -223,7 +223,7 @@ class ServiceModel: NSObject {
             
             Alamofire.request(.POST, "http://api.wagerocity.com/betOnGame", parameters: params, encoding: .JSON)
                 .responseJSON{ (request, response, body, error) -> Void in
-                    Utils.hideLoader()
+
                     if (error != nil) {
                         if let newError:NSError = error {
                             
@@ -340,13 +340,12 @@ class ServiceModel: NSObject {
         }
     }
     
-    static func joinPool (poolId: String, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
+    static func joinPool (poolId: String, delegate: BaseViewController, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.POST, "http://api.wagerocity.com/joinPool", parameters:
             ["userId" : Utils.getUser().userId,
                 "poolId" : poolId], encoding: ParameterEncoding.JSON)
             .responseJSON{ (request, response, body, error) in
-                Utils .hideLoader()
                 
                 if (error != nil) {
                     if let newError:NSError = error {
@@ -355,8 +354,20 @@ class ServiceModel: NSObject {
                         return
                     }
                 } else {
-                    let responseObject = response as NSHTTPURLResponse?
-                    completion(request, responseObject, body, error, (responseObject?.statusCode as Int?)!)
+                    
+                    ServiceModel.getUser(Utils.getUser().facebookUid, completion: { (request2, response2, body2, error2, statusCode2) -> Void in
+                        if statusCode2 == 200 {
+                            Utils.saveUserObject(body2!)
+                            delegate.updateStatsBar()
+                            
+                            let responseObject = response as NSHTTPURLResponse?
+                            completion(request, responseObject, body, error, (responseObject?.statusCode as Int?)!)
+                            
+                            Utils.hideLoader()
+                        }
+                    })
+                    
+                    
                     
                 }
         }
