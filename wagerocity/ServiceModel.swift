@@ -493,4 +493,34 @@ class ServiceModel: NSObject {
         
     }
     
+    static func setDeviceToken (playerId: String, deviceToken: String, completion: (Bool) -> Void) {
+        Utils.showLoader()
+        
+        var params = [
+            "playerId" : Utils.getUser().userId,
+            "deviceToken" : playerId,
+            "deviceType" : "1"
+        ]
+        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        Alamofire.request(.POST, "http://api.wagerocity.com/setDeviceToken", parameters:
+            params, encoding: ParameterEncoding.JSON)
+            
+            .responseJSON{ (request, response, body, error) in
+                Utils .hideLoader()
+                
+                if (error != nil) {
+                    if let newError:NSError = error {
+                        completion(false)
+                        Utils.showError(newError)
+                        return
+                    }
+                } else {
+                    if ((response as NSHTTPURLResponse?)!.statusCode as Int?)! == 200 {
+                        completion(true)
+                    }
+                }
+        }
+        
+    }
+    
 }
