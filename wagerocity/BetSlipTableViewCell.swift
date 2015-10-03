@@ -9,7 +9,7 @@
 import UIKit
 
 class BetSlipTableViewCell: UITableViewCell, UITextFieldDelegate {
-
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var betInfo: UILabel!
     @IBOutlet weak var teamVsTeam: UILabel!
@@ -29,10 +29,10 @@ class BetSlipTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.risk.delegate = self
         self.win.delegate = self
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -59,12 +59,20 @@ class BetSlipTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func riskValueUpdate(sender: AnyObject) {
         var tf: UITextField = sender as! UITextField
-        self.win.text = Utils.getToWinAmountString(tf.text, betOddValue:oddValue )
+        if oddholder.oddType == Constants.BetTypeSPT.Parley.lowercaseString {
+            self.win.text = String(format:"%.2f", (tf.text as NSString).doubleValue * oddholder.parlayValue )
+        } else {
+            self.win.text = Utils.getToWinAmountString(tf.text, betOddValue:oddValue )
+        }
         self.oddholder.riskValue = tf.text
     }
     @IBAction func toWinValueUpdate(sender: AnyObject) {
         var tf: UITextField = sender as! UITextField
-        self.risk.text = Utils.getRiskAmountString(tf.text, betOddValue: oddValue)
+        if oddholder.oddType == Constants.BetTypeSPT.Parley.lowercaseString {
+            self.risk.text = String(format:"%.2f", (tf.text as NSString).doubleValue / oddholder.parlayValue )
+        } else {
+            self.risk.text = Utils.getRiskAmountString(tf.text, betOddValue: oddValue)
+        }
         self.oddholder.riskValue = self.risk.text
     }
 }
