@@ -56,7 +56,13 @@ class MyPickTableViewCell: UITableViewCell, FBSDKSharingDelegate {
         self.team.text          = pick.teamName
         self.betValue.text      = Utils.signedString(pick.oddsVal) //getBetValue(pick.oddInfo.first as! OddInfo, isTeamA: isTeamA)
         self.stakeValue.text    = "$"+pick.stake
-        self.winValue.text      = "$"+Utils.getToWinAmountString(pick.stake, betOddValue: pick.oddsVal)
+        
+        if pick.oddType == Constants.BetTypeSPT.Parley.lowercaseString {
+            self.winValue.text      = String(format:"$%.2f", (pick.oddsVal as NSString).doubleValue * (pick.stake as NSString).doubleValue )
+        } else {
+            self.winValue.text      = "$"+Utils.getToWinAmountString(pick.stake, betOddValue: pick.oddsVal)
+        }
+        
         self.result.text        = pick.betResult
         self.poolName.text      = (pick.poolName != nil) ? (pick.poolName == "" ? "-" : pick.poolName) : "-"
         

@@ -134,31 +134,6 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
                 
                 
         })
-        
-        //            ServiceModel.betOnGame(
-        //                odd.oddId,
-        //                oddVal: odd.betTypeSPT == Constants.BetTypeSPT.Parley ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
-        //                position: odd.position,
-        //                matchDetail: odd.teamVsTeam,
-        //                oddType: odd.oddType,
-        //                stake: odd.riskValue,
-        //                matchID: odd.teamId,
-        //                teamName: odd.name,
-        //                sportsName: odd.leagueName,
-        //                bet_type: odd.betTypeSPT,
-        //                bet_ot: odd.betOT,
-        //                bet_parent: "",
-        //                is_pool_bet: odd.poolId,
-        //                completion: { (request, response, body, error, statusCode) -> Void in
-        //                    if statusCode == 200 {
-        //                        completionJugar.removeLast()
-        //                        if completionJugar.isEmpty {
-        //                            self.navigationController?.popViewControllerAnimated(false)
-        //                            self.delegate.showMyPicks()
-        //                        }
-        //                    }
-        //            })
-        //        }
     }
     
     func addParlayOdd () {
