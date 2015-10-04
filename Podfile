@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'wagerocity' do
 
-pod 'GoogleCloudMessaging’
+pod 'Google/CloudMessaging'
 
 end
 

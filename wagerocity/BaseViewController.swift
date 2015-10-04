@@ -19,6 +19,33 @@ class BaseViewController: UIViewController {
         addGetDollarsButton()
         addStatsBarView()
         
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateRegistrationStatus:",
+            name: appDelegate.registrationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showReceivedMessage:",
+            name: appDelegate.messageKey, object: nil)
+        
+    }
+    
+    func showReceivedMessage(notification: NSNotification) {
+        if let info = notification.userInfo as? [String:AnyObject] {
+            
+//            let aps = info["gcm.notification.aps"] as! NSDictionary
+                showAlert("Message received", message: info["gcm.notification.aps"] as! String)
+            if let aps = info["gcm.notification.aps"] as? [String: String] {
+                showAlert("Message received", message: aps["alert"]!)
+            }
+        } else {
+            println("Software failure. Guru meditation.")
+        }
+    }
+        
+    func showAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title,
+            message: message, preferredStyle: .Alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .Destructive, handler: nil)
+        alert.addAction(dismissAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
