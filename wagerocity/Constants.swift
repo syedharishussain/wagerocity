@@ -10,6 +10,7 @@ struct Constants {
     struct UserDefaults {
         static let User = "user_object"
         static let FacebookId = "fb_id"
+        static let DeviceToken = "device_token"
     }
     
     struct IAP {

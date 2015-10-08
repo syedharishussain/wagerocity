@@ -15,11 +15,9 @@ class ServiceModel: NSObject {
         Utils.showLoader()
         Alamofire.request(.GET, "http://api.wagerocity.com/getUser", parameters: ["facebookID" : facebookID])
             .responseJSON{ (request, response, body, error) in
-                Utils.hideLoader()
                 
                 if (error != nil) {
                     if let newError:NSError = error {
-                        Utils.hideLoader()
                         Utils.showError(newError)
                         return
                     }
@@ -27,7 +25,7 @@ class ServiceModel: NSObject {
                 } else {
                     var dic : NSDictionary = body as! NSDictionary
                     
-                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
+//                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
                     
                     Utils.saveUserObject(body!)
                     let responseObject = response as NSHTTPURLResponse?
@@ -57,7 +55,7 @@ class ServiceModel: NSObject {
                 } else {
                     var dic : NSDictionary = body as! NSDictionary
                     
-                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@\n Email: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic, email]))
+//                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@\n Email: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic, email]))
                     
                     Utils.saveUserObject(body!)
                     let responseObject = response as NSHTTPURLResponse?
@@ -116,7 +114,7 @@ class ServiceModel: NSObject {
                     //TODO: status Code
                     //warning: status
                     
-                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
+//                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
                     let responseObject = response as NSHTTPURLResponse?
                     completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
                 }
@@ -172,7 +170,7 @@ class ServiceModel: NSObject {
                         
                     } else {
                         
-                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
+//                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
                         
                         let responseObject = response as NSHTTPURLResponse?
                         completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
@@ -181,6 +179,7 @@ class ServiceModel: NSObject {
     }
     
     static func betOnGame1 (
+        delegate: BaseViewController,
         userId:          String,
         oddId:         String,
         oddVal:       String,
@@ -233,11 +232,25 @@ class ServiceModel: NSObject {
                         
                     } else {
                         
-                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
+//                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
                         
-                        let responseObject = response as NSHTTPURLResponse?
-                        let statusCode = (responseObject?.statusCode as Int?)!
-                        completion(request, response, body, error, statusCode)
+                        ServiceModel.getUser(Utils.getUser().facebookUid, completion: { (request2, response2, body2, error2, statusCode2) -> Void in
+                            if statusCode2 == 200 {
+                                Utils.saveUserObject(body2!)
+                                delegate.updateStatsBar()
+                                
+                                let responseObject = response as NSHTTPURLResponse?
+                                let statusCode = (responseObject?.statusCode as Int?)!
+                                completion(request, response, body, error, (responseObject?.statusCode as Int?)!)
+                                
+                            }
+                        })
+                        
+                        if let deviceToken = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.DeviceToken) as? String {
+                            ServiceModel.setDeviceToken(Utils.getUser().userId, deviceToken: deviceToken, completion: { (isComplete) -> Void in
+                            
+                            })
+                        }
                     }
             }
     }
@@ -261,7 +274,7 @@ class ServiceModel: NSObject {
                 } else {
                     var dic : NSDictionary = body as! NSDictionary
                     
-                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
+//                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
                     
                     Utils.saveUserObject(body!)
                     let responseObject = response as NSHTTPURLResponse?
@@ -289,7 +302,7 @@ class ServiceModel: NSObject {
                 } else {
                     var dic : NSDictionary = body as! NSDictionary
                     
-                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
+//                    CLSLogv("Login Logs: \nRequest: %@\nResponse: %@\nBody: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!, dic]))
                     
                     Utils.saveUserObject(body!)
                     let responseObject = response as NSHTTPURLResponse?
@@ -366,8 +379,6 @@ class ServiceModel: NSObject {
                             Utils.hideLoader()
                         }
                     })
-                    
-                    
                     
                 }
         }

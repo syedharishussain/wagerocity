@@ -106,6 +106,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                         } else {
                             
                             ServiceModel.getUser(id, completion: { (request, response, body, error, statusCode) -> Void in
+                                Utils.hideLoader()
                                 if statusCode == 200 {
                                     self.performSegueWithIdentifier(Constants.Segue.Dashboard, sender: nil)
                                 } else {

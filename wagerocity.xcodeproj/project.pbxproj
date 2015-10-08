@@ -12,6 +12,8 @@
 		6603B5CB1B277E0D0014489A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6603B5CA1B277E0D0014489A /* Images.xcassets */; };
 		6603B5CE1B277E0D0014489A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6603B5CC1B277E0D0014489A /* LaunchScreen.xib */; };
 		6603B5DA1B277E0D0014489A /* wagerocityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6603B5D91B277E0D0014489A /* wagerocityTests.swift */; };
+		662D8A301BC468580032FE11 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662D8A2E1BC468580032FE11 /* Fabric.framework */; };
+		662D8A311BC468580032FE11 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662D8A2F1BC468580032FE11 /* Crashlytics.framework */; };
 		664373411B3C8B5A00953458 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664373401B3C8B5A00953458 /* Constants.swift */; };
 		66452B8D1B50354B0087C9E9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66452B8C1B50354B0087C9E9 /* SettingViewController.swift */; };
 		666CF6971B2788B600AD4DF5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666CF6901B27884E00AD4DF5 /* Alamofire.framework */; };
@@ -19,8 +21,6 @@
 		666CF7121B28C4A600AD4DF5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 666CF7111B28C4A600AD4DF5 /* User.m */; };
 		666CF7161B28CCDD00AD4DF5 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CF7151B28CCDD00AD4DF5 /* DashboardViewController.swift */; };
 		666CF71E1B28DCB100AD4DF5 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666CF71D1B28DCB100AD4DF5 /* NavigationBar.swift */; };
-		6674ED1B1B3DE7F800206FC5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED191B3DE7F800206FC5 /* Fabric.framework */; };
-		6674ED1C1B3DE7F800206FC5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */; };
 		6674ED1E1B3DF3DC00206FC5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */; };
 		6674ED251B431FE300206FC5 /* PickOfPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */; };
 		6674ED271B4325FE00206FC5 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6674ED261B4325FE00206FC5 /* ServiceModel.swift */; };
@@ -176,6 +176,9 @@
 		6603B5D31B277E0D0014489A /* wagerocityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wagerocityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6603B5D81B277E0D0014489A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6603B5D91B277E0D0014489A /* wagerocityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wagerocityTests.swift; sourceTree = "<group>"; };
+		662D8A2E1BC468580032FE11 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		662D8A2F1BC468580032FE11 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		662D8A331BC478AD0032FE11 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		664373401B3C8B5A00953458 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		66452B8C1B50354B0087C9E9 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		666CF6881B27884D00AD4DF5 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
@@ -184,8 +187,6 @@
 		666CF7111B28C4A600AD4DF5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		666CF7151B28CCDD00AD4DF5 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		666CF71D1B28DCB100AD4DF5 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
-		6674ED191B3DE7F800206FC5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		6674ED1D1B3DF3DC00206FC5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6674ED241B431FE300206FC5 /* PickOfPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickOfPlayerTableViewCell.swift; sourceTree = "<group>"; };
 		6674ED261B4325FE00206FC5 /* ServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
@@ -330,13 +331,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				662D8A301BC468580032FE11 /* Fabric.framework in Frameworks */,
 				66DFA0031B5542BF008A8FAC /* FBSDKShareKit.framework in Frameworks */,
+				662D8A311BC468580032FE11 /* Crashlytics.framework in Frameworks */,
 				66FDB7051B2782DA00D0B2F4 /* Bolts.framework in Frameworks */,
 				6674ED1E1B3DF3DC00206FC5 /* StoreKit.framework in Frameworks */,
-				6674ED1B1B3DE7F800206FC5 /* Fabric.framework in Frameworks */,
 				66FDB6F91B277FAD00D0B2F4 /* FBSDKCoreKit.framework in Frameworks */,
 				66FDB6FA1B277FAD00D0B2F4 /* FBSDKLoginKit.framework in Frameworks */,
-				6674ED1C1B3DE7F800206FC5 /* Crashlytics.framework in Frameworks */,
 				666CF6971B2788B600AD4DF5 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,13 +355,14 @@
 		6603B5B51B277E0D0014489A = {
 			isa = PBXGroup;
 			children = (
+				662D8A331BC478AD0032FE11 /* MyPlayground.playground */,
 				6603B5C01B277E0D0014489A /* wagerocity */,
 				667B6B341B35851B00609C4B /* Frameworks */,
 				6603B5D61B277E0D0014489A /* wagerocityTests */,
 				6603B5BF1B277E0D0014489A /* Products */,
+				662D8A2E1BC468580032FE11 /* Fabric.framework */,
+				662D8A2F1BC468580032FE11 /* Crashlytics.framework */,
 				666CF6881B27884D00AD4DF5 /* Alamofire.xcodeproj */,
-				6674ED191B3DE7F800206FC5 /* Fabric.framework */,
-				6674ED1A1B3DE7F800206FC5 /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -751,7 +753,7 @@
 				6603B5BB1B277E0D0014489A /* Frameworks */,
 				6603B5BC1B277E0D0014489A /* Resources */,
 				666CF69B1B2788B600AD4DF5 /* Embed Frameworks */,
-				6674ED181B3DE7AF00206FC5 /* ShellScript */,
+				662D8A2D1BC4677F0032FE11 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -886,7 +888,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6674ED181B3DE7AF00206FC5 /* ShellScript */ = {
+		662D8A2D1BC4677F0032FE11 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -897,7 +899,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run df016c3ad1ee1793d79feddd950c3b34795c9d9f ac8080d4ebbc66396c2e44d01ee0657b0826c30df3d56945a278deeb35f9eef8\n";
+			shellScript = "./Fabric.framework/run df016c3ad1ee1793d79feddd950c3b34795c9d9f ac8080d4ebbc66396c2e44d01ee0657b0826c30df3d56945a278deeb35f9eef8";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1144,8 +1146,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1156,7 +1158,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6e9b0289-30ff-48a8-bc90-011c3b3d7012";
 				SWIFT_OBJC_BRIDGING_HEADER = "wagerocity/wagerocity-Bridging-Header.h";
 			};
 			name = Release;

@@ -47,9 +47,11 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
     
     @IBAction func placeBet(sender: AnyObject) {
         
-        var array = oddHolders.filter { (oddholder) -> Bool in
-            return oddholder.isChecked && oddholder.riskValue != "0.0" && oddholder.riskValue != ""
-        }
+//        var array = oddHolders.filter { (oddholder) -> Bool in
+//            return oddholder.isChecked && oddholder.riskValue != "0.0" && oddholder.riskValue != ""
+//        }
+        
+        var array = oddHolders
         
         if array.isEmpty {
             return
@@ -75,7 +77,14 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             
         }))
         alert.addAction(UIAlertAction(title: "Cancel!", style: UIAlertActionStyle.Cancel, handler: { (alert) -> Void in
-            self.numberOfBets = array.count
+            if self.oddHolders.count == 0 {
+                self.numberOfBets = 0
+            } else if self.oddHolders.count == 1 && self.oddHolders[0].oddType == Constants.BetTypeSPT.Parley.lowercaseString {
+                self.numberOfBets = 3
+            } else {
+                self.numberOfBets = self.oddHolders.count
+            }
+//            self.numberOfBets = array.count
             self.processBet(&array)
         }))
         self.presentViewController(alert, animated: true, completion: nil)
@@ -104,12 +113,13 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             }
         }
         
-        ServiceModel.betOnGame1(Utils.getUser().userId,
+        ServiceModel.betOnGame1(self,
+            userId: Utils.getUser().userId,
             oddId: odd.oddId,
             oddVal: odd.oddType == Constants.BetTypeSPT.Parley.lowercaseString ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
             pos: odd.position,
             matchDetail: odd.teamVsTeam,
-            stake: odd.riskValue,
+            stake: (odd.riskValue == "" ) ? "0" : odd.riskValue,
             matchID: odd.teamId,
             oddType: odd.oddType,
             teamName: odd.name,
