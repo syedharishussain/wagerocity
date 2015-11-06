@@ -16,48 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "wagerocity/ServiceModel.swift"
-            timestampString = "466027754.519356"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "consumeCredits(_:delegate:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "wagerocity/SVProgressHUD/SVProgressHUD.m"
-            timestampString = "466027390.038364"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "950"
-            endingLineNumber = "950"
-            landmarkName = "-dismiss"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "wagerocity/SVProgressHUD/SVProgressHUD.m"
-            timestampString = "466027510.098909"
+            filePath = "wagerocity/GameTableViewCell.swift"
+            timestampString = "468456258.29691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "893"
-            endingLineNumber = "893"
-            landmarkName = "-dismissWithDelay:"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "createOddHolder(_:isTeamA:betTypeString:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

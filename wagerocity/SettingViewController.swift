@@ -24,31 +24,31 @@ class SettingViewController: BaseViewController, FBSDKLoginButtonDelegate, FBSDK
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var user: User = Utils.getUser()
-        
-        if let available = user.credits as Double? {
-            var formatter = NSNumberFormatter()
-            formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-            formatter.stringFromNumber(NSNumber(double: user.credits))
+        if let user: User = Utils.getUser() {
+            if let available = user.credits as Double? {
+                var formatter = NSNumberFormatter()
+                formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+                formatter.stringFromNumber(NSNumber(double: user.credits))
+                
+                credits.text = "$" + formatter.stringFromNumber(NSNumber(double: user.credits))!
+                self.fblogin.delegate = self
+            }
             
-            credits.text = "$" + formatter.stringFromNumber(NSNumber(double: user.credits))!
-            self.fblogin.delegate = self
-        }
-        
-        if let rankString = user.overallrank {
-            rank.text = rankString
-        }
-        
-        if let recordString = user.currentrecord {
-            record.text = "$" + recordString
+            if let rankString = user.overallrank {
+                rank.text = rankString
+            }
+            
+            if let recordString = user.currentrecord {
+                record.text = "$" + recordString
+            }
+            
+            name.text = user.username as String
+
         }
         
         var userImageURL = "https://graph.facebook.com/" + Utils.facebookId() + "/picture?width=150&height=150"
         
         image.sd_setImageWithURL(NSURL(string: userImageURL), placeholderImage: UIImage(named: "user1"))
-        
-        name.text = user.username as String
-        
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {

@@ -82,13 +82,35 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             } else if self.oddHolders.count == 1 && self.oddHolders[0].oddType == Constants.BetTypeSPT.Parley.lowercaseString {
                 self.numberOfBets = 3
             } else {
+                
+                var oddholder: OddHolder?
+                
+                for odd: OddHolder in self.oddHolders {
+                    if odd.oddId == "parley_bet" {
+                        if odd.isChecked == false {
+                            oddholder = odd
+                        }
+                    }
+                }
+                
+                if let odd = oddholder {
+                    self.oddHolders = self.arrayRemovingObject(odd, fromArray: self.oddHolders)
+                }
+                
+                self.finalOdds = self.oddHolders
+                
+                
                 self.numberOfBets = self.oddHolders.count
             }
 //            self.numberOfBets = array.count
-            self.processBet(&array)
+            self.processBet(&self.oddHolders)
         }))
         self.presentViewController(alert, animated: true, completion: nil)
         
+    }
+    
+    func arrayRemovingObject<U: Equatable>(object: U, fromArray:[U]) -> [U] {
+        return fromArray.filter { return $0 != object }
     }
     
     func processBet (inout array : Array<OddHolder>) {
@@ -100,7 +122,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
         let odd: OddHolder = array.first!
         
         if odd.poolId == "" {
-            if Utils.getUser().credits < (odd.riskValue as NSString).doubleValue {
+            if Utils.getUser()!.credits < (odd.riskValue as NSString).doubleValue {
                 Utils.showMessage(self, message: "Not Enough Credit!")
                 return
             } else {
@@ -114,7 +136,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
         }
         
         ServiceModel.betOnGame1(self,
-            userId: Utils.getUser().userId,
+            userId: Utils.getUser()!.userId,
             oddId: odd.oddId,
             oddVal: odd.oddType == Constants.BetTypeSPT.Parley.lowercaseString ? NSString(format: "%.2f",odd.parlayValue) as String : odd.oddValue,
             pos: odd.position,
@@ -350,5 +372,12 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
         finalOdds = [OddHolder]()
     }
     
+    func removeObject<T : Equatable>(object: T, inout fromArray array: [T])
+    {
+        var index = find(array, object)
+        array.removeAtIndex(index!)
+    }
+    
     
 }
+

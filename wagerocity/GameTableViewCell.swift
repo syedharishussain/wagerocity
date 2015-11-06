@@ -175,7 +175,8 @@ class GameTableViewCell: UITableViewCell {
     func createOddHolder(game: Game, isTeamA: Bool, betTypeString: String) -> OddHolder {
         var oddHolder = OddHolder()
         
-        oddHolder.teamId = game.teamANumber//(betTypeString == Constants.BetType.Under) ? game.teamANumber : isTeamA ? game.teamANumber : game.teamBNumber
+        oddHolder.teamId = isTeamA ? game.teamANumber : game.teamBNumber
+//(betTypeString == Constants.BetType.Under) ? game.teamANumber : isTeamA ? game.teamANumber : game.teamBNumber
         oddHolder.name = isTeamA ? game.nameA : game.nameB
         oddHolder.oddId = (betTypeString == Constants.BetType.Under) ?  game.oddA.oddId :  isTeamA ? game.oddA.oddId : game.oddB.oddId
         oddHolder.teamVsTeam = game.nameA + " vs " + game.nameB

@@ -67,7 +67,7 @@ class ServiceModel: NSObject {
     static func getPicksOfPlayer (playerId: String, completion: (AnyObject? , NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.GET, "http://api.wagerocity.com/getGamesOfPlayer", parameters:
-            ["playerID" : playerId, "userID" : Utils.getUser().userId])
+            ["playerID" : playerId, "userID" : Utils.getUser()!.userId])
             .responseJSON{ (request, response, body, error) in
                 Utils .hideLoader()
                 let responseObject = response as NSHTTPURLResponse?
@@ -79,7 +79,7 @@ class ServiceModel: NSObject {
     static func getExpert (completion:(AnyObject?, NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.GET, "http://api.wagerocity.com/getExperts", parameters:
-            ["userId" : Utils.getUser().userId])
+            ["userId" : Utils.getUser()!.userId])
             .responseJSON{ (request, response, body, error) in
                 Utils .hideLoader()
                 let responseObject = response as NSHTTPURLResponse?
@@ -90,7 +90,7 @@ class ServiceModel: NSObject {
     static func getMyPicks (completion:(AnyObject?, NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.GET, "http://api.wagerocity.com/getMyPicks", parameters:
-            ["userId" : Utils.getUser().userId])
+            ["userId" : Utils.getUser()!.userId])
             .responseJSON{ (request, response, body, error) in
                 Utils .hideLoader()
                 let responseObject = response as NSHTTPURLResponse?
@@ -138,7 +138,7 @@ class ServiceModel: NSObject {
         completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
             
             var params = [
-                "userID"        : Utils.getUser().userId,
+                "userID"        : Utils.getUser()!.userId,
                 "oddID"         : oddID,
                 "oddVal"        : oddVal,
                 "position"      : position,
@@ -197,7 +197,7 @@ class ServiceModel: NSObject {
         completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
             
             var params = [
-                "usr_id"            : Utils.getUser().userId,
+                "usr_id"            : userId,
                 "odd_id"            : oddId,
                 "odds_val"          : oddVal,
                 "pos"               : pos,
@@ -232,9 +232,7 @@ class ServiceModel: NSObject {
                         
                     } else {
                         
-//                        CLSLogv("Login Logs: \nRequest: %@\nResponse: %@", getVaList([request as NSURLRequest, (response as NSHTTPURLResponse?)!]))
-                        
-                        ServiceModel.getUser(Utils.getUser().facebookUid, completion: { (request2, response2, body2, error2, statusCode2) -> Void in
+                        ServiceModel.getUser(Utils.facebookId(), completion: { (request2, response2, body2, error2, statusCode2) -> Void in
                             if statusCode2 == 200 {
                                 Utils.saveUserObject(body2!)
                                 delegate.updateStatsBar()
@@ -246,11 +244,6 @@ class ServiceModel: NSObject {
                             }
                         })
                         
-                        if let deviceToken = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.DeviceToken) as? String {
-                            ServiceModel.setDeviceToken(Utils.getUser().userId, deviceToken: deviceToken, completion: { (isComplete) -> Void in
-                            
-                            })
-                        }
                     }
             }
     }
@@ -259,7 +252,7 @@ class ServiceModel: NSObject {
     static func buyCredits (amount: String, delegate: BaseViewController) {
         Utils.showLoader()
         Alamofire.request(.POST, "http://api.wagerocity.com/buyCredits", parameters: [
-            "userId" : Utils.getUser().userId,
+            "userId" : Utils.getUser()!.userId,
             "creditAmount" : amount
             ], encoding: ParameterEncoding.JSON)
             .responseJSON{ (request, response, body, error) -> Void in
@@ -284,14 +277,14 @@ class ServiceModel: NSObject {
     }
     
     static func consumeCredits (amount: String, delegate: BaseViewController) {
-        Utils.showLoader()
+//        Utils.showLoader()
         Alamofire.request(.POST, "http://api.wagerocity.com/consumeCredits", parameters: [
-            "userId" : Utils.getUser().userId,
+            "userId" : Utils.getUser()!.userId,
             "debitAmount" : amount
             ]
             , encoding: ParameterEncoding.JSON)
             .responseJSON{ (request, response, body, error) -> Void in
-                Utils.hideLoader()
+//                Utils.hideLoader()
                 if (error != nil) {
                     if let newError:NSError = error {
                         
@@ -314,7 +307,7 @@ class ServiceModel: NSObject {
     static func getPools (completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.GET, "http://api.wagerocity.com/getAllPools", parameters:
-            ["userId" : Utils.getUser().userId])
+            ["userId" : Utils.getUser()!.userId])
             .responseJSON{ (request, response, body, error) in
                 Utils .hideLoader()
                 
@@ -335,7 +328,7 @@ class ServiceModel: NSObject {
     static func getMyPools (completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.GET, "http://api.wagerocity.com/getMyPools", parameters:
-            ["userId" : Utils.getUser().userId])
+            ["userId" : Utils.getUser()!.userId])
             .responseJSON{ (request, response, body, error) in
                 Utils .hideLoader()
                 
@@ -356,7 +349,7 @@ class ServiceModel: NSObject {
     static func joinPool (poolId: String, delegate: BaseViewController, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
         Utils.showLoader()
         Alamofire.request(.POST, "http://api.wagerocity.com/joinPool", parameters:
-            ["userId" : Utils.getUser().userId,
+            ["userId" : Utils.getUser()!.userId,
                 "poolId" : poolId], encoding: ParameterEncoding.JSON)
             .responseJSON{ (request, response, body, error) in
                 
@@ -368,7 +361,7 @@ class ServiceModel: NSObject {
                     }
                 } else {
                     
-                    ServiceModel.getUser(Utils.getUser().facebookUid, completion: { (request2, response2, body2, error2, statusCode2) -> Void in
+                    ServiceModel.getUser(Utils.getUser()!.facebookUid, completion: { (request2, response2, body2, error2, statusCode2) -> Void in
                         if statusCode2 == 200 {
                             Utils.saveUserObject(body2!)
                             delegate.updateStatsBar()
@@ -387,7 +380,7 @@ class ServiceModel: NSObject {
     static func clearRecord (delegate: BaseViewController) {
         Utils.showLoader()
         Alamofire.request(.POST, "http://api.wagerocity.com/clearRecord", parameters:
-            ["userId" : Utils.getUser().userId], encoding: ParameterEncoding.JSON)
+            ["userId" : Utils.getUser()!.userId], encoding: ParameterEncoding.JSON)
             .responseJSON{ (request, response, body, error) in
                 Utils .hideLoader()
                 
@@ -417,7 +410,7 @@ class ServiceModel: NSObject {
         
         var methodName = follow ? "followPlayer" : "unfollowPlayer"
         var params = [
-            "userId" : Utils.getUser().userId,
+            "userId" : Utils.getUser()!.userId,
             "playerId" : playerId
         ]
         NSURLCache.sharedURLCache().removeAllCachedResponses()
@@ -505,11 +498,10 @@ class ServiceModel: NSObject {
     }
     
     static func setDeviceToken (playerId: String, deviceToken: String, completion: (Bool) -> Void) {
-        Utils.showLoader()
         
         var params = [
-            "playerId" : Utils.getUser().userId,
-            "deviceToken" : playerId,
+            "playerId" : playerId,
+            "deviceToken" : deviceToken,
             "deviceType" : "1"
         ]
         NSURLCache.sharedURLCache().removeAllCachedResponses()
@@ -517,7 +509,6 @@ class ServiceModel: NSObject {
             params, encoding: ParameterEncoding.JSON)
             
             .responseJSON{ (request, response, body, error) in
-                Utils .hideLoader()
                 
                 if (error != nil) {
                     if let newError:NSError = error {

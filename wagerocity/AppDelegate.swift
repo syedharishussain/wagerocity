@@ -38,16 +38,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         
-        var dt:String = String(format:"%@",deviceToken)
-        var array = split(dt){$0=="<"}
-        dt = array[0]
-        array = split(dt){$0==">"}
-        dt = array[0]
+        var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
         
-        NSUserDefaults.standardUserDefaults().setObject(dt, forKey: Constants.UserDefaults.DeviceToken)
+        var deviceTokenString: String = ( deviceToken.description as NSString )
+            .stringByTrimmingCharactersInSet( characterSet )
+            .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
+        
+        NSUserDefaults.standardUserDefaults().setObject(deviceTokenString, forKey: Constants.UserDefaults.DeviceToken)
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        print(deviceToken)
+        print(deviceTokenString)
+        
+        if let userId = Utils.getUser()?.userId {
+            ServiceModel.setDeviceToken(userId, deviceToken: deviceTokenString, completion: { (isComplete) -> Void in
+                
+            })
+        }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -55,7 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        
+        println(userInfo)
+        if let aps = userInfo["aps"] as? [NSObject : AnyObject],
+            let alert = aps["alert"] as? [NSObject : AnyObject],
+            let title = alert["title"] as? String,
+            let body = alert["body"] as? String {
+            Utils.showMessage(self.window!.rootViewController!, message: body, title: title)
+        }
     }
     
     func applicationWillResignActive(application: UIApplication) {

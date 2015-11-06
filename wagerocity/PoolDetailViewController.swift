@@ -28,7 +28,7 @@ class PoolDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.userId = Utils.getUser().userId
+        self.userId = Utils.getUser()!.userId
         
         for object in self.data.poolMembers {
             var member = object as! PoolMembers

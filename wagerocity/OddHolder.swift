@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Plego. All rights reserved.
 //
 
-class OddHolder {
+class OddHolder:NSObject, Equatable {
     
     var stake: Double = 0.0
     var teamId: String = ""
@@ -32,4 +32,23 @@ class OddHolder {
     var isTeamA:Bool = false
     var poolId:String = ""
     var poolCredit : Double = 0.0
+    
 }
+
+func ==(lhs: OddHolder, rhs: OddHolder) -> Bool {
+    if lhs.oddId == rhs.oddId &&
+        lhs.name == rhs.name &&
+    lhs.oddType == rhs.oddType &&
+    lhs.betTypeSPT == rhs.betTypeSPT &&
+    lhs.isChecked == rhs.isChecked &&
+    lhs.oddValue == rhs.oddValue &&
+    lhs.stake == rhs.stake &&
+    lhs.oddValue == rhs.oddValue &&
+        lhs.parlayValue == rhs.parlayValue {
+            return true
+    } else {
+        return false
+    }
+}
+
+

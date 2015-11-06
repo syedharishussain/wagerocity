@@ -101,10 +101,12 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
             if statusCode == 200 {
                 var array = body as! NSArray
                 
-                array = array.filteredArrayUsingPredicate(NSPredicate(block: { (object , _) -> Bool in
-                    let dic : NSDictionary = object as! NSDictionary
-                    return (dic["odd_info"] as! NSArray).count > 0
-                }))
+//                array = array.filteredArrayUsingPredicate(NSPredicate(block: { (object , _) -> Bool in
+//                    let dic : NSDictionary = object as! NSDictionary
+//                    return (dic["odd_info"] as! NSArray).count > 0
+//                }))
+                
+                array = array.sortedArrayUsingDescriptors([NSSortDescriptor(key: "bet_id", ascending: false)])
                 
                 if array.count > 0 {
                     

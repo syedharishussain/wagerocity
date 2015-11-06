@@ -21,24 +21,39 @@ class Utils {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
-    static func getUser () -> User {
-        let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.User) as! NSData
-        var user: User = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! User
-        return user
+    static func getUser () -> User? {
+        
+        if let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.User) as? NSData,
+            user = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? User
+        {
+            return user
+        }
+        return nil
+        
+//        
+//        let data = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.User) as! NSData
+//        var user: User = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! User
+//        return user
     }
     
     static func saveUserObject(body: AnyObject) {
         var user : User! = User.modelObjectWithDictionary(body as! Dictionary<NSObject, AnyObject>)
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(user), forKey: Constants.UserDefaults.User)
         NSUserDefaults.standardUserDefaults().synchronize()
+        
+        if let deviceToken = NSUserDefaults.standardUserDefaults().objectForKey(Constants.UserDefaults.DeviceToken) as? String, userId = user.userId {
+            ServiceModel.setDeviceToken(userId, deviceToken: deviceToken, completion: { (isComplete) -> Void in
+                
+            })
+        }
     }
     
     static func showLoader () {
         SVProgressHUD.showWithStatus("Loading")
     }
     
-    static func showMessage (delegate: UIViewController, message:String) {
-        UIAlertView(title: nil, message: message, delegate: delegate, cancelButtonTitle: "Ok").show()
+    static func showMessage (delegate: UIViewController, message:String, title: String? = nil) {
+        UIAlertView(title: title, message: message, delegate: delegate, cancelButtonTitle: "Ok").show()
     }
     
     static func hideLoader () {

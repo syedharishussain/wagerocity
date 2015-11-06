@@ -164,7 +164,7 @@ class CreatePoolViewController: BaseViewController {
             ServiceModel.createPool(
                 self.leagueName,
                 leagueId: self.leagueId,
-                userId: Utils.getUser().userId,
+                userId: Utils.getUser()!.userId,
                 poolName: self.poolNametf.text,
                 poolMotto: self.poolMottoTf.text,
                 poolDesc: self.poolDescTv.text,
