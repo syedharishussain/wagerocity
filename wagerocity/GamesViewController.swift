@@ -111,6 +111,18 @@ class GamesViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 if array.count > 0 {
                     
                 }
+                
+                array = array.filteredArrayUsingPredicate(NSPredicate(block: { (object , _) -> Bool in
+                    let dic : NSDictionary = object as! NSDictionary
+                    if let stakeString = dic["stake"] as? NSString {
+                        if stakeString.doubleValue > 0.0 {
+                            return true
+                        }
+                    }
+                    return false
+                    //                    return (dic["stake"] as! NSArray).count > 0
+                }))
+                
                 self.performSegueWithIdentifier(Constants.Segue.MyPicks, sender: array)
             } else {
                 Utils.showMessage(self, message: "There are currently no picks!")

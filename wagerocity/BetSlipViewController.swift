@@ -115,15 +115,13 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
     
     func processBet (inout array : Array<OddHolder>) {
         
-        
-        var completionJugar = Array<String>()
-        
         //        for odd: OddHolder in array {
         let odd: OddHolder = array.first!
         
         if odd.poolId == "" {
             if Utils.getUser()!.credits < (odd.riskValue as NSString).doubleValue {
                 Utils.showMessage(self, message: "Not Enough Credit!")
+                Utils.hideLoader()
                 return
             } else {
 //                ServiceModel.consumeCredits(odd.riskValue, delegate: self)
@@ -131,6 +129,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
         } else {
             if odd.poolCredit < (odd.riskValue as NSString).doubleValue {
                 Utils.showMessage(self, message: "Not Enough Credit in your Pool Account!")
+                Utils.hideLoader()
                 return
             }
         }
@@ -204,6 +203,7 @@ class BetSlipViewController: BaseViewController, UITableViewDataSource, UITableV
             pOdd.poolId = oddHolders[0].poolId
             pOdd.position = " "
             pOdd.leagueName = oddHolders[0].leagueName
+            pOdd.poolCredit = oddHolders[0].poolCredit
             oddHolders.append(pOdd)
         }
     }

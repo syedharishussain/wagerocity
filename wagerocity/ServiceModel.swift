@@ -100,7 +100,7 @@ class ServiceModel: NSObject {
     
     static func getGames (leagueName: String, completion: (NSURLRequest, NSHTTPURLResponse?, AnyObject? , NSError?, Int) -> Void) {
         Utils.showLoader()
-        Alamofire.request(.GET, "http://api.wagerocity.com/getGames", parameters: ["leagueName" : leagueName])
+        Alamofire.request(.GET, "http://api.wagerocity.com/getGames", parameters: ["leagueName" : leagueName.lowercaseString])
             .responseJSON{ (request, response, body, error) in
                 Utils.hideLoader()
                 

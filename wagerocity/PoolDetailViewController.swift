@@ -83,6 +83,16 @@ class PoolDetailViewController: BaseViewController {
                     game.poolCredit = self.poolCredit
                     games.append(game)
                 })
+                
+                games = games.filter({ (game: Game) -> Bool in
+                    let date: NSDate = NSDate(string: game.cstStartTime, formatString: "yyyy-MM-dd HH:mm:ss", timeZone: NSTimeZone(abbreviation: "CST"))
+                    
+                    let gameTimeInterval : NSTimeInterval = NSDate().timeIntervalSinceDate(date)
+                    let currentTimeInterval = NSDate().timeIntervalSinceNow
+                    
+                    return gameTimeInterval < currentTimeInterval
+                })
+                
                 self.performSegueWithIdentifier(Constants.Segue.Games, sender: games)
             } else {
                 Utils.showMessage(self, message: "There are currently no games!")
